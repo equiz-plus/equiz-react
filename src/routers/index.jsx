@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import ConfirmPage from "../pages/ConfirmPage";
+
 import AdminLayout from "../layouts/AdminLayout";
 import StudentLayout from "../layouts/StudentLayout";
 import Dashboard from "../pages/admin/Dashboard";
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/confirm",
+    element: <ConfirmPage />,
   },
   {
     path: "/admin",
