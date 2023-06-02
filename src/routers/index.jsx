@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../../pages/LayoutPage";
-import LoginPage from "../../pages/LoginPage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import AdminLayout from "../layouts/AdminLayout";
 import StudentLayout from "../layouts/StudentLayout";
 import Dashboard from "../pages/admin/Dashboard";
@@ -12,14 +12,12 @@ import ExamQuestion from "../pages/students/exams/Questions";
 
 const router = createBrowserRouter([
   {
-    path: "",
-    element: <Layout />,
-    children: [
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
-    ],
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
   {
     path: "/admin",
