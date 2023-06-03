@@ -1,22 +1,25 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../../pages/LayoutPage";
-import LoginPage from "../../pages/LoginPage";
 import AdminLayout from "../layouts/AdminLayout";
 import StudentLayout from "../layouts/StudentLayout";
+import LandingPage from "../pages/LandingPage";
 import Dashboard from "../pages/admin/Dashboard";
 import StudentCreate from "../pages/admin/students/StudentCreate";
 import StudentIndex from "../pages/admin/students/StudentIndex";
+import LoginPage from "../pages/auth/LoginPage";
 import StudentDashboard from "../pages/students/Dashboard";
 import ExamComfirmation from "../pages/students/exams/Comfirmation";
 import ExamQuestion from "../pages/students/exams/Questions";
 
 const router = createBrowserRouter([
   {
-    path: "",
-    element: <Layout />,
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/auth",
     children: [
       {
-        path: "/login",
+        path: "login",
         element: <LoginPage />,
       },
     ],
