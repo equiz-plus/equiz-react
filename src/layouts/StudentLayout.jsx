@@ -1,6 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function StudentLayout() {
+  const navigate = useNavigate();
+
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate("/auth/login");
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-transparent navbar-dark navbar-theme-primary mb-4 shadow">
@@ -17,8 +25,8 @@ function StudentLayout() {
             <form className="d-flex">
               <a
                 href="/logout"
-                method="POST"
                 className="btn btn-secondary shadow button"
+                onClick={logout}
               >
                 LOGOUT
               </a>

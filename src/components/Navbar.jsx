@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 function Navbar() {
+  const navigate = useNavigate();
+
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate("/auth/login");
+  };
+
   return (
     <>
       <nav className="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
@@ -33,8 +43,7 @@ function Navbar() {
                 <div className="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1 border-0 shadow">
                   <a
                     className="dropdown-item d-flex align-items-center button"
-                    href="/logout"
-                    method="POST"
+                    onClick={logout}
                   >
                     <svg
                       className="dropdown-icon text-danger me-2"
