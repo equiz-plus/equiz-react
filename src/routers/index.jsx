@@ -9,6 +9,9 @@ import LoginPage from "../pages/auth/LoginPage";
 import StudentDashboard from "../pages/students/Dashboard";
 import ExamComfirmation from "../pages/students/exams/Comfirmation";
 import ExamQuestion from "../pages/students/exams/Questions";
+import RegisterPage from "../pages/auth/RegisterPage";
+import ConfirmPage from "../pages/auth/ConfirmPage";
+import { redirect } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -17,16 +20,40 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth",
+    loader: () => {
+      if (localStorage.getItem("role") === "admin") {
+        throw redirect("/admin");
+      } else if (localStorage.getItem("role") === "user") {
+        throw redirect("/students");
+      }
+      return null;
+    },
     children: [
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "confirm",
+        element: <ConfirmPage />,
       },
     ],
   },
   {
     path: "/admin",
     element: <AdminLayout />,
+    loader: () => {
+      if (!localStorage.getItem("access_token")) {
+        throw redirect("/auth/login");
+      } else if (localStorage.getItem("role") !== "admin") {
+        throw redirect("/students");
+      }
+      return null;
+    },
     children: [
       {
         path: "",
@@ -50,6 +77,14 @@ const router = createBrowserRouter([
   {
     path: "/students",
     element: <StudentLayout />,
+    loader: () => {
+      if (!localStorage.getItem("access_token")) {
+        throw redirect("/auth/login");
+      } else if (localStorage.getItem("role") !== "user") {
+        throw redirect("/admin");
+      }
+      return null;
+    },
     children: [
       {
         path: "",
