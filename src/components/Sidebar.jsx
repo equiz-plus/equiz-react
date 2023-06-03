@@ -123,8 +123,8 @@ function Sidebar() {
             </li>
 
             <li className="nav-item">
-              <a
-                href="/admin/classrooms"
+              <Link
+                to={"/admin/organizations"}
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -142,7 +142,7 @@ function Sidebar() {
                   </span>
                   <span className="sidebar-text">Organizations</span>
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">

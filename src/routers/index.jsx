@@ -16,6 +16,9 @@ import ExamIndex from "../pages/admin/exams/ExamIndex";
 import ExamCreate from "../pages/admin/exams/ExamCreate";
 import CategoryIndex from "../pages/admin/categories/CategoryIndex";
 import CategoryCreate from "../pages/admin/categories/CategoryCreate";
+import CertificateDetails from "../pages/students/certificate/CertificateDetails";
+import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
+import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +80,19 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "organizations",
+        children: [
+          {
+            path: "",
+            element: <OrganizationIndex />,
+          },
+          {
+            path: "create",
+            element: <OrganizationCreate />,
+          },
+        ],
+      },
+      {
         path: "exams",
         children: [
           {
@@ -130,6 +146,15 @@ const router = createBrowserRouter([
           {
             path: "question",
             element: <ExamQuestion />,
+          },
+        ],
+      },
+      {
+        path: "certificates",
+        children: [
+          {
+            path: "details",
+            element: <CertificateDetails />,
           },
         ],
       },
