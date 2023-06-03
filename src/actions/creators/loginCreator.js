@@ -1,6 +1,6 @@
 import { LOGIN_FAILED, LOGIN_LOADING, LOGIN_SUCCESS } from "../actionTypes";
 import axios from "axios";
-const baseUrl = "http://localhost:3000";
+import { baseUrl } from "../baseUrl";
 
 export const loginAction = (data) => ({
   type: LOGIN_SUCCESS,

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+import { baseUrl } from "../baseUrl";
 import axios from "axios";
 import {
   REGISTER_FAILED,

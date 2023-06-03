@@ -9,6 +9,10 @@ import registerReducer from "../reducers/registerReducer";
 import confirmReducer from "../reducers/confirmReducer";
 import loginReducer from "../reducers/loginReducer";
 import readExamReducer from "../reducers/readExamReducer";
+import readCategoriesReducer from "../reducers/readCategoriesReducer";
+import addExamReducer from "../reducers/addExamReducer";
+import examDetailReducer from "../reducers/examDetailReducer";
+import editExamReducer from "../reducers/editExamReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -16,6 +20,10 @@ const appReducer = combineReducers({
   confirm: confirmReducer,
   login: loginReducer,
   readExams: readExamReducer,
+  detailExam: examDetailReducer,
+  readCategories: readCategoriesReducer,
+  createExam: addExamReducer,
+  editExam: editExamReducer,
 });
 
 const rootReducer = (state, action) => {
