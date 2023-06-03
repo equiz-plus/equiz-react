@@ -12,6 +12,10 @@ import ExamQuestion from "../pages/students/exams/Questions";
 import RegisterPage from "../pages/auth/RegisterPage";
 import ConfirmPage from "../pages/auth/ConfirmPage";
 import { redirect } from "react-router-dom";
+import ExamIndex from "../pages/admin/exams/ExamIndex";
+import ExamCreate from "../pages/admin/exams/ExamCreate";
+import CategoryIndex from "../pages/admin/categories/CategoryIndex";
+import CategoryCreate from "../pages/admin/categories/CategoryCreate";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +73,32 @@ const router = createBrowserRouter([
           {
             path: "create",
             element: <StudentCreate />,
+          },
+        ],
+      },
+      {
+        path: "exams",
+        children: [
+          {
+            path: "",
+            element: <ExamIndex />,
+          },
+          {
+            path: "create",
+            element: <ExamCreate />,
+          },
+        ],
+      },
+      {
+        path: "categories",
+        children: [
+          {
+            path: "",
+            element: <CategoryIndex />,
+          },
+          {
+            path: "create",
+            element: <CategoryCreate />,
           },
         ],
       },

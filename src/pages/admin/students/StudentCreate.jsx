@@ -9,34 +9,34 @@ function StudentCreate() {
               className="btn btn-md btn-primary border-0 shadow mb-3"
               type="button"
             >
-              <i className="fa fa-long-arrow-alt-left me-2"></i> Kembali
+              <i className="fa fa-long-arrow-alt-left me-2"></i> Back
             </a>
             <div className="card border-0 shadow">
               <div className="card-body">
                 <h5>
-                  <i className="fa fa-user"></i> Tambah Siswa
+                  <i className="fa fa-user"></i> Add Students
                 </h5>
                 <hr />
                 <form>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Nisn</label>
+                        <label>NISN</label>
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Masukkan Nisn Siswa"
+                          placeholder="insert student's NISN"
                         />
                         <div className="alert alert-danger mt-2">12131</div>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Nama Lengkap</label>
+                        <label>Full Name</label>
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Masukkan Nama Siswa"
+                          placeholder="Insert student's name"
                         />
                         <div className="alert alert-danger mt-2">Mike</div>
                       </div>
@@ -46,21 +46,21 @@ function StudentCreate() {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Kelas</label>
+                        <label>Class</label>
                         <select className="form-select">
-                          <option>Okekeke</option>
+                          <option>Class</option>
                         </select>
                         <div className="alert alert-danger mt-2">12131</div>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Jenis Kelamin</label>
+                        <label>Gender</label>
                         <select className="form-select">
-                          <option value="L">Laki - Laki</option>
-                          <option value="P">Perempuan</option>
+                          <option value="L">Male</option>
+                          <option value="P">Female</option>
                         </select>
-                        <div className="alert alert-danger mt-2">Laki</div>
+                        <div className="alert alert-danger mt-2">Male</div>
                       </div>
                     </div>
                   </div>
@@ -72,7 +72,7 @@ function StudentCreate() {
                         <input
                           type="password"
                           className="form-control"
-                          placeholder="Masukkan Password"
+                          placeholder="Insert password"
                         />
                         <div className="alert alert-danger mt-2">
                           Password Error Message
@@ -81,11 +81,11 @@ function StudentCreate() {
                     </div>
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Konfirmasi Password</label>
+                        <label>Password confirmation</label>
                         <input
                           type="password"
                           className="form-control"
-                          placeholder="Masukkan Konfirmasi Password"
+                          placeholder="Insert password confirmation"
                         />
                       </div>
                     </div>
@@ -95,7 +95,7 @@ function StudentCreate() {
                     type="submit"
                     className="btn btn-md btn-primary border-0 shadow me-2"
                   >
-                    Simpan
+                    Submit
                   </button>
                   <button
                     type="reset"

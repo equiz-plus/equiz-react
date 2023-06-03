@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { confirmMiddleware } from "../../actions/actionCreators";
 import { CLEAR_STATE } from "../../actions/actionTypes";
+import { actionConfirm } from "../../actions/actionCreators";
+import { toast } from "react-toastify";
 
 function ConfirmPage() {
   let [confirmData, setConfirmData] = useState({
     token: "",
     email: "",
   });
+
+  const { isError, isSuccess, isLoading, errorMessage } = useSelector(
+    (state) => state.confirm
+  );
 
   const formHandler = (e) => {
     setConfirmData({
@@ -22,16 +27,20 @@ function ConfirmPage() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(confirmMiddleware(confirmData));
+    dispatch(actionConfirm(confirmData));
   };
 
-  const { confirmed } = useSelector((state) => state.confirm);
+  const notify = (msg) => toast.error(msg);
 
   useEffect(() => {
-    if (confirmed.message) {
+    if (isError) {
+      notify(errorMessage);
+      dispatch({ type: CLEAR_STATE });
+    } else if (isSuccess) {
+      toast.success("Email confirmed, please continue to log in");
       navigate("/auth/login");
     }
-  }, [confirmed]);
+  }, [isError, isSuccess]);
 
   // CLEAR STATE
   useEffect(() => {
@@ -65,7 +74,6 @@ function ConfirmPage() {
                       onChange={formHandler}
                     />
                   </div>
-                  <div className="alert alert-danger mt-2">Email Required</div>
                 </div>
 
                 <div className="form-group mb-4">
@@ -81,12 +89,17 @@ function ConfirmPage() {
                       onChange={formHandler}
                     />
                   </div>
-                  <div className="alert alert-danger mt-2">Token Required</div>
                 </div>
 
                 <div className="d-grid">
                   <button type="submit" className="btn btn-gray-800">
-                    Confirm Account
+                    {!isLoading ? (
+                      "Confirm Account"
+                    ) : (
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    )}
                   </button>
                 </div>
               </form>

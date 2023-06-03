@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Sidebar() {
   return (
     <>
@@ -49,7 +51,7 @@ function Sidebar() {
                       <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z" />
                     </svg>
                   </span>
-                  <span className="sidebar-text fw-bold">UJIAN ONLINE</span>
+                  <span className="sidebar-text fw-bold">eQuiz+</span>
                 </span>
                 <span>
                   <span className="badge badge-sm bg-secondary ms-1 text-gray-800">
@@ -65,8 +67,8 @@ function Sidebar() {
             ></li>
 
             <li className="nav-item active">
-              <a
-                href="/admin/dashboard"
+              <Link
+                to="/admin"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -88,7 +90,7 @@ function Sidebar() {
                   </span>
                   <span className="sidebar-text">Dashboard</span>
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li
@@ -97,8 +99,8 @@ function Sidebar() {
             ></li>
 
             <li className="nav-item">
-              <a
-                href="/admin/lessons"
+              <Link
+                to="/admin/categories"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -115,9 +117,9 @@ function Sidebar() {
                       <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z" />
                     </svg>
                   </span>
-                  <span className="sidebar-text">Mata Pelajaran</span>
+                  <span className="sidebar-text">Categories</span>
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
@@ -138,7 +140,7 @@ function Sidebar() {
                       <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z" />
                     </svg>
                   </span>
-                  <span className="sidebar-text">Kelas</span>
+                  <span className="sidebar-text">Organizations</span>
                 </span>
               </a>
             </li>
@@ -166,7 +168,7 @@ function Sidebar() {
                       <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                     </svg>
                   </span>
-                  <span className="sidebar-text">Siswa</span>
+                  <span className="sidebar-text">Students</span>
                 </span>
               </a>
             </li>
@@ -177,8 +179,8 @@ function Sidebar() {
             ></li>
 
             <li className="nav-item">
-              <a
-                href="/admin/exams"
+              <Link
+                to="/admin/exams"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -198,9 +200,11 @@ function Sidebar() {
                       />
                     </svg>
                   </span>
-                  <span className="sidebar-text">Ujian</span>
+                  <Link to="/admin/exams">
+                    <span className="sidebar-text">Exams</span>
+                  </Link>
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">

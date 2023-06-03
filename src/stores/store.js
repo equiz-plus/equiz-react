@@ -8,12 +8,14 @@ import { CLEAR_STATE } from "../actions/actionTypes";
 import registerReducer from "../reducers/registerReducer";
 import confirmReducer from "../reducers/confirmReducer";
 import loginReducer from "../reducers/loginReducer";
+import readExamReducer from "../reducers/readExamReducer";
 
 // combine reducers
 const appReducer = combineReducers({
   register: registerReducer,
   confirm: confirmReducer,
   login: loginReducer,
+  readExams: readExamReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -1,21 +1,35 @@
-import { CONFIRM, CONFIRM_FAILED } from "../actions/actionTypes";
+import {
+  CONFIRM_FAILED,
+  CONFIRM_LOADING,
+  CONFIRM_SUCCESS,
+} from "../actions/actionTypes";
 
 const initialState = {
-  confirmed: {},
+  isLoading: false,
+  isSuccess: false,
+  isError: false,
   errorMessage: "",
 };
 
 const confirmReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CONFIRM:
+    case CONFIRM_LOADING:
       return {
         ...state,
-        confirmed: action.payload,
+        isLoading: true,
+      };
+    case CONFIRM_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isSuccess: true,
       };
     case CONFIRM_FAILED:
       return {
         ...state,
-        errorMessage: action.payload,
+        isLoading: false,
+        isError: true,
+        errorMessage: action.payload.message,
       };
     default:
       return state;

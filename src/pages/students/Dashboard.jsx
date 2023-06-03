@@ -4,7 +4,7 @@ function StudentDashboard() {
       <div className="row">
         <div className="col-md-12">
           <div className="alert alert-success border-0 shadow">
-            Selamat Datang <strong>Nama Murid</strong>
+            Welcome <strong>Nama Murid</strong>
           </div>
         </div>
       </div>
@@ -22,19 +22,19 @@ function StudentDashboard() {
                       <td>Mata Pelajaran</td>
                     </tr>
                     <tr>
-                      <td className="fw-bold">Kelas</td>
+                      <td className="fw-bold">Class</td>
                       <td>Kelasanyya</td>
                     </tr>
                     <tr>
-                      <td className="fw-bold">Sesi</td>
+                      <td className="fw-bold">Session</td>
                       <td>Exam Sesi</td>
                     </tr>
                     <tr>
-                      <td className="fw-bold">Mulai</td>
+                      <td className="fw-bold">Start</td>
                       <td>Waktu Mulai</td>
                     </tr>
                     <tr>
-                      <td className="fw-bold">Selesai</td>
+                      <td className="fw-bold">End</td>
                       <td>Waktu Selesai</td>
                     </tr>
                   </thead>
@@ -49,7 +49,7 @@ function StudentDashboard() {
                       href="/student/exam-confirmation/"
                       className="btn btn-md btn-success border-0 shadow w-100 mt-2 text-white"
                     >
-                      Kerjakan
+                      Take Exam
                     </a>
                   </div>
 
@@ -58,7 +58,7 @@ function StudentDashboard() {
                       href="/student/exam/`"
                       className="btn btn-md btn-info border-0 shadow w-100 mt-2"
                     >
-                      Lanjut Kerjakan
+                      Continue
                     </a>
                   </div>
                 </div>
@@ -70,7 +70,7 @@ function StudentDashboard() {
                       className="btn btn-md btn-gray-700 border-0 shadow w-100 mt-2"
                       disabled
                     >
-                      Belum Mulai
+                      Exam has not been started
                     </button>
                   </div>
 
@@ -80,7 +80,7 @@ function StudentDashboard() {
                       className="btn btn-md btn-danger border-0 shadow w-100 mt-2"
                       disabled
                     >
-                      Waktu Terlewat
+                      Missed the exam
                     </button>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ function StudentDashboard() {
                   className="btn btn-md btn-danger border-0 shadow w-100 mt-2"
                   disabled
                 >
-                  Sudah Dikerjakan
+                  Already took this exam
                 </button>
               </div>
             </div>
@@ -101,7 +101,7 @@ function StudentDashboard() {
       <div className="row">
         <div className="col-md-12">
           <div className="alert alert-danger border-0 shadow">
-            <i className="fa fa-info-circle"></i> Tidak ada ujian yang tersedia
+            <i className="fa fa-info-circle"></i> There is no available exam yet
           </div>
         </div>
       </div>

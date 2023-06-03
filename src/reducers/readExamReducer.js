@@ -1,43 +1,42 @@
 import {
-  LOGIN_FAILED,
-  LOGIN_LOADING,
-  LOGIN_SUCCESS,
+  READ_EXAMS_ERROR,
+  READ_EXAMS_LOADING,
+  READ_EXAMS_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
   isSuccess: false,
   isLoading: false,
   isError: false,
-  access_token: undefined,
-  role: undefined,
-  errorMessage: undefined,
+  exams: undefined,
+  totalPages: undefined,
 };
 
-const loginReducer = (state = initialState, action) => {
+const readExamReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_LOADING:
+    case READ_EXAMS_LOADING:
       return {
         ...state,
         isLoading: true,
       };
-    case LOGIN_SUCCESS:
+    case READ_EXAMS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isSuccess: true,
-        access_token: action.payload.access_token,
-        role: action.payload.role,
+        exams: action.payload.exams,
+        totalPages: action.payload.totalPages,
       };
-    case LOGIN_FAILED:
+    case READ_EXAMS_ERROR:
       return {
         ...state,
         isLoading: false,
         isError: true,
-        errorMessage: action.payload,
+        errorMessage: action.payload.message,
       };
     default:
       return state;
   }
 };
 
-export default loginReducer;
+export default readExamReducer;

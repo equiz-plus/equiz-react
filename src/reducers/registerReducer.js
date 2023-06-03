@@ -1,21 +1,35 @@
-import { REGISTER, REGISTER_FAILED } from "../actions/actionTypes";
+import {
+  REGISTER_FAILED,
+  REGISTER_LOADING,
+  REGISTER_SUCCESS,
+} from "../actions/actionTypes";
 
 const initialState = {
-  registered: {},
-  errorMessage: "",
+  isLoading: false,
+  isError: false,
+  isSuccess: false,
+  errorMessage: undefined,
 };
 
 const registerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REGISTER:
+    case REGISTER_LOADING:
       return {
         ...state,
-        registered: action.payload,
+        isLoading: true,
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isSuccess: true,
       };
     case REGISTER_FAILED:
       return {
         ...state,
-        errorMessage: action.payload,
+        isLoading: false,
+        isError: true,
+        errorMessage: action.payload.message,
       };
     default:
       return state;
