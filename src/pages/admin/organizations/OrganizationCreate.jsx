@@ -1,11 +1,11 @@
-function StudentCreate() {
+const OrganizationCreate = () => {
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
         <div className="row">
           <div className="col-md-12">
             <a
-              href="/admin/students"
+              href="/admin/organizations"
               className="btn btn-md btn-primary border-0 shadow mb-3"
               type="button"
             >
@@ -14,79 +14,73 @@ function StudentCreate() {
             <div className="card border-0 shadow">
               <div className="card-body">
                 <h5>
-                  <i className="fa fa-user"></i> Add Students
+                  <i className="fa fa-user"></i> Add Organization
                 </h5>
                 <hr />
                 <form>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>NISN</label>
+                        <label>Name</label>
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="insert student's NISN"
+                          placeholder="insert org's name"
                         />
-                        <div className="alert alert-danger mt-2">12131</div>
+                        <div className="alert alert-danger mt-2">Monke</div>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Full Name</label>
+                        <label>Address</label>
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Insert student's name"
-                        />
-                        <div className="alert alert-danger mt-2">Mike</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="mb-4">
-                        <label>Class</label>
-                        <select className="form-select">
-                          <option>Class</option>
-                        </select>
-                        <div className="alert alert-danger mt-2">12131</div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="mb-4">
-                        <label>Gender</label>
-                        <select className="form-select">
-                          <option value="L">Male</option>
-                          <option value="P">Female</option>
-                        </select>
-                        <div className="alert alert-danger mt-2">Male</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="mb-4">
-                        <label>Password</label>
-                        <input
-                          type="password"
-                          className="form-control"
-                          placeholder="Insert password"
+                          placeholder="Insert org's location"
                         />
                         <div className="alert alert-danger mt-2">
-                          Password Error Message
+                          Gulu, Uganda
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="row">
                     <div className="col-md-6">
                       <div className="mb-4">
-                        <label>Password confirmation</label>
+                        <label>Logo</label>
                         <input
-                          type="password"
+                          type="text"
                           className="form-control"
-                          placeholder="Insert password confirmation"
+                          placeholder="Insert org's logo"
                         />
+                        <div className="alert alert-danger mt-2">img url</div>
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="mb-4">
+                        <label>Pic</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Insert org's pic"
+                        />
+                        <div className="alert alert-danger mt-2">pic???</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="mb-4">
+                        <label>Sign</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Insert org's sign"
+                        />
+                        <div className="alert alert-danger mt-2">sign???</div>
                       </div>
                     </div>
                   </div>
@@ -111,6 +105,6 @@ function StudentCreate() {
       </div>
     </>
   );
-}
+};
 
-export default StudentCreate;
+export default OrganizationCreate;

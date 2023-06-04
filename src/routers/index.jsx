@@ -1,29 +1,66 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../../pages/LayoutPage";
-import LoginPage from "../../pages/LoginPage";
 import AdminLayout from "../layouts/AdminLayout";
 import StudentLayout from "../layouts/StudentLayout";
+import LandingPage from "../pages/LandingPage";
 import Dashboard from "../pages/admin/Dashboard";
 import StudentCreate from "../pages/admin/students/StudentCreate";
 import StudentIndex from "../pages/admin/students/StudentIndex";
+import LoginPage from "../pages/auth/LoginPage";
 import StudentDashboard from "../pages/students/Dashboard";
 import ExamComfirmation from "../pages/students/exams/Comfirmation";
 import ExamQuestion from "../pages/students/exams/Questions";
+import RegisterPage from "../pages/auth/RegisterPage";
+import ConfirmPage from "../pages/auth/ConfirmPage";
+import { redirect } from "react-router-dom";
+import ExamIndex from "../pages/admin/exams/ExamIndex";
+import ExamCreate from "../pages/admin/exams/ExamCreate";
+import CategoryIndex from "../pages/admin/categories/CategoryIndex";
+import CategoryCreate from "../pages/admin/categories/CategoryCreate";
+import CertificateDetails from "../pages/students/certificate/CertificateDetails";
+import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
+import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 
 const router = createBrowserRouter([
   {
-    path: "",
-    element: <Layout />,
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/auth",
+    loader: () => {
+      if (localStorage.getItem("role") === "admin") {
+        throw redirect("/admin");
+      } else if (localStorage.getItem("role") === "user") {
+        throw redirect("/students");
+      }
+      return null;
+    },
     children: [
       {
-        path: "/login",
+        path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "confirm",
+        element: <ConfirmPage />,
       },
     ],
   },
   {
     path: "/admin",
     element: <AdminLayout />,
+    loader: () => {
+      if (!localStorage.getItem("access_token")) {
+        throw redirect("/auth/login");
+      } else if (localStorage.getItem("role") !== "admin") {
+        throw redirect("/students");
+      }
+      return null;
+    },
     children: [
       {
         path: "",
@@ -42,11 +79,58 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "organizations",
+        children: [
+          {
+            path: "",
+            element: <OrganizationIndex />,
+          },
+          {
+            path: "create",
+            element: <OrganizationCreate />,
+          },
+        ],
+      },
+      {
+        path: "exams",
+        children: [
+          {
+            path: "",
+            element: <ExamIndex />,
+          },
+          {
+            path: "create",
+            element: <ExamCreate />,
+          },
+        ],
+      },
+      {
+        path: "categories",
+        children: [
+          {
+            path: "",
+            element: <CategoryIndex />,
+          },
+          {
+            path: "create",
+            element: <CategoryCreate />,
+          },
+        ],
+      },
     ],
   },
   {
     path: "/students",
     element: <StudentLayout />,
+    loader: () => {
+      if (!localStorage.getItem("access_token")) {
+        throw redirect("/auth/login");
+      } else if (localStorage.getItem("role") !== "user") {
+        throw redirect("/admin");
+      }
+      return null;
+    },
     children: [
       {
         path: "",
@@ -62,6 +146,15 @@ const router = createBrowserRouter([
           {
             path: "question",
             element: <ExamQuestion />,
+          },
+        ],
+      },
+      {
+        path: "certificates",
+        children: [
+          {
+            path: "details",
+            element: <CertificateDetails />,
           },
         ],
       },
