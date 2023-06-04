@@ -43,4 +43,9 @@ export const READ_CATEGORIES_SUCCESS = "categories/readCategories";
 export const READ_CATEGORIES_LOADING = "categories/readCategoriesLoading";
 export const READ_CATEGORIES_ERROR = "categories/readCategoriesError";
 
+//ORGANIZATIONS
+export const READ_ORGANIZATION_SUCCESS = "organizations/readSuccess";
+export const READ_ORGANIZATION_LOADING = "organizations/readLoading";
+export const READ_ORGANIZATION_ERROR = "organizations/readError";
+
 export const CLEAR_STATE = "state/clearState";

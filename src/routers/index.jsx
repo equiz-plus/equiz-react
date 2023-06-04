@@ -19,6 +19,7 @@ import CategoryIndex from "../pages/admin/categories/CategoryIndex";
 import CategoryCreate from "../pages/admin/categories/CategoryCreate";
 import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
+import CertificateDetails from "../pages/students/certificate/CertificateDetails";
 
 const router = createBrowserRouter([
   {
@@ -150,6 +151,15 @@ const router = createBrowserRouter([
           {
             path: "question",
             element: <ExamQuestion />,
+          },
+        ],
+      },
+      {
+        path: "certificates",
+        children: [
+          {
+            path: "details",
+            element: <CertificateDetails />,
           },
         ],
       },
