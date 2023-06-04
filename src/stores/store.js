@@ -15,6 +15,10 @@ import examDetailReducer from "../reducers/examDetailReducer";
 import editExamReducer from "../reducers/editExamReducer";
 import patchExamReducer from "../reducers/patchExamReducer";
 import deleteExamReducer from "../reducers/deleteExamReducer";
+import startDetailReducer from "../reducers/startDetailReducer";
+import startExamReducer from "../reducers/startExamReducer";
+import getSessionReducer from "../reducers/getSessionReducer";
+import answerExamReducer from "../reducers/answerExamReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -28,6 +32,10 @@ const appReducer = combineReducers({
   editExam: editExamReducer,
   patchExam: patchExamReducer,
   deleteExam: deleteExamReducer,
+  startDetail: startDetailReducer,
+  startExam: startExamReducer,
+  getSession: getSessionReducer,
+  answerExam: answerExamReducer,
 });
 
 const rootReducer = (state, action) => {
