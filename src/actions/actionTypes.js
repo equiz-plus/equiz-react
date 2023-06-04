@@ -16,4 +16,21 @@ export const READ_EXAMS_SUCCESS = "exams/readExams";
 export const READ_EXAMS_LOADING = "exams/readExamsLoading";
 export const READ_EXAMS_ERROR = "exams/readExamsError";
 
+export const DETAIL_EXAMS_SUCCESS = "exams/detailExam";
+export const DETAIL_EXAMS_LOADING = "exams/detailExamLoading";
+export const DETAIL_EXAMS_ERROR = "exams/detailExamError";
+
+export const CREATE_EXAM_SUCCESS = "exams/createExam";
+export const CREATE_EXAM_LOADING = "exams/createExamLoading";
+export const CREATE_EXAM_ERROR = "exams/createExamError";
+
+export const EDIT_EXAM_SUCCESS = "exams/editExam";
+export const EDIT_EXAM_LOADING = "exams/editExamLoading";
+export const EDIT_EXAM_ERROR = "exams/editExamError";
+
+// CATEGORIES
+export const READ_CATEGORIES_SUCCESS = "categories/readCategories";
+export const READ_CATEGORIES_LOADING = "categories/readCategoriesLoading";
+export const READ_CATEGORIES_ERROR = "categories/readCategoriesError";
+
 export const CLEAR_STATE = "state/clearState";

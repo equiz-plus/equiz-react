@@ -14,6 +14,7 @@ import ConfirmPage from "../pages/auth/ConfirmPage";
 import { redirect } from "react-router-dom";
 import ExamIndex from "../pages/admin/exams/ExamIndex";
 import ExamCreate from "../pages/admin/exams/ExamCreate";
+import ExamEdit from "../pages/admin/exams/ExamEdit";
 import CategoryIndex from "../pages/admin/categories/CategoryIndex";
 import CategoryCreate from "../pages/admin/categories/CategoryCreate";
 
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
           {
             path: "create",
             element: <ExamCreate />,
+          },
+          {
+            path: "edit/:id",
+            element: <ExamEdit />,
           },
         ],
       },

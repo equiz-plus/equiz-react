@@ -43,6 +43,13 @@ function RegisterPage() {
     }
   }, [isError, isSuccess]);
 
+  // CLEAR STATE WHEN UNMOUNTED
+  useEffect(() => {
+    return () => {
+      dispatch({ type: CLEAR_STATE });
+    };
+  }, []);
+
   // === HTML ===
   return (
     <>
