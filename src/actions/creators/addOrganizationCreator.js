@@ -4,6 +4,7 @@ import {
   CREATE_ORGANIZATION_LOADING,
 } from "../actionTypes";
 import { baseUrl } from "../baseUrl";
+import axios from "axios";
 
 export const addOrganizationSuccess = (data) => ({
   type: CREATE_ORGANIZATION_SUCCESS,

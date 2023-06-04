@@ -15,9 +15,11 @@ import examDetailReducer from "../reducers/examDetailReducer";
 import editExamReducer from "../reducers/editExamReducer";
 import patchExamReducer from "../reducers/patchExamReducer";
 import deleteExamReducer from "../reducers/deleteExamReducer";
+
 import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
 import createOrganizationReducer from "../reducers/addOrganizationReducer";
 import deleteOrganizationReducer from "../reducers/deleteOrganizationReducer";
+import editOrganizationReducer from "../reducers/editOrganizationReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -34,6 +36,7 @@ const appReducer = combineReducers({
   readOrganizations: readOrganzationsReducer,
   createOrganizations: createOrganizationReducer,
   deleteOrganizations: deleteOrganizationReducer,
+  editOrganizations: editOrganizationReducer,
 });
 
 const rootReducer = (state, action) => {
