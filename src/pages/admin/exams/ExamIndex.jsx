@@ -1,15 +1,19 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  actionClearDeleteExam,
+  actionClearPatchExam,
+  actionDeleteExam,
+  actionPatchExam,
   actionReadCategories,
   actionReadExams,
 } from "../../../actions/actionCreators";
 import Pagination from "../../../components/Pagination";
+import { toast } from "react-toastify";
 
 function ExamIndex() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { exams, totalPages } = useSelector((state) => state.readExams);
   const { categories } = useSelector((state) => state.readCategories);
@@ -19,7 +23,7 @@ function ExamIndex() {
     dispatch(actionReadCategories());
   }, []);
 
-  // FILTERS
+  // === FILTERS ===
   const [filters, setFilters] = useState({
     search: "",
     page: null,
@@ -52,6 +56,48 @@ function ExamIndex() {
   useEffect(() => {
     dispatch(actionReadExams(page, filters.search, filters.category));
   }, [page, filters]);
+
+  // === CHANGE STATUS ===
+  const statusHandler = (id) => {
+    dispatch(actionPatchExam(id));
+  };
+
+  const { isSuccess, isError, errorMessage } = useSelector(
+    (state) => state.patchExam
+  );
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(actionReadExams());
+      toast.success("Status Updated");
+      dispatch(actionClearPatchExam());
+    } else if (isError) {
+      toast.error(errorMessage);
+      dispatch(actionClearPatchExam());
+    }
+  }, [isSuccess, isError]);
+
+  // === DELETE EXAM ===
+  const deleteHandler = (id) => {
+    dispatch(actionDeleteExam(id));
+  };
+
+  const {
+    isSuccess: successDelete,
+    isError: errorDelete,
+    errorMessage: errorDeleteMessage,
+  } = useSelector((state) => state.deleteExam);
+
+  useEffect(() => {
+    if (successDelete) {
+      dispatch(actionReadExams());
+      toast.success("Exam Deleted");
+      dispatch(actionClearDeleteExam());
+    } else if (errorDelete) {
+      toast.error(errorDeleteMessage);
+      dispatch(actionClearDeleteExam());
+    }
+  }, [successDelete, errorDelete]);
 
   return (
     <>
@@ -125,6 +171,7 @@ function ExamIndex() {
                         <th className="border-0">Category</th>
                         <th className="border-0">Time (minutes)</th>
                         <th className="border-0">Total Questions</th>
+                        <th className="border-0">Status</th>
                         <th
                           className="border-0 rounded-end"
                           style={{ width: 5 + "%" }}
@@ -146,13 +193,25 @@ function ExamIndex() {
                           <td className="text-center">{exam.duration}</td>
                           <td className="text-center">{exam.totalQuestions}</td>
                           <td className="text-center">
-                            <a
+                            <select
+                              name="isOpen"
+                              id=""
+                              className="form-select"
+                              value={exam.isOpen}
+                              onChange={() => statusHandler(exam.id)}
+                            >
+                              <option value="true">Open</option>
+                              <option value="false">Closed</option>
+                            </select>
+                          </td>
+                          <td className="text-center">
+                            {/* <a
                               href="`/admin/exams/${exam.id}`"
                               className="btn btn-sm btn-primary border-0 shadow me-2"
                               type="button"
                             >
                               <i className="fa fa-plus-circle"></i>
-                            </a>
+                            </a> */}
                             <Link
                               to={`/admin/exams/edit/${exam.id}`}
                               className="btn btn-sm btn-info border-0 shadow me-2"
@@ -160,7 +219,10 @@ function ExamIndex() {
                             >
                               <i className="fa fa-pencil-alt"></i>
                             </Link>
-                            <button className="btn btn-sm btn-danger border-0">
+                            <button
+                              className="btn btn-sm btn-danger border-0"
+                              onClick={() => deleteHandler(exam.id)}
+                            >
                               <i className="fa fa-trash"></i>
                             </button>
                           </td>
