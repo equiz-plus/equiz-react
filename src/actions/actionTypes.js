@@ -28,6 +28,16 @@ export const EDIT_EXAM_SUCCESS = "exams/editExam";
 export const EDIT_EXAM_LOADING = "exams/editExamLoading";
 export const EDIT_EXAM_ERROR = "exams/editExamError";
 
+export const PATCH_EXAM_SUCCESS = "exams/patchExam";
+export const PATCH_EXAM_LOADING = "exams/patchExamLoading";
+export const PATCH_EXAM_ERROR = "exams/patchExamError";
+export const CLEAR_PATCH_EXAM = "exams/patchExamClear";
+
+export const DELETE_EXAM_SUCCESS = "exams/deleteExam";
+export const DELETE_EXAM_LOADING = "exams/deleteExamLoading";
+export const DELETE_EXAM_ERROR = "exams/deleteExamError";
+export const CLEAR_DELETE_EXAM = "exams/deleteExamClear";
+
 // CATEGORIES
 export const READ_CATEGORIES_SUCCESS = "categories/readCategories";
 export const READ_CATEGORIES_LOADING = "categories/readCategoriesLoading";
