@@ -34,6 +34,9 @@ const readOrganzationsReducer = (state = initialState, action) => {
         isError: true,
         errorMessage: action.payload.message,
       };
+
+    default:
+      return state;
   }
 };
 

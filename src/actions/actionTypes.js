@@ -48,4 +48,8 @@ export const READ_ORGANIZATION_SUCCESS = "organizations/readSuccess";
 export const READ_ORGANIZATION_LOADING = "organizations/readLoading";
 export const READ_ORGANIZATION_ERROR = "organizations/readError";
 
+export const CREATE_ORGANIZATION_SUCCESS = "organizations/createSuccess";
+export const CREATE_ORGANIZATION_LOADING = "organizations/createLoading";
+export const CREATE_ORGANIZATION_FAILED = "organizations/createFailed";
+
 export const CLEAR_STATE = "state/clearState";

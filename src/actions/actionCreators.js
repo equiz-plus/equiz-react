@@ -15,6 +15,7 @@ import { readCategoriesMiddleware } from "./creators/readCategoriesCreator";
 import { readExamsMiddleware } from "./creators/readExamsCreator";
 import { registerMiddleware } from "./creators/registerCreator";
 import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
+import { createOrganizationMiddleware } from "./creators/addOrganizationCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -28,6 +29,8 @@ export const actionPatchExam = patchExamMiddleware;
 export const actionClearPatchExam = clearPatchExamMiddleware;
 export const actionDeleteExam = deleteExamMiddleware;
 export const actionClearDeleteExam = cleardeleteExamMiddleware;
+
 export const actionReadOrganizations = readOrganizationMiddleware;
+export const actionCreateOrganization = createOrganizationMiddleware;
 
 export const actionReadCategories = readCategoriesMiddleware;
