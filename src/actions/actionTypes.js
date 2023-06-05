@@ -38,6 +38,27 @@ export const DELETE_EXAM_LOADING = "exams/deleteExamLoading";
 export const DELETE_EXAM_ERROR = "exams/deleteExamError";
 export const CLEAR_DELETE_EXAM = "exams/deleteExamClear";
 
+export const START_DETAIL_SUCCESS = "exams/startDetail";
+export const START_DETAIL_LOADING = "exams/startDetailLoading";
+export const START_DETAIL_ERROR = "exams/startDetailError";
+
+export const START_EXAM_SUCCESS = "exams/startExam";
+export const START_EXAM_LOADING = "exams/startExamLoading";
+export const START_EXAM_ERROR = "exams/startExamError";
+
+export const GET_SESSION_SUCCESS = "exams/getSession";
+export const GET_SESSION_LOADING = "exams/getSessionLoading";
+export const GET_SESSION_ERROR = "exams/getSessionError";
+
+export const ANSWER_EXAM_SUCCESS = "exams/answerExam";
+export const ANSWER_EXAM_LOADING = "exams/answerExamLoading";
+export const ANSWER_EXAM_ERROR = "exams/answerExamError";
+export const CLEAR_ANSWER_EXAM = "exams/answerExamClear";
+
+export const END_EXAM_SUCCESS = "exams/endExam";
+export const END_EXAM_LOADING = "exams/endExamLoading";
+export const END_EXAM_ERROR = "exams/endExamError";
+
 // CATEGORIES
 export const READ_CATEGORIES_SUCCESS = "categories/readCategories";
 export const READ_CATEGORIES_LOADING = "categories/readCategoriesLoading";

@@ -8,7 +8,7 @@ import StudentIndex from "../pages/admin/students/StudentIndex";
 import LoginPage from "../pages/auth/LoginPage";
 import StudentDashboard from "../pages/students/Dashboard";
 import ExamComfirmation from "../pages/students/exams/Comfirmation";
-import ExamQuestion from "../pages/students/exams/Questions";
+import Session from "../pages/students/exams/Session";
 import RegisterPage from "../pages/auth/RegisterPage";
 import ConfirmPage from "../pages/auth/ConfirmPage";
 import { redirect } from "react-router-dom";
@@ -146,12 +146,12 @@ const router = createBrowserRouter([
         path: "exams",
         children: [
           {
-            path: "start",
+            path: ":id/start",
             element: <ExamComfirmation />,
           },
           {
-            path: "question",
-            element: <ExamQuestion />,
+            path: "session/:no",
+            element: <Session />,
           },
         ],
       },
