@@ -21,19 +21,19 @@ export const readExamsActionError = (error) => ({
 });
 
 export const readExamsMiddleware =
-  (length, page, category, search, sort) => async (dispatch) => {
+  (page, search = "", category, sort, length) =>
+  async (dispatch) => {
     try {
       dispatch(readExamsActionLoading());
 
       const res = await axios.get(
-        `${baseUrl}/exams?displayLength=${length}&page=${page}&CategoryId=${category}search=${search}&sort=${sort}`,
+        `${baseUrl}/exams?displayLength=${length}&page=${page}&CategoryId=${category}&search=${search}&sort=${sort}`,
         {
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
         }
       );
-      console.log(res.data);
 
       dispatch(readExamsAction(res.data));
     } catch (error) {

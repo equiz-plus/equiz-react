@@ -4,7 +4,7 @@ import {
   CONFIRM_LOADING,
   CONFIRM_SUCCESS,
 } from "../actionTypes";
-const baseUrl = "http://localhost:3000";
+import { baseUrl } from "../baseUrl";
 
 export const confirmAction = (confirmed) => ({
   type: CONFIRM_SUCCESS,

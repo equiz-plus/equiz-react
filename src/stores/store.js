@@ -9,6 +9,14 @@ import registerReducer from "../reducers/registerReducer";
 import confirmReducer from "../reducers/confirmReducer";
 import loginReducer from "../reducers/loginReducer";
 import readExamReducer from "../reducers/readExamReducer";
+import readCategoriesReducer from "../reducers/readCategoriesReducer";
+import addExamReducer from "../reducers/addExamReducer";
+import examDetailReducer from "../reducers/examDetailReducer";
+import editExamReducer from "../reducers/editExamReducer";
+import patchExamReducer from "../reducers/patchExamReducer";
+import deleteExamReducer from "../reducers/deleteExamReducer";
+import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
+import createOrganizationReducer from "../reducers/addOrganizationReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -16,6 +24,14 @@ const appReducer = combineReducers({
   confirm: confirmReducer,
   login: loginReducer,
   readExams: readExamReducer,
+  detailExam: examDetailReducer,
+  readCategories: readCategoriesReducer,
+  createExam: addExamReducer,
+  editExam: editExamReducer,
+  patchExam: patchExamReducer,
+  deleteExam: deleteExamReducer,
+  readOrganizations: readOrganzationsReducer,
+  createOrganizations: createOrganizationReducer,
 });
 
 const rootReducer = (state, action) => {

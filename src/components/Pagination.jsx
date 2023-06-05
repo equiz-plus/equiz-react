@@ -1,15 +1,27 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Pagination({ totalPages }) {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  let page = searchParams.get("page");
+
+  if (!page) {
+    page = 1;
+  }
+
   return (
     <>
       <nav>
         <ul className="pagination pagination-sm justify-content-end mb-0 mt-4">
           <li className="page-item">
-            <a className="page-link" href="/">
+            <Link
+              className="page-link"
+              to={+page === 1 ? `?page=${page}` : `?page=${+page - 1}`}
+            >
               Prev
-            </a>
+            </Link>
           </li>
 
           {[...Array(totalPages)].map((page, index) => (
@@ -21,9 +33,9 @@ function Pagination({ totalPages }) {
           ))}
 
           <li className="page-item">
-            <a className="page-link" href="/">
+            <Link className="page-link" to={`?page=` + (+page + 1)}>
               Next
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

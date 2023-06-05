@@ -14,11 +14,13 @@ import ConfirmPage from "../pages/auth/ConfirmPage";
 import { redirect } from "react-router-dom";
 import ExamIndex from "../pages/admin/exams/ExamIndex";
 import ExamCreate from "../pages/admin/exams/ExamCreate";
+import ExamEdit from "../pages/admin/exams/ExamEdit";
 import CategoryIndex from "../pages/admin/categories/CategoryIndex";
 import CategoryCreate from "../pages/admin/categories/CategoryCreate";
-import CertificateDetails from "../pages/students/certificate/CertificateDetails";
 import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
+import CertificateDetails from "../pages/students/certificate/CertificateDetails";
+
 
 const router = createBrowserRouter([
   {
@@ -103,6 +105,10 @@ const router = createBrowserRouter([
             path: "create",
             element: <ExamCreate />,
           },
+          {
+            path: "edit/:id",
+            element: <ExamEdit />,
+          },
         ],
       },
       {
@@ -115,6 +121,19 @@ const router = createBrowserRouter([
           {
             path: "create",
             element: <CategoryCreate />,
+          },
+        ],
+      },
+      {
+        path: "organizations",
+        children: [
+          {
+            path: "",
+            element: <OrganizationIndex />,
+          },
+          {
+            path: "create",
+            element: <OrganizationCreate />,
           },
         ],
       },

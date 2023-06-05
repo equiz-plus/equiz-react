@@ -1,77 +1,18 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import {
-  actionCreateExam,
-  actionReadCategories,
-} from "../../../actions/actionCreators";
-import { toast } from "react-toastify";
-import { CLEAR_STATE } from "../../../actions/actionTypes";
-import ExamForm from "../../../components/ExamForm";
+/* eslint-disable react/prop-types */
+import { Link, useParams } from "react-router-dom";
 
-function ExamCreate() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  // GET CATEGORIES
-  useEffect(() => {
-    dispatch(actionReadCategories());
-  }, []);
-
-  const { categories } = useSelector((state) => state.readCategories);
-
-  // CREATE
-  const [examInput, setExamInput] = useState({
-    title: null,
-    description: null,
-    totalQuestions: null,
-    duration: null,
-    CategoryId: null,
-    OrganizationId: null,
-  });
-
-  const formHandler = (e) => {
-    setExamInput({
-      ...examInput,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    dispatch(actionCreateExam(examInput));
-  };
-
-  const { isSuccess, isError, isLoading, title, errorMessage } = useSelector(
-    (state) => state.createExam
-  );
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(errorMessage);
-      dispatch({ type: CLEAR_STATE });
-    } else if (isSuccess) {
-      toast.success(`Exam ${title} created`);
-      navigate("/admin/exams");
-    }
-  }, [isError, isSuccess]);
-
-  // CLEAR STATE WHEN UNMOUNTED
-  useEffect(() => {
-    return () => {
-      dispatch({ type: CLEAR_STATE });
-    };
-  }, []);
+export default function ExamForm({
+  formHandler,
+  submitForm,
+  isLoading,
+  categories,
+  examData,
+}) {
+  const { id } = useParams();
 
   return (
     <>
-      <ExamForm
-        formHandler={formHandler}
-        submitForm={submitForm}
-        isLoading={isLoading}
-        categories={categories}
-      />
-      {/* <div className="container-fluid mb-5 mt-5">
+      <div className="container-fluid mb-5 mt-5">
         <div className="row">
           <div className="col-md-12">
             <Link
@@ -97,7 +38,7 @@ function ExamCreate() {
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z"
                     ></path>
                   </svg>
-                  Create Exam
+                  {id ? "Edit Exam" : "Create Exam"}
                 </h5>
                 <hr />
                 <form method="post" onSubmit={submitForm}>
@@ -109,6 +50,7 @@ function ExamCreate() {
                       placeholder="Exam title"
                       name="title"
                       onChange={formHandler}
+                      defaultValue={examData?.title}
                     />
                   </div>
 
@@ -120,6 +62,7 @@ function ExamCreate() {
                           className="form-select"
                           name="CategoryId"
                           onChange={formHandler}
+                          value={examData?.CategoryId}
                         >
                           <option selected disabled>
                             --Category--
@@ -139,6 +82,7 @@ function ExamCreate() {
                           className="form-select"
                           name="OrganizationId"
                           onChange={formHandler}
+                          defaultValue={examData?.OrganizationId}
                         >
                           <option>Hacktiv8</option>
                         </select>
@@ -155,6 +99,7 @@ function ExamCreate() {
                       rows="4"
                       name="description"
                       onChange={formHandler}
+                      defaultValue={examData?.description}
                     ></textarea>
                   </div>
 
@@ -169,6 +114,7 @@ function ExamCreate() {
                           placeholder="Duration"
                           name="duration"
                           onChange={formHandler}
+                          defaultValue={examData?.duration}
                         />
                       </div>
                     </div>
@@ -183,6 +129,7 @@ function ExamCreate() {
                           placeholder="Enter total question"
                           name="totalQuestions"
                           onChange={formHandler}
+                          defaultValue={examData?.totalQuestions}
                         />
                       </div>
                     </div>
@@ -211,9 +158,7 @@ function ExamCreate() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
-
-export default ExamCreate;
