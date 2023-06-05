@@ -11,7 +11,7 @@ const initialState = {
   organizations: [],
 };
 
-const readOrganzationsReducer = (state = initialState, action) => {
+const readOrgByIdReducer = (state = initialState, action) => {
   switch (action.type) {
     case READ_ORGANIZATION_LOADING:
       return {
@@ -20,11 +20,12 @@ const readOrganzationsReducer = (state = initialState, action) => {
       };
 
     case READ_ORGANIZATION_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,
         isSuccess: true,
-        organizations: action.payload,
+        organizations: action.payload.organizations,
       };
 
     case READ_ORGANIZATION_ERROR:
@@ -40,4 +41,4 @@ const readOrganzationsReducer = (state = initialState, action) => {
   }
 };
 
-export default readOrganzationsReducer;
+export default readOrgByIdReducer;

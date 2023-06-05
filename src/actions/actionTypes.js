@@ -81,4 +81,8 @@ export const EDIT_ORGANIZATION_SUCCESS = "organizations/editSuccess";
 export const EDIT_ORGANIZATION_FAILED = "organizations/editFailed";
 export const EDIT_ORGANIZATION_LOADING = "organizations/editLoading";
 
+export const READ_ORG_ID_SUCCESS = "organizations/readByIdSuccess";
+export const READ_ORG_ID_FAILED = "organizations/readByIdFailed";
+export const READ_ORG_ID_LOADING = "organizations/readByIdLoading";
+
 export const CLEAR_STATE = "state/clearState";

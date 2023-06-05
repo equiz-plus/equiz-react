@@ -27,6 +27,7 @@ import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator"
 import { createOrganizationMiddleware } from "./creators/addOrganizationCreator";
 import { deleteOrganizationMiddleware } from "./creators/deleteOrganizationCreator";
 import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
+import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -51,5 +52,6 @@ export const actionReadOrganizations = readOrganizationMiddleware;
 export const actionCreateOrganization = createOrganizationMiddleware;
 export const actionDeleteOrganization = deleteOrganizationMiddleware;
 export const actionEditOrganization = editOrganizationMiddleware;
+export const actionReadOrgById = readOrgIdMiddleware;
 
 export const actionReadCategories = readCategoriesMiddleware;

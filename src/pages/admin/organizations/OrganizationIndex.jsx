@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { readOrganizationMiddleware } from "../../../actions/creators/readOrganizationsCreator";
+import {
+  actionDeleteOrganization,
+  actionReadOrganizations,
+} from "../../../actions/actionCreators";
+import { toast } from "react-toastify";
 
 const OrganizationIndex = () => {
   const { organizations, errorMsg: error } = useSelector(
@@ -15,7 +20,25 @@ const OrganizationIndex = () => {
     })();
   }, []);
 
-  console.log(organizations);
+  // DELETE
+  const deleteHandler = (id) => {
+    dispatch(actionDeleteOrganization(id));
+  };
+
+  const {
+    isSuccess: successDelete,
+    isError: errorDelete,
+    errorMessage: errorDeleteMessage,
+  } = useSelector((state) => state.deleteOrganizations);
+
+  useEffect(() => {
+    if (successDelete) {
+      dispatch(actionReadOrganizations());
+      toast.success("Organization successfully deleted");
+    } else if (errorDelete) {
+      toast.error(errorDeleteMessage);
+    }
+  }, [successDelete, errorDelete]);
 
   return (
     <>
@@ -96,14 +119,17 @@ const OrganizationIndex = () => {
                             </td>
 
                             <td className="text-center">
-                              <a
-                                href="/admin/students/${student.id}/edit"
+                              <Link
+                                to={`/admin/organizations/edit/${org.id}`}
                                 className="btn btn-sm btn-info border-0 shadow me-2"
                                 type="button"
                               >
                                 <i className="fa fa-pencil-alt"></i>
-                              </a>
-                              <button className="btn btn-sm btn-danger border-0">
+                              </Link>
+                              <button
+                                className="btn btn-sm btn-danger border-0"
+                                onClick={() => deleteHandler(org.id)}
+                              >
                                 <i className="fa fa-trash"></i>
                               </button>
                             </td>

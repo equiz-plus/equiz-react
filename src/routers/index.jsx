@@ -21,6 +21,8 @@ import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 import CertificateDetails from "../pages/students/certificate/CertificateDetails";
 import CertificateIndex from "../pages/students/certificate/CertificateIndex";
+import ProfileEdit from "../pages/students/profiles/ProfileEdit";
+import OrganizationForm from "../components/OrganizationForm";
 
 const router = createBrowserRouter([
   {
@@ -122,6 +124,10 @@ const router = createBrowserRouter([
             path: "create",
             element: <OrganizationCreate />,
           },
+          {
+            path: "edit/:id",
+            element: <OrganizationForm />,
+          },
         ],
       },
     ],
@@ -161,6 +167,19 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <CertificateIndex />,
+          },
+        ],
+      },
+      {
+        path: "profile",
+        children: [
+          {
+            path: "",
+            element: <ProfileEdit />,
+          },
+          {
+            path: "edit",
+            element: <ProfileEdit />,
           },
         ],
       },
