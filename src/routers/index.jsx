@@ -20,6 +20,7 @@ import CategoryCreate from "../pages/admin/categories/CategoryCreate";
 import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 import CertificateDetails from "../pages/students/certificate/CertificateDetails";
+import CertificateIndex from "../pages/students/certificate/CertificateIndex";
 
 const router = createBrowserRouter([
   {
@@ -158,12 +159,16 @@ const router = createBrowserRouter([
         path: "certificates",
         children: [
           {
-            path: "details",
-            element: <CertificateDetails />,
+            path: "",
+            element: <CertificateIndex />,
           },
         ],
       },
     ],
+  },
+  {
+    path: "/certificates/details",
+    element: <CertificateDetails />,
   },
 ]);
 

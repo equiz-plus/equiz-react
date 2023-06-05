@@ -124,7 +124,7 @@ function Sidebar() {
 
             <li className="nav-item">
               <a
-                href="/admin/classrooms"
+                href="/admin/organizations"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>

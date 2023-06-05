@@ -25,12 +25,11 @@ export const readOrganizationMiddleware = () => async (dispatch) => {
   try {
     dispatch(readOrganizationLoading());
 
-    const res = await axios.get(`${baseUrl}/organizations`, {
+    const res = await axios.get(`http://localhost:3001/organizations`, {
       headers: {
         access_token: localStorage.getItem("access_token"),
       },
     });
-
     dispatch(readOrganizationSuccess(res.data));
   } catch (error) {
     dispatch(readOrganizationFailed(error.response.data.message));

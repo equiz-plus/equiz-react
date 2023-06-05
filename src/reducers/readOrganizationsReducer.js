@@ -1,7 +1,7 @@
 import {
   READ_ORGANIZATION_ERROR,
   READ_ORGANIZATION_LOADING,
-  READ_CATEGORIES_SUCCESS,
+  READ_ORGANIZATION_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -19,12 +19,12 @@ const readOrganzationsReducer = (state = initialState, action) => {
         isLoading: true,
       };
 
-    case READ_CATEGORIES_SUCCESS:
+    case READ_ORGANIZATION_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isSuccess: true,
-        organizations: action.payload.organizations,
+        organizations: action.payload,
       };
 
     case READ_ORGANIZATION_ERROR:

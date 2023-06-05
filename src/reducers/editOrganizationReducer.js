@@ -2,7 +2,7 @@ import {
   EDIT_ORGANIZATION_FAILED,
   EDIT_ORGANIZATION_LOADING,
   EDIT_ORGANIZATION_SUCCESS,
-} from "../actionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
   isLoading: false,

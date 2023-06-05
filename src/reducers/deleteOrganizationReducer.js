@@ -2,7 +2,7 @@ import {
   DELETE_ORGANIZATION_FAILED,
   DELETE_ORGANIZATION_LOADING,
   DELETE_ORGANIZATION_SUCCESS,
-} from "../actionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
   isLoading: false,
