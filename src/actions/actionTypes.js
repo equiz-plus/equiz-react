@@ -64,4 +64,21 @@ export const READ_CATEGORIES_SUCCESS = "categories/readCategories";
 export const READ_CATEGORIES_LOADING = "categories/readCategoriesLoading";
 export const READ_CATEGORIES_ERROR = "categories/readCategoriesError";
 
+//ORGANIZATIONS
+export const READ_ORGANIZATION_SUCCESS = "organizations/readSuccess";
+export const READ_ORGANIZATION_LOADING = "organizations/readLoading";
+export const READ_ORGANIZATION_ERROR = "organizations/readError";
+
+export const CREATE_ORGANIZATION_SUCCESS = "organizations/createSuccess";
+export const CREATE_ORGANIZATION_LOADING = "organizations/createLoading";
+export const CREATE_ORGANIZATION_FAILED = "organizations/createFailed";
+
+export const DELETE_ORGANIZATION_SUCCESS = "organizations/deleteSuccess";
+export const DELETE_ORGANIZATION_FAILED = "organizations/deleteFailed";
+export const DELETE_ORGANIZATION_LOADING = "organizations/deleteLoading";
+
+export const EDIT_ORGANIZATION_SUCCESS = "organizations/editSuccess";
+export const EDIT_ORGANIZATION_FAILED = "organizations/editFailed";
+export const EDIT_ORGANIZATION_LOADING = "organizations/editLoading";
+
 export const CLEAR_STATE = "state/clearState";

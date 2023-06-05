@@ -23,6 +23,11 @@ import { registerMiddleware } from "./creators/registerCreator";
 import { startDetailMiddleware } from "./creators/startDetailCreator";
 import { startExamMiddleware } from "./creators/startExamCreator";
 
+import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
+import { createOrganizationMiddleware } from "./creators/addOrganizationCreator";
+import { deleteOrganizationMiddleware } from "./creators/deleteOrganizationCreator";
+import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
+
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
 export const actionConfirm = confirmMiddleware;
@@ -41,5 +46,10 @@ export const actionGetSession = getSessionMiddleware;
 export const actionAnswerExam = answerExamMiddleware;
 export const actionClearAnswerExam = clearAnswerExamMiddleware;
 export const actionEndExam = endExamMiddleware;
+
+export const actionReadOrganizations = readOrganizationMiddleware;
+export const actionCreateOrganization = createOrganizationMiddleware;
+export const actionDeleteOrganization = deleteOrganizationMiddleware;
+export const actionEditOrganization = editOrganizationMiddleware;
 
 export const actionReadCategories = readCategoriesMiddleware;

@@ -1,5 +1,22 @@
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { readOrganizationMiddleware } from "../../../actions/creators/readOrganizationsCreator";
+
 const OrganizationIndex = () => {
+  const { organizations, errorMsg: error } = useSelector(
+    (state) => state.readOrganizations
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      dispatch(readOrganizationMiddleware());
+    })();
+  }, []);
+
+  console.log(organizations);
+
   return (
     <>
       <>
@@ -69,31 +86,29 @@ const OrganizationIndex = () => {
                       </thead>
                       <div className="mt-2"></div>
                       <tbody>
-                        <tr>
-                          <td className="fw-bold text-center"> 1</td>
-                          <td>KKK</td>
-                          <td className="text-center">New York, US</td>
-                          <td>
-                            <img
-                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Emblem_of_the_Ku_Klux_Klan.svg/2048px-Emblem_of_the_Ku_Klux_Klan.svg.png"
-                              alt=""
-                              width={"50px"}
-                            />
-                          </td>
+                        {organizations?.map((org, index) => (
+                          <tr>
+                            <td className="fw-bold text-center">{index + 1}</td>
+                            <td>{org.name}</td>
+                            <td className="text-center">{org.address}</td>
+                            <td>
+                              <img src={org.logo} alt="asdfgh" width={"50px"} />
+                            </td>
 
-                          <td className="text-center">
-                            <a
-                              href="/admin/students/${student.id}/edit"
-                              className="btn btn-sm btn-info border-0 shadow me-2"
-                              type="button"
-                            >
-                              <i className="fa fa-pencil-alt"></i>
-                            </a>
-                            <button className="btn btn-sm btn-danger border-0">
-                              <i className="fa fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
+                            <td className="text-center">
+                              <a
+                                href="/admin/students/${student.id}/edit"
+                                className="btn btn-sm btn-info border-0 shadow me-2"
+                                type="button"
+                              >
+                                <i className="fa fa-pencil-alt"></i>
+                              </a>
+                              <button className="btn btn-sm btn-danger border-0">
+                                <i className="fa fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
