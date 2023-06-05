@@ -23,6 +23,7 @@ import CertificateDetails from "../pages/students/certificate/CertificateDetails
 import CertificateIndex from "../pages/students/certificate/CertificateIndex";
 import ProfileEdit from "../pages/students/profiles/ProfileEdit";
 import OrganizationForm from "../components/OrganizationForm";
+import OrganizationEdit from "../pages/admin/organizations/OrganizationEdit";
 
 const router = createBrowserRouter([
   {
@@ -126,7 +127,7 @@ const router = createBrowserRouter([
           },
           {
             path: "edit/:id",
-            element: <OrganizationForm />,
+            element: <OrganizationEdit />,
           },
         ],
       },

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link, useParams } from "react-router-dom";
 
 export default function OrganizationForm({
