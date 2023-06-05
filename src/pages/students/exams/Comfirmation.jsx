@@ -141,12 +141,12 @@ function ExamComfirmation() {
 
               {examDetail?.Sessions.length !== 0 ? (
                 <div>
-                  <a
-                    href="/student/exam-start"
+                  <Link
+                    to="/students/exams/session/1"
                     className="btn btn-md btn-success border-0 shadow w-100 mt-2 text-white"
                   >
                     Continue
-                  </a>
+                  </Link>
                 </div>
               ) : null}
 

@@ -18,7 +18,7 @@ export default function Question({ question, answerHandler, answers }) {
     const v = new SpeechSynthesisUtterance("you win some you lose some");
 
     setUtteranceU(u);
-    setUtteranceV(v);
+    // setUtteranceV(v);
 
     return () => {
       synth.cancel();
@@ -34,9 +34,9 @@ export default function Question({ question, answerHandler, answers }) {
 
     synth.speak(utteranceU);
 
-    utteranceU.onend = () => {
-      synth.speak(utteranceV);
-    };
+    // utteranceU.onend = () => {
+    //   synth.speak(utteranceV);
+    // };
 
     setIsPaused(false);
   };
@@ -60,27 +60,11 @@ export default function Question({ question, answerHandler, answers }) {
   return (
     <div>
       <button onClick={handlePlay}>{isPaused ? "Resume" : "Play"}</button>
-      <div className="card-header">
-        <div className="d-flex justify-content-between">
-          <div>
-            <h5 className="mb-0">
-              Soal No. <strong className="fw-bold">2</strong>
-            </h5>
-          </div>
-          <div>
-            <div>
-              <span className="badge bg-info p-2">
-                {" "}
-                <i className="fa fa-clock"></i> 0 jam, 20 menit, 30 detik.
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div className="card-body">
         <div>
           <div>
-            <p> {question?.Question.question}</p>
+            <p>{question?.Question.question}</p>
           </div>
 
           <form action="">
@@ -109,58 +93,6 @@ export default function Question({ question, answerHandler, answers }) {
               ))}
             </div>
           </form>
-
-          {/* <table>
-            <tbody>
-              <tr>
-                <td width="50" style={{ padding: "10px" }}>
-                  <button className="btn btn-info btn-sm w-100 shdaow">
-                    A
-                  </button>
-                </td>
-                <td style={{ padding: "10px" }}>
-                  <p>Pilihahhannnanya</p>
-                </td>
-              </tr>
-              <tr>
-                <td width="50" style={{ padding: "10px" }}>
-                  <button className="btn btn-info btn-sm w-100 shdaow">
-                    B
-                  </button>
-                </td>
-                <td style={{ padding: "10px" }}>
-                  <p>Pilihahhannnanya</p>
-                </td>
-              </tr>
-              <tr>
-                <td width="50" style={{ padding: "10px" }}>
-                  <button className="btn btn-info btn-sm w-100 shdaow">
-                    C
-                  </button>
-                </td>
-                <td style={{ padding: "10px" }}>
-                  <p>Pilihahhannnanya</p>
-                </td>
-              </tr>
-              <tr>
-                <td width="50" style={{ padding: "10px" }}>
-                  <button className="btn btn-info btn-sm w-100 shdaow">
-                    D
-                  </button>
-                </td>
-                <td style={{ padding: "10px" }}>
-                  <p>Pilihahhannnanya</p>
-                </td>
-              </tr>
-            </tbody>
-          </table> */}
-        </div>
-
-        <div>
-          <div className="alert alert-danger border-0 shadow">
-            <i className="fa fa-exclamation-triangle"></i> Soal Tidak
-            Ditemukan!.
-          </div>
         </div>
       </div>
     </div>
