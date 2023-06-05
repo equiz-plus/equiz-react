@@ -56,4 +56,8 @@ export const DELETE_ORGANIZATION_SUCCESS = "organizations/deleteSuccess";
 export const DELETE_ORGANIZATION_FAILED = "organizations/deleteFailed";
 export const DELETE_ORGANIZATION_LOADING = "organizations/deleteLoading";
 
+export const EDIT_ORGANIZATION_SUCCESS = "organizations/editSuccess";
+export const EDIT_ORGANIZATION_FAILED = "organizations/editFailed";
+export const EDIT_ORGANIZATION_LOADING = "organizations/editLoading";
+
 export const CLEAR_STATE = "state/clearState";

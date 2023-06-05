@@ -3,7 +3,7 @@ import {
   DELETE_ORGANIZATION_LOADING,
   DELETE_ORGANIZATION_SUCCESS,
 } from "../actionTypes";
-
+import axios from "axios";
 import { baseUrl } from "../baseUrl";
 
 export const deleteOrganizationLoading = () => ({
@@ -31,6 +31,6 @@ export const deleteOrganizationMiddleware = (id) => async (dispatch) => {
 
     dispatch(deleteOrganizationSuccess());
   } catch (error) {
-    dispatch(deleteOrganizationFailed(error));
+    dispatch(deleteOrganizationFailed(error.response.data));
   }
 };
