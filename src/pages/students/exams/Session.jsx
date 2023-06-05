@@ -1,72 +1,86 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  actionAnswerExam,
+  actionClearAnswerExam,
+  actionGetSession,
+} from "../../../actions/actionCreators";
+import Question from "../../../components/Question";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+
 function ExamQuestion() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionGetSession());
+  }, []);
+
+  const { session } = useSelector((state) => state.getSession);
+
+  const { no } = useParams();
+
+  // ANSWER HANDLER
+  const answerHandler = (questionNumber, QuestionId, AnswerId) => {
+    const data = {
+      AnswerId,
+      QuestionId,
+    };
+    dispatch(actionAnswerExam(questionNumber, data));
+  };
+
+  const { isSuccess } = useSelector((state) => state.answerExam);
+
+  // CHECKED ANSWERS
+  useEffect(() => {
+    dispatch(actionGetSession());
+    dispatch(actionClearAnswerExam());
+  }, [isSuccess]);
+
+  const [answers, setAnswers] = useState([]);
+
+  useEffect(() => {
+    setAnswers(session?.Exam.UserAnswers.map((el) => el.AnswerId));
+  }, [session]);
+
   return (
     <>
       <div className="row mb-5">
         <div className="col-md-7">
           <div className="card border-0 shadow">
-            <div className="card-header">
-              <div className="d-flex justify-content-between">
-                <div>
-                  <h5 className="mb-0">
-                    Soal No. <strong className="fw-bold">2</strong>
-                  </h5>
-                </div>
-                <div>
-                  <div>
-                    <span className="badge bg-info p-2">
-                      {" "}
-                      <i className="fa fa-clock"></i> 0 jam, 20 menit, 30 detik.
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="card-body">
-              <div>
-                <div>
-                  <p> INi Adalah pertanyaannya</p>
-                </div>
+            <Question
+              question={session?.QuestionGroups[no - 1]}
+              answerHandler={answerHandler}
+              answers={answers}
+            />
 
-                <table>
-                  <tbody>
-                    <tr>
-                      <td width="50" style={{ padding: "10px" }}>
-                        <button className="btn btn-info btn-sm w-100 shdaow">
-                          A
-                        </button>
-                        <button className="btn btn-outline-info btn-sm w-100 shdaow">
-                          A
-                        </button>
-                      </td>
-                      <td style={{ padding: "10px" }}>
-                        <p>Pilihahhannnanya</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div>
-                <div className="alert alert-danger border-0 shadow">
-                  <i className="fa fa-exclamation-triangle"></i> Soal Tidak
-                  Ditemukan!.
-                </div>
-              </div>
-            </div>
             <div className="card-footer">
               <div className="d-flex justify-content-between">
                 <div className="text-start">
-                  <button
+                  <Link
                     type="button"
                     className="btn btn-gray-400 btn-sm btn-block mb-2"
+                    to={
+                      no == 1
+                        ? `/students/exams/session/1`
+                        : `/students/exams/session/${+no - 1}`
+                    }
                   >
-                    Sebelumnya
-                  </button>
+                    Previous
+                  </Link>
                 </div>
                 <div className="text-end">
-                  <button type="button" className="btn btn-gray-400 btn-sm">
-                    Selanjutnya
-                  </button>
+                  <Link
+                    type="button"
+                    className="btn btn-gray-400 btn-sm"
+                    to={
+                      no == session?.QuestionGroups.length
+                        ? `/students/exams/session/${session?.QuestionGroups.length}`
+                        : `/students/exams/session/${+no + 1}`
+                    }
+                  >
+                    Next
+                  </Link>
                 </div>
               </div>
             </div>
@@ -107,7 +121,7 @@ function ExamQuestion() {
       </div>
 
       {/* <!-- modal akhiri ujian --> */}
-      <div
+      {/* <div
         className="showModalEndExam modal fade"
         tabIndex="-1"
         aria-hidden="true"
@@ -133,10 +147,10 @@ function ExamQuestion() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* <!-- modal waktu ujian berakhir --> */}
-      <div
+      {/* <div
         className="modal fade showModalEndTimeExam"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -162,7 +176,7 @@ function ExamQuestion() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

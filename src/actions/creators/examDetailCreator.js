@@ -24,7 +24,7 @@ export const detailExamMiddleware = (id) => async (dispatch) => {
   try {
     dispatch(examDetailActionLoading());
 
-    const res = await axios.get(`${baseUrl}/exams/detail/${id}`, {
+    const res = await axios.get(`${baseUrl}/exams/${id}`, {
       headers: {
         access_token: localStorage.getItem("access_token"),
       },
