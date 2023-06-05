@@ -21,6 +21,7 @@ import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 import CertificateDetails from "../pages/students/certificate/CertificateDetails";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -77,6 +78,19 @@ const router = createBrowserRouter([
           {
             path: "create",
             element: <StudentCreate />,
+          },
+        ],
+      },
+      {
+        path: "organizations",
+        children: [
+          {
+            path: "",
+            element: <OrganizationIndex />,
+          },
+          {
+            path: "create",
+            element: <OrganizationCreate />,
           },
         ],
       },
