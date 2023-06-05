@@ -55,6 +55,10 @@ export const ANSWER_EXAM_LOADING = "exams/answerExamLoading";
 export const ANSWER_EXAM_ERROR = "exams/answerExamError";
 export const CLEAR_ANSWER_EXAM = "exams/answerExamClear";
 
+export const END_EXAM_SUCCESS = "exams/endExam";
+export const END_EXAM_LOADING = "exams/endExamLoading";
+export const END_EXAM_ERROR = "exams/endExamError";
+
 // CATEGORIES
 export const READ_CATEGORIES_SUCCESS = "categories/readCategories";
 export const READ_CATEGORIES_LOADING = "categories/readCategoriesLoading";

@@ -19,6 +19,7 @@ import startDetailReducer from "../reducers/startDetailReducer";
 import startExamReducer from "../reducers/startExamReducer";
 import getSessionReducer from "../reducers/getSessionReducer";
 import answerExamReducer from "../reducers/answerExamReducer";
+import endExamReducer from "../reducers/endExamReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -36,6 +37,7 @@ const appReducer = combineReducers({
   startExam: startExamReducer,
   getSession: getSessionReducer,
   answerExam: answerExamReducer,
+  endExam: endExamReducer,
 });
 
 const rootReducer = (state, action) => {

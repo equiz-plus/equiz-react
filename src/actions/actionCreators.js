@@ -9,6 +9,7 @@ import {
   deleteExamMiddleware,
 } from "./creators/deleteExamCreator";
 import { editExamMiddleware } from "./creators/editExamCreator";
+import { endExamMiddleware } from "./creators/endExamCreator";
 import { detailExamMiddleware } from "./creators/examDetailCreator";
 import { getSessionMiddleware } from "./creators/getSessionCreator";
 import { loginMiddleware } from "./creators/loginCreator";
@@ -39,5 +40,6 @@ export const actionStartExam = startExamMiddleware;
 export const actionGetSession = getSessionMiddleware;
 export const actionAnswerExam = answerExamMiddleware;
 export const actionClearAnswerExam = clearAnswerExamMiddleware;
+export const actionEndExam = endExamMiddleware;
 
 export const actionReadCategories = readCategoriesMiddleware;
