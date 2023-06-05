@@ -3,27 +3,30 @@ import { useEffect, useState } from "react";
 /* eslint-disable react/prop-types */
 export default function Question({ question, answerHandler, answers }) {
   const [isPaused, setIsPaused] = useState(false);
-  // const [utterance, setUtterance] = useState(null);
-  const [utteranceU, setUtteranceU] = useState(null);
-  const [utteranceV, setUtteranceV] = useState(null);
+  const [utteranceQuestion, setUtteranceQuestion] = useState(null);
+  const [utteranceAnswers, setUtteranceAnswers] = useState(null);
   const [text, setText] = useState(null);
+  const [textAnswers, setTextAnswers] = useState(null);
 
   useEffect(() => {
     setText(question?.Question.question);
+    setTextAnswers(question?.Question.Answers.map((el) => el.answer));
   }, [question]);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
     const u = new SpeechSynthesisUtterance(text);
-    const v = new SpeechSynthesisUtterance("you win some you lose some");
+    const v = textAnswers?.map(
+      (answer) => new SpeechSynthesisUtterance(answer)
+    );
 
-    setUtteranceU(u);
-    // setUtteranceV(v);
+    setUtteranceQuestion(u);
+    setUtteranceAnswers(v);
 
     return () => {
       synth.cancel();
     };
-  }, [text]);
+  }, [text, textAnswers]);
 
   const handlePlay = () => {
     const synth = window.speechSynthesis;
@@ -32,13 +35,21 @@ export default function Question({ question, answerHandler, answers }) {
       synth.resume();
     }
 
-    synth.speak(utteranceU);
+    synth.speak(utteranceQuestion);
 
-    // utteranceU.onend = () => {
-    //   synth.speak(utteranceV);
-    // };
+    utteranceQuestion.onend = () => {
+      speakAnswers();
+    };
 
     setIsPaused(false);
+  };
+
+  const speakAnswers = () => {
+    const synth = window.speechSynthesis;
+
+    for (const utterAnswer of utteranceAnswers) {
+      synth.speak(utterAnswer);
+    }
   };
 
   const handlePause = () => {

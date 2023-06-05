@@ -1,27 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const SpeechRecognition = () => {
+const SpeechRecognition = ({ speechCommand }) => {
+  const navigate = useNavigate();
+
   const [transcript, setTranscript] = useState("");
+  const [isListening, setIsListening] = useState(false);
 
-  useEffect(() => {
-    const recognition = new window.webkitSpeechRecognition(); // Create a speech recognition object
-    recognition.lang = "en-US"; // Set the language for speech recognition
+  const handleButtonClick = () => {
+    if (!isListening) {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.lang = "en-US";
 
-    recognition.onresult = (event) => {
-      const currentTranscript = event.results[0][0].transcript;
-      setTranscript(currentTranscript); // Update the transcript state with the recognized speech
-    };
+      recognition.onresult = (event) => {
+        const currentTranscript = event.results[0][0].transcript.toLowerCase();
+        setTranscript(currentTranscript);
+        handleSpeechCommand(currentTranscript); // Invoke the function to handle speech commands
+      };
 
-    recognition.start(); // Start speech recognition
+      recognition.onend = () => {
+        setIsListening(false);
+      };
 
-    return () => {
-      recognition.stop(); // Clean up by stopping speech recognition when the component unmounts
-    };
-  }, []);
+      recognition.start();
+      setIsListening(true);
+    } else {
+      window.webkitSpeechRecognition.stop();
+      setIsListening(false);
+    }
+  };
+
+  const handleSpeechCommand = (spokenText) => {
+    speechCommand(spokenText);
+  };
 
   return (
     <div>
       <h1>Speech Recognition</h1>
+      <button onClick={handleButtonClick}>
+        {isListening ? "Stop" : "Start"} Listening
+      </button>
       <p>{transcript}</p>
     </div>
   );

@@ -29,7 +29,6 @@ export const getSessionMiddleware = () => async (dispatch) => {
         access_token: localStorage.getItem("access_token"),
       },
     });
-    console.log(res.data);
 
     dispatch(getSessionAction(res.data));
   } catch (error) {

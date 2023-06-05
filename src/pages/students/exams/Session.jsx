@@ -47,14 +47,12 @@ function ExamQuestion() {
 
   const [answers, setAnswers] = useState([]);
   const [answerNumber, setAnswerNumber] = useState([]);
-  const [timeStop, setTimeStop] = useState(null);
+  const [totalQuestions, setTotalQuestions] = useState(null);
 
   useEffect(() => {
     setAnswers(session?.Exam.UserAnswers.map((el) => el.AnswerId));
     setAnswerNumber(session?.Exam.UserAnswers.map((el) => el.questionNumber));
-
-    const stop = new Date(session?.timeStop).getTime();
-    setTimeStop(stop);
+    setTotalQuestions(session?.QuestionGroups.length);
   }, [session]);
 
   // END EXAM
@@ -109,9 +107,35 @@ function ExamQuestion() {
     };
   }, []);
 
+  // SPEECH RECOGNITION NAVIGATION
+  const speechNavigate = (speech) => {
+    if (
+      speech.includes("next page") ||
+      speech.includes("next") ||
+      speech.includes("next question")
+    ) {
+      if (no == totalQuestions) {
+        navigate(`/students/exams/session/${totalQuestions}`);
+      } else {
+        navigate(`/students/exams/session/${+no + 1}`);
+      }
+    } else if (
+      speech.includes("previous") ||
+      speech.includes("previous page") ||
+      speech.includes("previous question") ||
+      speech.includes("back")
+    ) {
+      if (no == 1) {
+        navigate(`/students/exams/session/1`);
+      } else {
+        navigate(`/students/exams/session/${+no - 1}`);
+      }
+    }
+  };
+
   return (
     <>
-      <SpeechRecognition />
+      <SpeechRecognition speechCommand={speechNavigate} />
       <div className="row mb-5">
         <div className="col-md-7">
           <div className="card border-0 shadow">
@@ -119,7 +143,7 @@ function ExamQuestion() {
               <div className="d-flex justify-content-between">
                 <div>
                   <h5 className="mb-0">
-                    Soal No. <strong className="fw-bold">2</strong>
+                    Number <strong className="fw-bold">{no}</strong>
                   </h5>
                 </div>
                 <div>
@@ -158,8 +182,8 @@ function ExamQuestion() {
                     type="button"
                     className="btn btn-primary text-white btn-sm"
                     to={
-                      no == session?.QuestionGroups.length
-                        ? `/students/exams/session/${session?.QuestionGroups.length}`
+                      no == totalQuestions
+                        ? `/students/exams/session/${totalQuestions}`
                         : `/students/exams/session/${+no + 1}`
                     }
                   >
@@ -182,17 +206,17 @@ function ExamQuestion() {
               <div>
                 <div width="20%" style={{ width: 20 + "%", float: "left" }}>
                   <div style={{ padding: "5px" }} className="d-flex gap-2">
-                    {session?.QuestionGroups.map((no) => (
+                    {session?.QuestionGroups.map((el) => (
                       <Link
-                        to={`/students/exams/session/${no.questionNumber}`}
+                        to={`/students/exams/session/${el.questionNumber}`}
                         className={`btn btn-sm w-100 ${
-                          answerNumber?.includes(no.questionNumber)
+                          answerNumber?.includes(el.questionNumber)
                             ? "btn-primary"
                             : "btn-outline-primary"
                         }`}
-                        key={no.id}
+                        key={el.id}
                       >
-                        {no.questionNumber}
+                        {el.questionNumber}
                       </Link>
                     ))}
                   </div>
