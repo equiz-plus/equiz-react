@@ -52,4 +52,8 @@ export const CREATE_ORGANIZATION_SUCCESS = "organizations/createSuccess";
 export const CREATE_ORGANIZATION_LOADING = "organizations/createLoading";
 export const CREATE_ORGANIZATION_FAILED = "organizations/createFailed";
 
+export const DELETE_ORGANIZATION_SUCCESS = "organizations/deleteSuccess";
+export const DELETE_ORGANIZATION_FAILED = "organizations/deleteFailed";
+export const DELETE_ORGANIZATION_LOADING = "organizations/deleteLoading";
+
 export const CLEAR_STATE = "state/clearState";
