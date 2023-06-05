@@ -1,69 +1,13 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  actionCreateOrganization,
-  actionReadOrgById,
-} from "../../../actions/actionCreators";
-import { CLEAR_STATE } from "../../../actions/actionTypes";
-import { toast } from "react-toastify";
-const OrganizationCreate = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+/* eslint-disable react/prop-types */
+import { Link, useParams } from "react-router-dom";
+
+export default function OrganizationForm({
+  formHandler,
+  submitForm,
+  isLoading,
+  organizationData,
+}) {
   const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(actionReadOrgById(id));
-  }, []);
-
-  const { organizationDetail } = useSelector((state) => state.readOrgById);
-
-  const [organization, setOrganization] = useState({
-    name: "",
-    address: "",
-    logo: "",
-    pic: "",
-    sign: "",
-    prefix: "",
-  });
-
-  useEffect(() => {
-    setOrganization(organizationDetail);
-  }, [organizationDetail]);
-
-  const getData = (e) => {
-    e.preventDefault();
-    setOrganization({
-      ...organization,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    dispatch(actionCreateOrganization(organization));
-  };
-
-  const { isSuccess, isError, isLoading, title, errorMessage } = useSelector(
-    (state) => state.createOrganizations
-  );
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(errorMessage);
-      dispatch({ type: CLEAR_STATE });
-    } else if (isSuccess) {
-      toast.success(`${name} successfully created`);
-      navigate("/admin/organizations");
-    }
-  }, [isError, isSuccess]);
-
-  useEffect(() => {
-    return () => {
-      dispatch({ type: CLEAR_STATE });
-    };
-  }, []);
-
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
@@ -79,10 +23,11 @@ const OrganizationCreate = () => {
             <div className="card border-0 shadow">
               <div className="card-body">
                 <h5>
-                  <i className="fa fa-user"></i> Add Organization
+                  <i className="fa fa-user"></i>{" "}
+                  {id ? "Edit Organization" : "Create Organization"}
                 </h5>
                 <hr />
-                <form>
+                <form method="post" onSubmit={submitForm}>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="mb-4">
@@ -92,7 +37,8 @@ const OrganizationCreate = () => {
                           className="form-control"
                           placeholder="Insert org's name"
                           name="name"
-                          onChange={getData}
+                          onChange={formHandler}
+                          defaultValue={organizationData?.name}
                         />
                       </div>
                     </div>
@@ -104,7 +50,8 @@ const OrganizationCreate = () => {
                           className="form-control"
                           placeholder="Insert org's location"
                           name="address"
-                          onChange={getData}
+                          onChange={formHandler}
+                          defaultValue={organizationData?.address}
                         />
                       </div>
                     </div>
@@ -119,7 +66,8 @@ const OrganizationCreate = () => {
                           className="form-control"
                           placeholder="Insert org's logo"
                           name="logo"
-                          onChange={getData}
+                          onChange={formHandler}
+                          defaultValue={organizationData?.logo}
                         />
                       </div>
                     </div>
@@ -132,7 +80,8 @@ const OrganizationCreate = () => {
                           className="form-control"
                           placeholder="Insert org's pic"
                           name="pic"
-                          onChange={getData}
+                          onChange={formHandler}
+                          defaultValue={organizationData?.pic}
                         />
                       </div>
                     </div>
@@ -147,7 +96,8 @@ const OrganizationCreate = () => {
                           className="form-control"
                           placeholder="Insert org's sign"
                           name="sign"
-                          onChange={getData}
+                          onChange={formHandler}
+                          defaultValue={organizationData?.sign}
                         />
                       </div>
                     </div>
@@ -160,7 +110,8 @@ const OrganizationCreate = () => {
                           className="form-control"
                           placeholder="4 character required"
                           name="prefix"
-                          onChange={getData}
+                          onChange={formHandler}
+                          defaultValue={organizationData?.prefix}
                         />
                       </div>
                     </div>
@@ -169,9 +120,14 @@ const OrganizationCreate = () => {
                   <button
                     type="submit"
                     className="btn btn-md btn-primary border-0 shadow me-2"
-                    onClick={submitHandler}
                   >
-                    Submit
+                    {!isLoading ? (
+                      "SUBMIT"
+                    ) : (
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    )}
                   </button>
                   <button
                     type="reset"
@@ -187,6 +143,4 @@ const OrganizationCreate = () => {
       </div>
     </>
   );
-};
-
-export default OrganizationCreate;
+}

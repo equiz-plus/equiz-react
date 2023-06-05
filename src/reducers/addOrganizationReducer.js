@@ -13,6 +13,7 @@ const initialState = {
   logo: "",
   pic: "",
   sign: "",
+  prefix: "",
   errorMessage: "",
 };
 
@@ -42,6 +43,7 @@ const createOrganizationReducer = (state = initialState, action) => {
         logo: action.payload.logo,
         pic: action.payload.pic,
         sign: action.payload.sign,
+        prefix: action.payload.prefix,
       };
 
     default:
