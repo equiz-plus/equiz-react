@@ -26,6 +26,8 @@ import createOrganizationReducer from "../reducers/addOrganizationReducer";
 import deleteOrganizationReducer from "../reducers/deleteOrganizationReducer";
 import editOrganizationReducer from "../reducers/editOrganizationReducer";
 import readOrgByIdReducer from "../reducers/organizationDetailReducer";
+import userDetailReducer from "../reducers/UserDetailReducer";
+import editUserDetailReducer from "../reducers/editUserDetailReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -51,6 +53,9 @@ const appReducer = combineReducers({
   getSession: getSessionReducer,
   answerExam: answerExamReducer,
   endExam: endExamReducer,
+
+  readUserDetail: userDetailReducer,
+  editUserDetail: editUserDetailReducer,
 });
 
 const rootReducer = (state, action) => {
