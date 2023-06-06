@@ -26,19 +26,20 @@ import { registerMiddleware } from "./creators/registerCreator";
 import { startDetailMiddleware } from "./creators/startDetailCreator";
 import { startExamMiddleware } from "./creators/startExamCreator";
 
-import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
 import { createOrganizationMiddleware } from "./creators/addOrganizationCreator";
 import { deleteOrganizationMiddleware } from "./creators/deleteOrganizationCreator";
-import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
-import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
-import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
-import { editUserDetailMiddleware } from "./creators/editUserDetailCreator";
-import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import {
   clearDeleteQuestionsMiddleware,
   deleteQuestionMiddleware,
 } from "./creators/deleteQuestionCreator";
+import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
+import { editUserDetailMiddleware } from "./creators/editUserDetailCreator";
+import { generateTokenMidtrans } from "./creators/generateTokenMidtrans";
+import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
+import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
+import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import { readStudentsMiddleware } from "./creators/readStudentsCreator";
+import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -74,5 +75,7 @@ export const actionReadStudents = readStudentsMiddleware;
 export const actionReadQuestions = readQuestionsMiddleware;
 export const actionDeleteQuestions = deleteQuestionMiddleware;
 export const actionClearDeleteQuestions = clearDeleteQuestionsMiddleware;
+
+export const actionMidtransPayment = generateTokenMidtrans;
 
 export const actionReadCategories = readCategoriesMiddleware;

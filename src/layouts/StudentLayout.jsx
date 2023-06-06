@@ -1,9 +1,7 @@
-import { Outlet, useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { actionReadUserDetail } from "../actions/actionCreators";
-import { toast } from "react-toastify";
-import { CLEAR_STATE } from "../actions/actionTypes";
 
 function StudentLayout() {
   const navigate = useNavigate();
@@ -98,9 +96,9 @@ function StudentLayout() {
                     </svg>
                     My Profile
                   </Link>
-                  <a
+                  <Link
                     className="dropdown-item d-flex align-items-center"
-                    href="student/profile/settings"
+                    to="/students/certificates"
                   >
                     <svg
                       className="dropdown-icon text-gray-400 me-2"
@@ -114,8 +112,8 @@ function StudentLayout() {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    Settings
-                  </a>
+                    Certificates
+                  </Link>
                   <div role="separator" className="dropdown-divider my-1"></div>
                   <a
                     className="dropdown-item d-flex align-items-center button"

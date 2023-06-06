@@ -111,4 +111,9 @@ export const READ_STUDENTS_SUCCESS = "students/readStudents";
 export const READ_STUDENTS_FAILED = "students/readStudentsError";
 export const READ_STUDENTS_LOADING = "students/readStudentsLoading";
 
+// GENERATE TOKEN MIDTRANS
+export const GENERATE_TOKEN_MIDTRANS_SUCCESS = "midtrans/generateTokenSuccess";
+export const GENERATE_TOKEN_MIDTRANS_FAILED = "midtrans/generateTokenFailed";
+export const GENERATE_TOKEN_MIDTRANS_LOADING = "midtrans/generateTokenLoading";
+
 export const CLEAR_STATE = "state/clearState";
