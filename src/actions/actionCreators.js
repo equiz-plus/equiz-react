@@ -11,7 +11,10 @@ import {
 import { editExamMiddleware } from "./creators/editExamCreator";
 import { endExamMiddleware } from "./creators/endExamCreator";
 import { detailExamMiddleware } from "./creators/examDetailCreator";
-import { getSessionMiddleware } from "./creators/getSessionCreator";
+import {
+  clearGetSessionMiddleware,
+  getSessionMiddleware,
+} from "./creators/getSessionCreator";
 import { loginMiddleware } from "./creators/loginCreator";
 import {
   clearPatchExamMiddleware,
@@ -52,6 +55,7 @@ export const actionClearDeleteExam = cleardeleteExamMiddleware;
 export const actionStartDetail = startDetailMiddleware;
 export const actionStartExam = startExamMiddleware;
 export const actionGetSession = getSessionMiddleware;
+export const actionClearGetSession = clearGetSessionMiddleware;
 export const actionAnswerExam = answerExamMiddleware;
 export const actionClearAnswerExam = clearAnswerExamMiddleware;
 export const actionEndExam = endExamMiddleware;

@@ -28,8 +28,12 @@ function StudentLayout() {
   });
 
   useEffect(() => {
-    setUserData(userDetails);
-  }, [userDetails]);
+    setUserData({
+      ...userData,
+      avatar: localStorage.getItem("avatar"),
+      name: localStorage.getItem("name"),
+    });
+  }, []);
 
   const logout = (e) => {
     e.preventDefault();

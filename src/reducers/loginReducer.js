@@ -10,7 +10,10 @@ const initialState = {
   isError: false,
   access_token: undefined,
   role: undefined,
+  id: undefined,
   errorMessage: undefined,
+  avatar: undefined,
+  name: undefined,
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -27,6 +30,9 @@ const loginReducer = (state = initialState, action) => {
         isSuccess: true,
         access_token: action.payload.access_token,
         role: action.payload.role,
+        id: action.payload.id,
+        name: action.payload.name,
+        avatar: action.payload.avatar,
       };
     case LOGIN_FAILED:
       return {

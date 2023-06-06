@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   actionReadCategories,
   actionReadExams,
 } from "../../actions/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Pagination from "../../components/Pagination";
 
 function StudentDashboard() {
   const dispatch = useDispatch();
@@ -15,18 +16,88 @@ function StudentDashboard() {
 
   useEffect(() => {
     dispatch(actionReadExams());
-    // dispatch(actionReadCategories());
+    dispatch(actionReadCategories());
   }, []);
+
+  // === FILTERS ===
+  const [filters, setFilters] = useState({
+    search: "",
+    page: null,
+    category: null,
+  });
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  // page
+  const page = searchParams.get("page");
+
+  // search
+  const searchHandler = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // category
+  const categoryHandler = (e) => {
+    setFilters({
+      ...filters,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // dispatch filters
+  useEffect(() => {
+    dispatch(actionReadExams(page, filters.search, filters.category));
+  }, [page, filters]);
 
   return (
     <>
       <div className="row">
         <div className="col-md-12">
           <div className="alert alert-success border-0 shadow">
-            Welcome <strong>Nama Murid</strong>
+            Welcome, <strong>{localStorage.getItem("name")}</strong>
           </div>
         </div>
       </div>
+      <div className="row d-flex flex-row justify-content-between mb-2">
+        <div className="d-flex col-md-8">
+          <div className="col-md-10 col-12 mb-2">
+            <form>
+              <div className="input-group">
+                <input
+                  type="text"
+                  className="form-control border-0 shadow fs-6"
+                  placeholder="search..."
+                  name="search"
+                  onChange={searchHandler}
+                />
+                <span className="input-group-text border-0 shadow">
+                  <i className="fa fa-search"></i>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div className="col-md-3 col-12 mb-2 d-flex">
+          <select
+            className="form-select"
+            name="category"
+            onChange={categoryHandler}
+          >
+            <option value={null}>All</option>
+            {categories?.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <div className="row">
         {exams?.map((exam) => (
           <div className="col-md-6 mb-4" key={exam.id}>
@@ -39,7 +110,9 @@ function StudentDashboard() {
                     <thead>
                       <tr>
                         <td className="fw-bold">Category</td>
-                        <td>{exam.Category.name}</td>
+                        <td style={{ fontWeight: "bold" }}>
+                          {exam.Category.name}
+                        </td>
                       </tr>
                       <tr>
                         <td className="fw-bold">Organization</td>
@@ -122,14 +195,20 @@ function StudentDashboard() {
           </div>
         ))}
       </div>
+      <div className="mb-5 d-flex justify-content-center">
+        <Pagination clas totalPages={totalPages} />
+      </div>
 
-      <div className="row">
-        <div className="col-md-12">
-          <div className="alert alert-danger border-0 shadow">
-            <i className="fa fa-info-circle"></i> There is no available exam yet
+      {!exams && (
+        <div className="row">
+          <div className="col-md-12">
+            <div className="alert alert-danger border-0 shadow">
+              <i className="fa fa-info-circle"></i> There is no available exam
+              yet
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

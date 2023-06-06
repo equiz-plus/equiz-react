@@ -11,17 +11,7 @@ function StudentIndex() {
     dispatch(actionReadStudents());
   }, []);
 
-  const { students, isSuccess, isError, errorMessage, isLoading } = useSelector(
-    (state) => state.readStudents
-  );
-
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setStudentsList(students);
-  //   } else if (isError) {
-  //     alert(errorMessage);
-  //   }
-  // }, [isSuccess, isError]);
+  const { students } = useSelector((state) => state.readStudents);
 
   return (
     <>

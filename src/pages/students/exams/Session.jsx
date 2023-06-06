@@ -172,9 +172,17 @@ function ExamQuestion() {
   const answerHandlerSpeech = (speech) => {
     const cleanSpeech = speech.slice(0, -1);
 
-    const foundAnswer = answers.find(
-      (obj) => obj.answer.toLowerCase() === cleanSpeech
-    );
+    const foundAnswer = answers.find((obj) => {
+      let words = obj.answer.split(" ");
+
+      let splitWords = [];
+      for (let word of words) {
+        splitWords = splitWords.concat(word.split("-"));
+      }
+
+      let concatWords = splitWords.join(" ");
+      return concatWords.toLowerCase() === cleanSpeech.toLowerCase();
+    });
 
     if (!foundAnswer) {
       if (
