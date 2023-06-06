@@ -28,10 +28,16 @@ import deleteQuestionReducer from "../reducers/deleteQuestionReducer";
 import editOrganizationReducer from "../reducers/editOrganizationReducer";
 import editUserDetailReducer from "../reducers/editUserDetailReducer";
 import readStudentsReducer from "../reducers/getStudentsReducer";
+
+import addQuestionReducer from "../reducers/addQuestionReducer";
+import readCertificatesReducer from "../reducers/readCertificatesReducer";
+import addCategoryReducer from "../reducers/addCategoryReducer";
+
 import midtransPaymentReducer from "../reducers/midtransPaymentReducer";
 import readOrgByIdReducer from "../reducers/organizationDetailReducer";
 import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
 import readQuestionReducer from "../reducers/readQuestionReducer";
+
 
 // combine reducers
 const appReducer = combineReducers({
@@ -41,6 +47,7 @@ const appReducer = combineReducers({
   readExams: readExamReducer,
   detailExam: examDetailReducer,
   readCategories: readCategoriesReducer,
+  createCategories: addCategoryReducer,
   createExam: addExamReducer,
   editExam: editExamReducer,
   patchExam: patchExamReducer,
@@ -63,6 +70,9 @@ const appReducer = combineReducers({
 
   readQuestions: readQuestionReducer,
   deleteQuestions: deleteQuestionReducer,
+  createQuestions: addQuestionReducer,
+
+  readCertificates: readCertificatesReducer,
 
   midtransPayment: midtransPaymentReducer,
 

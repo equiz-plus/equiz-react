@@ -106,14 +106,30 @@ export const DELETE_QUESTION_FAILED = "questions/deleteFailed";
 export const DELETE_QUESTION_LOADING = "questions/deleteLoading";
 export const CLEAR_DELETE_QUESTION = "questions/clearQuestion";
 
+export const CREATE_QUESTION_SUCCESS = "questions/createSuccess";
+export const CREATE_QUESTION_FAILED = "questions/createFailed";
+export const CREATE_QUESTION_LOADING = "questions/createLoading";
+
 // STUDENTS
 export const READ_STUDENTS_SUCCESS = "students/readStudents";
 export const READ_STUDENTS_FAILED = "students/readStudentsError";
 export const READ_STUDENTS_LOADING = "students/readStudentsLoading";
 
+
+// CERTIFICATES
+export const READ_CERTIFICATES_SUCCESS = "certificates/readSuccess";
+export const READ_CERTIFICATES_FAILED = "certificates/readFailed";
+export const READ_CERTIFICATES_LOADING = "certificates/readLoading";
+
+// CATEGORIES
+export const CREATE_CATEGORY_SUCCESS = "categories/addSuccess";
+export const CREATE_CATEGORY_FAILED = "categories/addFailed";
+export const CREATE_CATEGORY_LOADING = "categories/addLoading";
+
 // GENERATE TOKEN MIDTRANS
 export const GENERATE_TOKEN_MIDTRANS_SUCCESS = "midtrans/generateTokenSuccess";
 export const GENERATE_TOKEN_MIDTRANS_FAILED = "midtrans/generateTokenFailed";
 export const GENERATE_TOKEN_MIDTRANS_LOADING = "midtrans/generateTokenLoading";
+
 
 export const CLEAR_STATE = "state/clearState";
