@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,6 +16,7 @@ import withReactContent from "sweetalert2-react-content";
 import { CLEAR_STATE } from "../../../actions/actionTypes";
 import CountdownComponent from "../../../components/timer";
 import SpeechRecognition from "../../../components/speechRecognition";
+import speechFeedback from "./speech";
 
 function ExamQuestion() {
   const dispatch = useDispatch();
@@ -24,7 +27,20 @@ function ExamQuestion() {
     dispatch(actionGetSession());
   }, []);
 
-  const { session } = useSelector((state) => state.getSession);
+  const { session, errorMessage, isError } = useSelector(
+    (state) => state.getSession
+  );
+
+  useEffect(() => {
+    if (errorMessage === "Not Found") {
+      MySwal.fire({
+        title: <strong>Restricted access</strong>,
+        html: <i>Session not found</i>,
+        icon: "warning",
+      });
+      navigate("/students");
+    }
+  }, [isError]);
 
   const { no } = useParams();
 
@@ -45,12 +61,12 @@ function ExamQuestion() {
     dispatch(actionClearAnswerExam());
   }, [isSuccess]);
 
-  const [answers, setAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState([]);
   const [answerNumber, setAnswerNumber] = useState([]);
   const [totalQuestions, setTotalQuestions] = useState(null);
 
   useEffect(() => {
-    setAnswers(session?.Exam.UserAnswers.map((el) => el.AnswerId));
+    setUserAnswers(session?.Exam.UserAnswers.map((el) => el.AnswerId));
     setAnswerNumber(session?.Exam.UserAnswers.map((el) => el.questionNumber));
     setTotalQuestions(session?.QuestionGroups.length);
   }, [session]);
@@ -115,8 +131,10 @@ function ExamQuestion() {
       speech.includes("next question")
     ) {
       if (no == totalQuestions) {
+        speechFeedback(`No next page available`);
         navigate(`/students/exams/session/${totalQuestions}`);
       } else {
+        speechFeedback(`You are now on question ${+no + 1}`);
         navigate(`/students/exams/session/${+no + 1}`);
       }
     } else if (
@@ -126,16 +144,55 @@ function ExamQuestion() {
       speech.includes("back")
     ) {
       if (no == 1) {
+        speechFeedback(`No previous page available`);
         navigate(`/students/exams/session/1`);
       } else {
+        speechFeedback(`You are now on question ${+no - 1}`);
         navigate(`/students/exams/session/${+no - 1}`);
       }
     }
   };
 
+  // SPEECH RECOGNITION ANSWER
+  // const [answersString, setAnswersString] = useState(null);
+  const [answers, setAnswers] = useState(null);
+
+  useEffect(() => {
+    // setAnswersString(
+    //   session?.QuestionGroups[no - 1].Question.Answers.map((el) => el.answer)
+    // );
+    setAnswers(session?.QuestionGroups[no - 1].Question.Answers);
+  }, [session, no]);
+
+  // to check the current value of answersString
+  // useEffect(() => {
+  //   console.log(answersString, "answers string");
+  // }, [answersString]);
+
+  const answerHandlerSpeech = (speech) => {
+    const cleanSpeech = speech.slice(0, -1);
+
+    const foundAnswer = answers.find(
+      (obj) => obj.answer.toLowerCase() === cleanSpeech
+    );
+
+    if (!foundAnswer) {
+      if (
+        speech.includes("next") ||
+        speech.includes("previous") ||
+        speech.includes("back")
+      ) {
+        return;
+      }
+      speechFeedback(`Answer not found`);
+    } else {
+      speechFeedback(`Answer ${foundAnswer.answer} selected`);
+      dispatch(answerHandler(no, foundAnswer.QuestionId, foundAnswer.id));
+    }
+  };
+
   return (
     <>
-      <SpeechRecognition speechCommand={speechNavigate} />
       <div className="row mb-5">
         <div className="col-md-7">
           <div className="card border-0 shadow">
@@ -143,7 +200,7 @@ function ExamQuestion() {
               <div className="d-flex justify-content-between">
                 <div>
                   <h5 className="mb-0">
-                    Number <strong className="fw-bold">{no}</strong>
+                    Question <strong className="fw-bold">{no}</strong>
                   </h5>
                 </div>
                 <div>
@@ -159,7 +216,7 @@ function ExamQuestion() {
             <Question
               question={session?.QuestionGroups[no - 1]}
               answerHandler={answerHandler}
-              answers={answers}
+              answers={userAnswers}
             />
 
             <div className="card-footer">
@@ -193,11 +250,31 @@ function ExamQuestion() {
               </div>
             </div>
           </div>
+          <div className="mt-2 card border-0 shadow p-2">
+            <h6>Text-to-Speech</h6>
+            <div style={{ fontSize: "15px" }}>
+              Press the speaker icon or key &quot;T&quot; on your keyboard to
+              enable Text-to-Speech
+            </div>
+          </div>
+          <div className="mt-2 card border-0 shadow p-2">
+            <SpeechRecognition
+              speechCommand={speechNavigate}
+              answerHandlerSpeech={answerHandlerSpeech}
+            />
+          </div>
         </div>
         <div className="col-md-5">
           <div className="card border-0 shadow">
-            <div className="card-header text-center">
-              <div className="badge bg-success p-2"> 20 dikerjakan</div>
+            <div className="card-header text-center d-flex flex-column align-items-center">
+              <div className="badge bg-success p-2 col-md-7 col-8 mb-2">
+                {userAnswers?.length} question(s) answered
+              </div>
+              {userAnswers?.length === totalQuestions ? (
+                <div className="badge bg-primary p-2 col-md-7 col-8">
+                  All questions answered
+                </div>
+              ) : null}
             </div>
             <div
               className="card-body"
@@ -234,64 +311,6 @@ function ExamQuestion() {
           </div>
         </div>
       </div>
-
-      {/* <!-- modal akhiri ujian --> */}
-      {/* <div
-        className="showModalEndExam modal fade"
-        tabIndex="-1"
-        aria-hidden="true"
-        style={{ display: "block" }}
-        role="dialog"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Akhiri Ujian ?</h5>
-            </div>
-            <div className="modal-body">
-              Setelah mengakhiri ujian, Anda tidak dapat kembali ke ujian ini
-              lagi. Yakin akan mengakhiri ujian?
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary">
-                Ya, Akhiri
-              </button>
-              <button type="button" className="btn btn-secondary">
-                Tutup
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* <!-- modal waktu ujian berakhir --> */}
-      {/* <div
-        className="modal fade showModalEndTimeExam"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex="-1"
-        aria-hidden="true"
-        style={{ display: "block" }}
-        role="dialog"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Waktu Habis !</h5>
-            </div>
-            <div className="modal-body">
-              Waktu ujian sudah berakhir!. Klik{" "}
-              <strong className="fw-bold">Ya</strong> untuk mengakhiri ujian.
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary">
-                {" "}
-                Ya
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

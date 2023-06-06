@@ -156,7 +156,7 @@ function ExamComfirmation() {
                     className="btn btn-md btn-primary border-0 shadow w-100 mt-2"
                     disabled
                   >
-                    Already finished
+                    Already taken
                   </button>
                 </div>
               ) : null}
