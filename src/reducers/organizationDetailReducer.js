@@ -37,3 +37,5 @@ const readOrgByIdReducer = (state = initialState, action) => {
       return initialState;
   }
 };
+
+export default readOrgByIdReducer;

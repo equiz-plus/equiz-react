@@ -11,7 +11,7 @@ const initialState = {
   organizations: [],
 };
 
-const readOrgByIdReducer = (state = initialState, action) => {
+const readOrganzationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case READ_ORGANIZATION_LOADING:
       return {
@@ -41,4 +41,4 @@ const readOrgByIdReducer = (state = initialState, action) => {
   }
 };
 
-export default readOrgByIdReducer;
+export default readOrganzationsReducer;

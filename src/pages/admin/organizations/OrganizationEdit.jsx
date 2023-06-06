@@ -15,11 +15,11 @@ function OrganizationEdit() {
   const { id } = useParams();
 
   // GET CATEGORIES & EXAM DETAIL
+  const { organizationDetail } = useSelector((state) => state.readOrgById);
   useEffect(() => {
     dispatch(actionReadOrgById(id));
+    console.log(organizationDetail);
   }, []);
-
-  const { organizationDetail } = useSelector((state) => state.readOrgById);
 
   const [organizationInput, setOrganizationInput] = useState({
     name: null,
@@ -69,7 +69,7 @@ function OrganizationEdit() {
 
   return (
     <>
-      <OrganizationEdit
+      <OrganizationForm
         formHandler={formHandler}
         submitForm={submitForm}
         isLoading={isLoading}
@@ -79,4 +79,4 @@ function OrganizationEdit() {
   );
 }
 
-export default ExamEdit;
+export default OrganizationEdit;

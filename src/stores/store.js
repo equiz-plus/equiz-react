@@ -25,7 +25,7 @@ import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
 import createOrganizationReducer from "../reducers/addOrganizationReducer";
 import deleteOrganizationReducer from "../reducers/deleteOrganizationReducer";
 import editOrganizationReducer from "../reducers/editOrganizationReducer";
-import readOrgByIdReducer from "../reducers/readOrganizationsReducer";
+import readOrgByIdReducer from "../reducers/organizationDetailReducer";
 
 // combine reducers
 const appReducer = combineReducers({
