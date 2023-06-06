@@ -94,4 +94,14 @@ export const EDIT_USER_PROFILE_SUCCESS = "users/editUserSuccess";
 export const EDIT_USER_PROFILE_FAILED = "users/editUserFailed";
 export const EDIT_USER_PROFILE_LOADING = "users/editUserLoading";
 
+// QUESTIONS
+export const READ_QUESTIONS_SUCCESS = "questions/readSuccess";
+export const READ_QUESTIONS_FAILED = "questions/readFailed";
+export const READ_QUESTIONS_LOADING = "questions/readLoading";
+
+export const DELETE_QUESTION_SUCCESS = "questions/deleteSuccess";
+export const DELETE_QUESTION_FAILED = "questions/deleteFailed";
+export const DELETE_QUESTION_LOADING = "questions/deleteLoading";
+export const CLEAR_DELETE_QUESTION = "questions/clearQuestion";
+
 export const CLEAR_STATE = "state/clearState";
