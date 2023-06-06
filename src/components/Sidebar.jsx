@@ -175,8 +175,8 @@ function Sidebar() {
             </li>
 
             <li className="nav-item">
-              <a
-                href="/admin/students"
+              <Link
+                to="/admin/students"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -199,7 +199,7 @@ function Sidebar() {
                   </span>
                   <span className="sidebar-text">Students</span>
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">

@@ -104,4 +104,9 @@ export const DELETE_QUESTION_FAILED = "questions/deleteFailed";
 export const DELETE_QUESTION_LOADING = "questions/deleteLoading";
 export const CLEAR_DELETE_QUESTION = "questions/clearQuestion";
 
+// STUDENTS
+export const READ_STUDENTS_SUCCESS = "students/readStudents";
+export const READ_STUDENTS_FAILED = "students/readStudentsError";
+export const READ_STUDENTS_LOADING = "students/readStudentsLoading";
+
 export const CLEAR_STATE = "state/clearState";

@@ -35,6 +35,7 @@ import {
   clearDeleteQuestionsMiddleware,
   deleteQuestionMiddleware,
 } from "./creators/deleteQuestionCreator";
+import { readStudentsMiddleware } from "./creators/readStudentsCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -63,6 +64,8 @@ export const actionReadOrgById = readOrgIdMiddleware;
 
 export const actionReadUserDetail = readUserDetailMiddleware;
 export const actionEditUserDetail = editUserDetailMiddleware;
+
+export const actionReadStudents = readStudentsMiddleware;
 
 export const actionReadQuestions = readQuestionsMiddleware;
 export const actionDeleteQuestions = deleteQuestionMiddleware;
