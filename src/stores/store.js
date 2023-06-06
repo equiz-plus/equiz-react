@@ -32,6 +32,8 @@ import readQuestionReducer from "../reducers/readQuestionReducer";
 import deleteQuestionReducer from "../reducers/deleteQuestionReducer";
 import readStudentsReducer from "../reducers/getStudentsReducer";
 import addQuestionReducer from "../reducers/addQuestionReducer";
+import readCertificatesReducer from "../reducers/readCertificatesReducer";
+import addCategoryReducer from "../reducers/addCategoryReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -41,6 +43,7 @@ const appReducer = combineReducers({
   readExams: readExamReducer,
   detailExam: examDetailReducer,
   readCategories: readCategoriesReducer,
+  createCategories: addCategoryReducer,
   createExam: addExamReducer,
   editExam: editExamReducer,
   patchExam: patchExamReducer,
@@ -64,6 +67,8 @@ const appReducer = combineReducers({
   readQuestions: readQuestionReducer,
   deleteQuestions: deleteQuestionReducer,
   createQuestions: addQuestionReducer,
+
+  readCertificates: readCertificatesReducer,
 
   readStudents: readStudentsReducer,
 });

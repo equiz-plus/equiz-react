@@ -113,4 +113,14 @@ export const READ_STUDENTS_SUCCESS = "students/readStudents";
 export const READ_STUDENTS_FAILED = "students/readStudentsError";
 export const READ_STUDENTS_LOADING = "students/readStudentsLoading";
 
+// CERTIFICATES
+export const READ_CERTIFICATES_SUCCESS = "certificates/readSuccess";
+export const READ_CERTIFICATES_FAILED = "certificates/readFailed";
+export const READ_CERTIFICATES_LOADING = "certificates/readLoading";
+
+// CATEGORIES
+export const CREATE_CATEGORY_SUCCESS = "categories/addSuccess";
+export const CREATE_CATEGORY_FAILED = "categories/addFailed";
+export const CREATE_CATEGORY_LOADING = "categories/addLoading";
+
 export const CLEAR_STATE = "state/clearState";
