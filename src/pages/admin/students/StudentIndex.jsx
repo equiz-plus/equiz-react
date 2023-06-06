@@ -24,7 +24,7 @@ function StudentIndex() {
                   <div className="input-group">
                     <input
                       type="text"
-                      className="form-control border-0 shadow"
+                      className="form-control border-0 shadow fs-6"
                       placeholder="Insert student's name..."
                     />
                     <span className="input-group-text border-0 shadow">

@@ -232,8 +232,8 @@ function Sidebar() {
             ></li>
 
             <li className="nav-item">
-              <a
-                href="/admin/reports"
+              <Link
+                to="/admin/grades"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -252,9 +252,9 @@ function Sidebar() {
                       />
                     </svg>
                   </span>
-                  <span className="sidebar-text">Laporan Nilai</span>
+                  <span className="sidebar-text">Grade Report</span>
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

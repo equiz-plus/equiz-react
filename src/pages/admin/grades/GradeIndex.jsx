@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const QuestionIndex = () => {
+const GradeIndex = () => {
   return (
     <>
       <>
@@ -21,7 +21,7 @@ const QuestionIndex = () => {
                     </div>
                     <div className="col-md-6 col-12 mb-2 d-flex">
                       <select className="form-select" name="category">
-                        <option value="">All</option>
+                        <option value={null}>All</option>
                         <option value="">Exam Title</option>
                         <option value="">Exam Title</option>
                         <option value="">Exam Title</option>
@@ -35,7 +35,7 @@ const QuestionIndex = () => {
                       <input
                         type="text"
                         className="form-control border-0 shadow fs-6"
-                        placeholder="Search questions by title..."
+                        placeholder="Search grade by student name..."
                       />
                       <span className="input-group-text border-0 shadow">
                         <i className="fa fa-search"></i>
@@ -60,8 +60,10 @@ const QuestionIndex = () => {
                           >
                             No.
                           </th>
-                          <th className="border-0">Questions</th>
-                          <th className="border-0">Category</th>
+                          <th className="border-0">Student Name</th>
+                          <th className="border-0">Exam Title</th>
+                          <th className="border-0">Grade</th>
+                          <th className="border-0">Certificate Number</th>
                           <th
                             className="border-0 rounded-end"
                             style={{ width: 15 + "%" }}
@@ -74,8 +76,12 @@ const QuestionIndex = () => {
                       <tbody>
                         <tr>
                           <td className="fw-bold text-center">1</td>
-                          <td>Questions</td>
-                          <td className="text-center">Category Name</td>
+                          <td>Mickel Cris Nurils</td>
+                          <td className="text-center">Ujiann bahasa korea</td>
+                          <td className="text-center">40/100</td>
+                          <td className="text-center">
+                            CERT-00001/HCK/IIX/2023
+                          </td>
                           <td className="text-center">
                             <Link
                               to={`/admin/questions/edit/`}
@@ -102,4 +108,4 @@ const QuestionIndex = () => {
   );
 };
 
-export default QuestionIndex;
+export default GradeIndex;

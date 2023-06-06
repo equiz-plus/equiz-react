@@ -1,6 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   actionClearDeleteExam,
   actionClearPatchExam,
@@ -10,7 +11,6 @@ import {
   actionReadExams,
 } from "../../../actions/actionCreators";
 import Pagination from "../../../components/Pagination";
-import { toast } from "react-toastify";
 
 function ExamIndex() {
   const dispatch = useDispatch();
@@ -122,7 +122,7 @@ function ExamIndex() {
                     <div className="input-group">
                       <input
                         type="text"
-                        className="form-control border-0 shadow"
+                        className="form-control border-0 shadow fs-6"
                         placeholder="search..."
                         name="search"
                         onChange={searchHandler}
