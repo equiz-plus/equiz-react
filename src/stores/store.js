@@ -1,36 +1,37 @@
 import {
-  legacy_createStore as createStore,
-  combineReducers,
   applyMiddleware,
+  combineReducers,
+  legacy_createStore as createStore,
 } from "redux";
 import thunk from "redux-thunk";
 import { CLEAR_STATE } from "../actions/actionTypes";
-import registerReducer from "../reducers/registerReducer";
-import confirmReducer from "../reducers/confirmReducer";
-import loginReducer from "../reducers/loginReducer";
-import readExamReducer from "../reducers/readExamReducer";
-import readCategoriesReducer from "../reducers/readCategoriesReducer";
 import addExamReducer from "../reducers/addExamReducer";
-import examDetailReducer from "../reducers/examDetailReducer";
-import editExamReducer from "../reducers/editExamReducer";
-import patchExamReducer from "../reducers/patchExamReducer";
+import answerExamReducer from "../reducers/answerExamReducer";
+import confirmReducer from "../reducers/confirmReducer";
 import deleteExamReducer from "../reducers/deleteExamReducer";
+import editExamReducer from "../reducers/editExamReducer";
+import endExamReducer from "../reducers/endExamReducer";
+import examDetailReducer from "../reducers/examDetailReducer";
+import getSessionReducer from "../reducers/getSessionReducer";
+import loginReducer from "../reducers/loginReducer";
+import patchExamReducer from "../reducers/patchExamReducer";
+import readCategoriesReducer from "../reducers/readCategoriesReducer";
+import readExamReducer from "../reducers/readExamReducer";
+import registerReducer from "../reducers/registerReducer";
 import startDetailReducer from "../reducers/startDetailReducer";
 import startExamReducer from "../reducers/startExamReducer";
-import getSessionReducer from "../reducers/getSessionReducer";
-import answerExamReducer from "../reducers/answerExamReducer";
-import endExamReducer from "../reducers/endExamReducer";
 
-import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
+import userDetailReducer from "../reducers/UserDetailReducer";
 import createOrganizationReducer from "../reducers/addOrganizationReducer";
 import deleteOrganizationReducer from "../reducers/deleteOrganizationReducer";
-import editOrganizationReducer from "../reducers/editOrganizationReducer";
-import readOrgByIdReducer from "../reducers/organizationDetailReducer";
-import userDetailReducer from "../reducers/UserDetailReducer";
-import editUserDetailReducer from "../reducers/editUserDetailReducer";
-import readQuestionReducer from "../reducers/readQuestionReducer";
 import deleteQuestionReducer from "../reducers/deleteQuestionReducer";
+import editOrganizationReducer from "../reducers/editOrganizationReducer";
+import editUserDetailReducer from "../reducers/editUserDetailReducer";
 import readStudentsReducer from "../reducers/getStudentsReducer";
+import midtransPaymentReducer from "../reducers/midtransPaymentReducer";
+import readOrgByIdReducer from "../reducers/organizationDetailReducer";
+import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
+import readQuestionReducer from "../reducers/readQuestionReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -62,6 +63,8 @@ const appReducer = combineReducers({
 
   readQuestions: readQuestionReducer,
   deleteQuestions: deleteQuestionReducer,
+
+  midtransPayment: midtransPaymentReducer,
 
   readStudents: readStudentsReducer,
 });
