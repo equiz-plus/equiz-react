@@ -1,7 +1,35 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionReadUserDetail } from "../actions/actionCreators";
+import { toast } from "react-toastify";
+import { CLEAR_STATE } from "../actions/actionTypes";
 
 function StudentLayout() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { userDetails } = useSelector((state) => state.readUserDetail);
+
+  useEffect(() => {
+    dispatch(actionReadUserDetail());
+  }, []);
+
+  const [userData, setUserData] = useState({
+    id: null,
+    username: null,
+    email: null,
+    phone: null,
+    name: null,
+    gender: null,
+    avatar: null,
+    isPremium: null,
+    premiumExpiry: null,
+  });
+
+  useEffect(() => {
+    setUserData(userDetails);
+  }, [userDetails]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -13,13 +41,13 @@ function StudentLayout() {
     <>
       <nav className="navbar navbar-expand-lg navbar-transparent navbar-dark navbar-theme-primary mb-4 shadow">
         <div className="container position-relative">
-          <a className="navbar-brand me-lg-3" href="/student/dashboard">
+          <Link className="navbar-brand me-lg-3" to={"/students"}>
             <img
               className="navbar-brand-dark"
-              src="../../public/assets/images/logo.png"
-              style={{ width: "150px" }}
+              src="../../public/assets/images/logo-white.png"
+              style={{ width: "50px", height: "50px" }}
             />
-          </a>
+          </Link>
 
           <div
             className="collapse navbar-collapse d-flex justify-content-end"
@@ -38,19 +66,19 @@ function StudentLayout() {
                     <img
                       className="avatar rounded-circle"
                       alt="Image placeholder"
-                      src="https://media.licdn.com/dms/image/D5603AQF-2lzPugYt9g/profile-displayphoto-shrink_400_400/0/1685461722438?e=1691625600&v=beta&t=kit8sGOieW3sq-87kUTpb1CeeEHWQduymCGMyxbOOas"
+                      src={userData?.avatar}
                     />
                     <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                       <span className="mb-0 font-small fw-bold text-white">
-                        Michael Kristian{" "}
+                        {userData?.name}
                       </span>
                     </div>
                   </div>
                 </a>
                 <div className="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1 border-0 shadow">
-                  <a
+                  <Link
                     className="dropdown-item d-flex align-items-center"
-                    href="profile"
+                    to={"/students/profile"}
                   >
                     <svg
                       className="dropdown-icon text-gray-400 me-2"
@@ -65,7 +93,7 @@ function StudentLayout() {
                       ></path>
                     </svg>
                     My Profile
-                  </a>
+                  </Link>
                   <a
                     className="dropdown-item d-flex align-items-center"
                     href="student/profile/settings"
@@ -112,7 +140,7 @@ function StudentLayout() {
         </div>
       </nav>
       <div className="container">
-        <Outlet />
+        <Outlet userData={[userData]} />
       </div>
     </>
   );

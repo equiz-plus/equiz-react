@@ -85,4 +85,13 @@ export const READ_ORG_ID_SUCCESS = "organizations/readByIdSuccess";
 export const READ_ORG_ID_FAILED = "organizations/readByIdFailed";
 export const READ_ORG_ID_LOADING = "organizations/readByIdLoading";
 
+// STUDENT PROFILE
+export const READ_USER_PROFILE_SUCCESS = "users/readUserSuccess";
+export const READ_USER_PROFILE_FAILED = "users/readUserFailed";
+export const READ_USER_PROFILE_LOADING = "users/readUserLoading";
+
+export const EDIT_USER_PROFILE_SUCCESS = "users/editUserSuccess";
+export const EDIT_USER_PROFILE_FAILED = "users/editUserFailed";
+export const EDIT_USER_PROFILE_LOADING = "users/editUserLoading";
+
 export const CLEAR_STATE = "state/clearState";

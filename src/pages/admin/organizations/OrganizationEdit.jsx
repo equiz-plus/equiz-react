@@ -18,7 +18,6 @@ function OrganizationEdit() {
   const { organizationDetail } = useSelector((state) => state.readOrgById);
   useEffect(() => {
     dispatch(actionReadOrgById(id));
-    console.log(organizationDetail);
   }, []);
 
   const [organizationInput, setOrganizationInput] = useState({
