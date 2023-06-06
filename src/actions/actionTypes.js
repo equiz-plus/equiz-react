@@ -45,10 +45,12 @@ export const START_DETAIL_ERROR = "exams/startDetailError";
 export const START_EXAM_SUCCESS = "exams/startExam";
 export const START_EXAM_LOADING = "exams/startExamLoading";
 export const START_EXAM_ERROR = "exams/startExamError";
+export const CLEAR_START_EXAM = "exams/clearStartExam";
 
 export const GET_SESSION_SUCCESS = "exams/getSession";
 export const GET_SESSION_LOADING = "exams/getSessionLoading";
 export const GET_SESSION_ERROR = "exams/getSessionError";
+export const CLEAR_GET_SESSION = "exams/clearGetSession";
 
 export const ANSWER_EXAM_SUCCESS = "exams/answerExam";
 export const ANSWER_EXAM_LOADING = "exams/answerExamLoading";

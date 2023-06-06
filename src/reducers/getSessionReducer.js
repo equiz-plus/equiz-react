@@ -1,4 +1,5 @@
 import {
+  CLEAR_GET_SESSION,
   GET_SESSION_ERROR,
   GET_SESSION_LOADING,
   GET_SESSION_SUCCESS,
@@ -32,6 +33,10 @@ const getSessionReducer = (state = initialState, action) => {
         isLoading: false,
         isError: true,
         errorMessage: action.payload.message,
+      };
+    case CLEAR_GET_SESSION:
+      return {
+        ...initialState,
       };
     default:
       return state;
