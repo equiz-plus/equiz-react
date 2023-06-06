@@ -30,6 +30,7 @@ import userDetailReducer from "../reducers/UserDetailReducer";
 import editUserDetailReducer from "../reducers/editUserDetailReducer";
 import readQuestionReducer from "../reducers/readQuestionReducer";
 import deleteQuestionReducer from "../reducers/deleteQuestionReducer";
+import readStudentsReducer from "../reducers/getStudentsReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -61,6 +62,8 @@ const appReducer = combineReducers({
 
   readQuestions: readQuestionReducer,
   deleteQuestions: deleteQuestionReducer,
+
+  readStudents: readStudentsReducer,
 });
 
 const rootReducer = (state, action) => {

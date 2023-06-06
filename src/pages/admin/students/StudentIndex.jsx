@@ -1,4 +1,28 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionReadStudents } from "../../../actions/actionCreators";
+
 function StudentIndex() {
+  const dispatch = useDispatch();
+
+  // const { studentsList, setStudentsList } = useState([]);
+
+  useEffect(() => {
+    dispatch(actionReadStudents());
+  }, []);
+
+  const { students, isSuccess, isError, errorMessage, isLoading } = useSelector(
+    (state) => state.readStudents
+  );
+
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     setStudentsList(students);
+  //   } else if (isError) {
+  //     alert(errorMessage);
+  //   }
+  // }, [isSuccess, isError]);
+
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
@@ -45,11 +69,9 @@ function StudentIndex() {
                     <thead className="thead-dark">
                       <tr className="border-0">
                         <th className="border-0 rounded-start">No.</th>
-                        <th className="border-0">NISN</th>
                         <th className="border-0">Name</th>
-                        <th className="border-0">Class</th>
-                        <th className="border-0">Gender</th>
-                        <th className="border-0">Password</th>
+                        <th className="border-0">Email</th>
+                        <th className="border-0">Premium Member</th>
                         <th
                           className="border-0 rounded-end"
                           style={{ width: 15 + "%" }}
@@ -60,26 +82,28 @@ function StudentIndex() {
                     </thead>
                     <div className="mt-2"></div>
                     <tbody>
-                      <tr>
-                        <td className="fw-bold text-center"> 1</td>
-                        <td>1233</td>
-                        <td>Mike</td>
-                        <td className="text-center">Kelasasa</td>
-                        <td className="text-center">Genderr</td>
-                        <td>Pasasa</td>
-                        <td className="text-center">
-                          <a
-                            href="/admin/students/${student.id}/edit"
-                            className="btn btn-sm btn-info border-0 shadow me-2"
-                            type="button"
-                          >
-                            <i className="fa fa-pencil-alt"></i>
-                          </a>
-                          <button className="btn btn-sm btn-danger border-0">
-                            <i className="fa fa-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      {students?.map((student, index) => (
+                        <tr key={student.id}>
+                          <td className="fw-bold text-center">{index + 1}</td>
+                          <td>{student.name}</td>
+                          <td className="text-center">{student.email}</td>
+                          <td className="text-center">
+                            {student.isPremium ? "Premium" : "Regular"}
+                          </td>
+                          <td className="text-center">
+                            <a
+                              href="/admin/students/${student.id}/edit"
+                              className="btn btn-sm btn-info border-0 shadow me-2"
+                              type="button"
+                            >
+                              <i className="fa fa-pencil-alt"></i>
+                            </a>
+                            <button className="btn btn-sm btn-danger border-0">
+                              <i className="fa fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
