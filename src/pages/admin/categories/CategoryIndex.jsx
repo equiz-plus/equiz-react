@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { actionReadCategories } from "../../../actions/actionCreators";
 
 function CategoryIndex() {
+  const dispatch = useDispatch();
+
+  const { categories } = useSelector((state) => state.readCategories);
+
+  useEffect(() => {
+    dispatch(actionReadCategories());
+  }, []);
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
@@ -54,28 +65,30 @@ function CategoryIndex() {
                           className="border-0 rounded-end"
                           style={{ width: 15 + "%" }}
                         >
-                          Aksi
+                          Action
                         </th>
                       </tr>
                     </thead>
                     <div className="mt-2"></div>
                     <tbody>
-                      <tr>
-                        <td className="fw-bold text-center">1</td>
-                        <td>Catgeory Name</td>
-                        <td className="text-center">
-                          <a
-                            href="`/admin/lessons/${lesson.id}/edit`"
-                            className="btn btn-sm btn-info border-0 shadow me-2"
-                            type="button"
-                          >
-                            <i className="fa fa-pencil-alt"></i>
-                          </a>
-                          <button className="btn btn-sm btn-danger border-0">
-                            <i className="fa fa-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      {categories?.map((category, index) => (
+                        <tr>
+                          <td className="fw-bold text-center">{index + 1}</td>
+                          <td>{category.name}</td>
+                          <td className="text-center">
+                            <a
+                              href="`/admin/lessons/${lesson.id}/edit`"
+                              className="btn btn-sm btn-info border-0 shadow me-2"
+                              type="button"
+                            >
+                              <i className="fa fa-pencil-alt"></i>
+                            </a>
+                            <button className="btn btn-sm btn-danger border-0">
+                              <i className="fa fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>

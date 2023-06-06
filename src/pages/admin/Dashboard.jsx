@@ -19,14 +19,14 @@ function Dashboard() {
                       </svg>
                     </div>
                     <div className="d-sm-none">
-                      <h2 className="h5">Kelas</h2>
-                      <h3 className="fw-extrabold mb-1">Classroom</h3>
+                      <h2 className="h5">Exams</h2>
+                      <h3 className="fw-extrabold mb-1">15</h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
-                      <h2 className="h5">Kelas</h2>
-                      <h3 className="fw-extrabold mb-1">Classroom</h3>
+                      <h2 className="h5">Exams</h2>
+                      <h3 className="fw-extrabold mb-1">15</h3>
                     </div>
                   </div>
                 </div>
@@ -55,14 +55,14 @@ function Dashboard() {
                       </svg>
                     </div>
                     <div className="d-sm-none">
-                      <h2 className="h5">Siswa</h2>
-                      <h3 className="fw-extrabold mb-1">Student</h3>
+                      <h2 className="h5">Students</h2>
+                      <h3 className="fw-extrabold mb-1">8</h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
-                      <h2 className="h5">Siswa</h2>
-                      <h3 className="fw-extrabold mb-1">Student</h3>
+                      <h2 className="h5">Students</h2>
+                      <h3 className="fw-extrabold mb-1">8</h3>
                     </div>
                   </div>
                 </div>
@@ -90,14 +90,14 @@ function Dashboard() {
                       </svg>
                     </div>
                     <div className="d-sm-none">
-                      <h2 className="h5">Ujian</h2>
-                      <h3 className="fw-extrabold mb-1">Exam</h3>
+                      <h2 className="h5">Questions</h2>
+                      <h3 className="fw-extrabold mb-1">50</h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
-                      <h2 className="h5">Ujian</h2>
-                      <h3 className="fw-extrabold mb-1">Exam</h3>
+                      <h2 className="h5">Questions</h2>
+                      <h3 className="fw-extrabold mb-1">50</h3>
                     </div>
                   </div>
                 </div>
@@ -122,14 +122,14 @@ function Dashboard() {
                       </svg>
                     </div>
                     <div className="d-sm-none">
-                      <h2 className="h5">Sesi Ujian</h2>
-                      <h3 className="fw-extrabold mb-1">Exam Session</h3>
+                      <h2 className="h5">Certificates</h2>
+                      <h3 className="fw-extrabold mb-1">0</h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
-                      <h2 className="h5">Sesi Ujian</h2>
-                      <h3 className="fw-extrabold mb-1">Exam Session</h3>
+                      <h2 className="h5">Certificates</h2>
+                      <h3 className="fw-extrabold mb-1">0</h3>
                     </div>
                   </div>
                 </div>
