@@ -1,11 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react";
-import {
-  actionReadCategories,
-  actionReadExams,
-} from "../../actions/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { actionReadExams } from "../../actions/actionCreators";
 
 function StudentDashboard() {
   const dispatch = useDispatch();
@@ -23,7 +20,7 @@ function StudentDashboard() {
       <div className="row">
         <div className="col-md-12">
           <div className="alert alert-success border-0 shadow">
-            Welcome <strong>Nama Murid</strong>
+            {/* Welcome <strong>Nama Murid</strong> */}
           </div>
         </div>
       </div>
@@ -123,13 +120,13 @@ function StudentDashboard() {
         ))}
       </div>
 
-      <div className="row">
+      {/* <div className="row">
         <div className="col-md-12">
           <div className="alert alert-danger border-0 shadow">
             <i className="fa fa-info-circle"></i> There is no available exam yet
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

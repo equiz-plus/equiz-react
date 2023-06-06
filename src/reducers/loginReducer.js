@@ -8,6 +8,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   isError: false,
+  userData: {},
   access_token: undefined,
   role: undefined,
   errorMessage: undefined,
@@ -26,6 +27,7 @@ const loginReducer = (state = initialState, action) => {
         isLoading: false,
         isSuccess: true,
         access_token: action.payload.access_token,
+        userData: action.payload,
         role: action.payload.role,
       };
     case LOGIN_FAILED:
