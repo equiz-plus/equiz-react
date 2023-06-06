@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Snap } from "midtrans-client";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,11 +8,6 @@ import { actionMidtransPayment } from "../actions/actionCreators";
 
 function LandingPage() {
   const notify = (msg) => toast.error(msg);
-
-  const snap = new Snap({
-    isProduction: false, // Ganti dengan true untuk produksi
-    clientKey: "SB-Mid-client-Teg-DjpladGdXTBt", // Ganti dengan client key Anda
-  });
 
   const { isSuccess, isLoading, isError, errorMessage, paymentData } =
     useSelector((state) => state.midtransPayment);
