@@ -11,7 +11,10 @@ import {
 import { editExamMiddleware } from "./creators/editExamCreator";
 import { endExamMiddleware } from "./creators/endExamCreator";
 import { detailExamMiddleware } from "./creators/examDetailCreator";
-import { getSessionMiddleware } from "./creators/getSessionCreator";
+import {
+  clearGetSessionMiddleware,
+  getSessionMiddleware,
+} from "./creators/getSessionCreator";
 import { loginMiddleware } from "./creators/loginCreator";
 import {
   clearPatchExamMiddleware,
@@ -23,22 +26,25 @@ import { registerMiddleware } from "./creators/registerCreator";
 import { startDetailMiddleware } from "./creators/startDetailCreator";
 import { startExamMiddleware } from "./creators/startExamCreator";
 
-import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
 import { createOrganizationMiddleware } from "./creators/addOrganizationCreator";
 import { deleteOrganizationMiddleware } from "./creators/deleteOrganizationCreator";
-import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
-import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
-import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
-import { editUserDetailMiddleware } from "./creators/editUserDetailCreator";
-import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import {
   clearDeleteQuestionsMiddleware,
   deleteQuestionMiddleware,
 } from "./creators/deleteQuestionCreator";
+import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
+import { editUserDetailMiddleware } from "./creators/editUserDetailCreator";
+import { generateTokenMidtrans } from "./creators/generateTokenMidtrans";
+import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
+import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
+import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import { readStudentsMiddleware } from "./creators/readStudentsCreator";
+
 import { addQuestionMiddleware } from "./creators/addQuestionCreator";
 import { readCertificatesMiddleware } from "./creators/readCertificatesCreator";
 import { addCategoryMiddleware } from "./creators/addCategoryCreator";
+
+import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -55,6 +61,7 @@ export const actionClearDeleteExam = cleardeleteExamMiddleware;
 export const actionStartDetail = startDetailMiddleware;
 export const actionStartExam = startExamMiddleware;
 export const actionGetSession = getSessionMiddleware;
+export const actionClearGetSession = clearGetSessionMiddleware;
 export const actionAnswerExam = answerExamMiddleware;
 export const actionClearAnswerExam = clearAnswerExamMiddleware;
 export const actionEndExam = endExamMiddleware;
@@ -76,6 +83,8 @@ export const actionClearDeleteQuestions = clearDeleteQuestionsMiddleware;
 export const actionCreateQuestions = addQuestionMiddleware;
 
 export const actionReadCertificates = readCertificatesMiddleware;
+
+export const actionMidtransPayment = generateTokenMidtrans;
 
 export const actionReadCategories = readCategoriesMiddleware;
 export const actionCreateCategory = addCategoryMiddleware;

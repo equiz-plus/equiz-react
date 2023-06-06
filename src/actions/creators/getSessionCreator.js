@@ -1,4 +1,6 @@
+import { actionClearGetSession } from "../actionCreators";
 import {
+  CLEAR_GET_SESSION,
   GET_SESSION_ERROR,
   GET_SESSION_LOADING,
   GET_SESSION_SUCCESS,
@@ -20,6 +22,10 @@ export const getSessionActionError = (error) => ({
   payload: error,
 });
 
+export const clearGetSessionAction = () => ({
+  type: CLEAR_GET_SESSION,
+});
+
 export const getSessionMiddleware = () => async (dispatch) => {
   try {
     dispatch(getSessionActionLoading());
@@ -34,4 +40,8 @@ export const getSessionMiddleware = () => async (dispatch) => {
   } catch (error) {
     dispatch(getSessionActionError(error.response.data));
   }
+};
+
+export const clearGetSessionMiddleware = () => async (dispatch) => {
+  dispatch(actionClearGetSession());
 };

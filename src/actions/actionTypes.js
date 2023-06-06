@@ -45,10 +45,12 @@ export const START_DETAIL_ERROR = "exams/startDetailError";
 export const START_EXAM_SUCCESS = "exams/startExam";
 export const START_EXAM_LOADING = "exams/startExamLoading";
 export const START_EXAM_ERROR = "exams/startExamError";
+export const CLEAR_START_EXAM = "exams/clearStartExam";
 
 export const GET_SESSION_SUCCESS = "exams/getSession";
 export const GET_SESSION_LOADING = "exams/getSessionLoading";
 export const GET_SESSION_ERROR = "exams/getSessionError";
+export const CLEAR_GET_SESSION = "exams/clearGetSession";
 
 export const ANSWER_EXAM_SUCCESS = "exams/answerExam";
 export const ANSWER_EXAM_LOADING = "exams/answerExamLoading";
@@ -113,6 +115,7 @@ export const READ_STUDENTS_SUCCESS = "students/readStudents";
 export const READ_STUDENTS_FAILED = "students/readStudentsError";
 export const READ_STUDENTS_LOADING = "students/readStudentsLoading";
 
+
 // CERTIFICATES
 export const READ_CERTIFICATES_SUCCESS = "certificates/readSuccess";
 export const READ_CERTIFICATES_FAILED = "certificates/readFailed";
@@ -122,5 +125,11 @@ export const READ_CERTIFICATES_LOADING = "certificates/readLoading";
 export const CREATE_CATEGORY_SUCCESS = "categories/addSuccess";
 export const CREATE_CATEGORY_FAILED = "categories/addFailed";
 export const CREATE_CATEGORY_LOADING = "categories/addLoading";
+
+// GENERATE TOKEN MIDTRANS
+export const GENERATE_TOKEN_MIDTRANS_SUCCESS = "midtrans/generateTokenSuccess";
+export const GENERATE_TOKEN_MIDTRANS_FAILED = "midtrans/generateTokenFailed";
+export const GENERATE_TOKEN_MIDTRANS_LOADING = "midtrans/generateTokenLoading";
+
 
 export const CLEAR_STATE = "state/clearState";

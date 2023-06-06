@@ -1,46 +1,41 @@
 import {
-  CLEAR_GET_SESSION,
-  GET_SESSION_ERROR,
-  GET_SESSION_LOADING,
-  GET_SESSION_SUCCESS,
+  GENERATE_TOKEN_MIDTRANS_FAILED,
+  GENERATE_TOKEN_MIDTRANS_LOADING,
+  GENERATE_TOKEN_MIDTRANS_SUCCESS,
 } from "../actions/actionTypes";
 
 const initialState = {
   isSuccess: false,
   isLoading: false,
   isError: false,
-  session: undefined,
+  paymentData: {},
   errorMessage: undefined,
 };
 
-const getSessionReducer = (state = initialState, action) => {
+const midtransPaymentReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_SESSION_LOADING:
+    case GENERATE_TOKEN_MIDTRANS_LOADING:
       return {
         ...state,
         isLoading: true,
       };
-    case GET_SESSION_SUCCESS:
+    case GENERATE_TOKEN_MIDTRANS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isSuccess: true,
-        session: action.payload,
+        paymentData: action.payload,
       };
-    case GET_SESSION_ERROR:
+    case GENERATE_TOKEN_MIDTRANS_FAILED:
       return {
         ...state,
         isLoading: false,
         isError: true,
-        errorMessage: action.payload.message,
-      };
-    case CLEAR_GET_SESSION:
-      return {
-        ...initialState,
+        errorMessage: action.payload,
       };
     default:
       return state;
   }
 };
 
-export default getSessionReducer;
+export default midtransPaymentReducer;

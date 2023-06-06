@@ -34,6 +34,7 @@ export const readExamsMiddleware =
           },
         }
       );
+
       dispatch(readExamsAction(res.data));
     } catch (error) {
       dispatch(readExamsActionError(error.response.data.message));

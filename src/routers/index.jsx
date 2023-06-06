@@ -9,6 +9,8 @@ import CategoryIndex from "../pages/admin/categories/CategoryIndex";
 import ExamCreate from "../pages/admin/exams/ExamCreate";
 import ExamEdit from "../pages/admin/exams/ExamEdit";
 import ExamIndex from "../pages/admin/exams/ExamIndex";
+import ExamSchedule from "../pages/admin/exams/ExamSchedule";
+import ExamScheduleCreate from "../pages/admin/exams/ExamScheduleCreate";
 import GradeIndex from "../pages/admin/grades/GradeIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 import OrganizationEdit from "../pages/admin/organizations/OrganizationEdit";
@@ -100,6 +102,14 @@ const router = createBrowserRouter([
           {
             path: "edit/:id",
             element: <ExamEdit />,
+          },
+          {
+            path: "schedule",
+            element: <ExamSchedule />,
+          },
+          {
+            path: "create-schedule",
+            element: <ExamScheduleCreate />,
           },
         ],
       },

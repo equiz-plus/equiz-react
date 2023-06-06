@@ -28,8 +28,17 @@ function LoginPage() {
     dispatch(actionLogin(userData));
   };
 
-  const { errorMessage, isLoading, isError, isSuccess, access_token, role } =
-    useSelector((state) => state.login);
+  const {
+    errorMessage,
+    isLoading,
+    isError,
+    isSuccess,
+    access_token,
+    role,
+    id,
+    avatar,
+    name,
+  } = useSelector((state) => state.login);
 
   const notify = (msg) => toast.error(msg);
 
@@ -40,6 +49,9 @@ function LoginPage() {
     } else if (isSuccess && access_token) {
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("role", role);
+      localStorage.setItem("id", id);
+      localStorage.setItem("avatar", avatar);
+      localStorage.setItem("name", name);
 
       if (role === "admin") navigate("/admin");
       else if (role === "user") navigate("/students");

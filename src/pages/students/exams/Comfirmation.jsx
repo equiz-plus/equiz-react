@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
+  actionClearGetSession,
   actionStartDetail,
   actionStartExam,
 } from "../../../actions/actionCreators";
@@ -24,6 +25,8 @@ function ExamComfirmation() {
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage);
+      dispatch({ type: CLEAR_STATE });
+      dispatch(actionStartDetail(id));
     }
   }, [isError]);
 
@@ -42,6 +45,7 @@ function ExamComfirmation() {
   useEffect(() => {
     if (isError) {
       toast.error(errorStartMessage);
+      dispatch(actionClearGetSession());
     } else if (isSuccess) {
       navigate("/students/exams/session/1");
     }
@@ -113,16 +117,20 @@ function ExamComfirmation() {
                       <td>{examDetail?.totalQuestions}</td>
                     </tr>
                     <tr>
-                      <td className="fw-bold">Duration</td>
+                      <td className="fw-bold">Duration (minutes)</td>
                       <td>{examDetail?.duration}</td>
                     </tr>
                   </thead>
                 </table>
               </div>
 
-              {examDetail?.Grades.length === 0 &&
-              examDetail?.Sessions.length === 0 &&
-              examDetail?.isOpen ? (
+              {!examDetail?.Grades.some(
+                (obj) => obj.UserId == localStorage.getItem("id")
+              ) &&
+              examDetail?.isOpen &&
+              !examDetail?.Sessions.some(
+                (obj) => obj.UserId == localStorage.getItem("id")
+              ) ? (
                 <div>
                   {loadStart ? (
                     <div className="spinner-border" role="status">
@@ -139,7 +147,9 @@ function ExamComfirmation() {
                 </div>
               ) : null}
 
-              {examDetail?.Sessions.length !== 0 ? (
+              {examDetail?.Sessions.some(
+                (obj) => obj.UserId == localStorage.getItem("id")
+              ) ? (
                 <div>
                   <Link
                     to="/students/exams/session/1"
@@ -150,7 +160,12 @@ function ExamComfirmation() {
                 </div>
               ) : null}
 
-              {examDetail?.Grades.length !== 0 ? (
+              {examDetail?.Grades.some(
+                (obj) => obj.UserId == localStorage.getItem("id")
+              ) &&
+              !examDetail?.Sessions.some(
+                (obj) => obj.UserId == localStorage.getItem("id")
+              ) ? (
                 <div>
                   <button
                     className="btn btn-md btn-primary border-0 shadow w-100 mt-2"
