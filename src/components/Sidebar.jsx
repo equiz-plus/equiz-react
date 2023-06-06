@@ -100,6 +100,35 @@ function Sidebar() {
 
             <li className="nav-item">
               <Link
+                to="/admin/exams"
+                className="nav-link d-flex justify-content-between"
+              >
+                <span>
+                  <span className="sidebar-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      fill="currentColor"
+                      className="bi bi-pencil-square icon icon-xs me-2"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path
+                        fillRule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                  </span>
+                  <Link to="/admin/exams">
+                    <span className="sidebar-text">Exams</span>
+                  </Link>
+                </span>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
                 to="/admin/categories"
                 className="nav-link d-flex justify-content-between"
               >
@@ -173,43 +202,9 @@ function Sidebar() {
               </a>
             </li>
 
-            <li
-              role="separator"
-              className="dropdown-divider mt-2 mb-2 border-gray-700"
-            ></li>
-
             <li className="nav-item">
               <Link
-                to="/admin/exams"
-                className="nav-link d-flex justify-content-between"
-              >
-                <span>
-                  <span className="sidebar-icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      className="bi bi-pencil-square icon icon-xs me-2"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                      />
-                    </svg>
-                  </span>
-                  <Link to="/admin/exams">
-                    <span className="sidebar-text">Exams</span>
-                  </Link>
-                </span>
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <a
-                href="/admin/exam_sessions"
+                to="/admin/questions"
                 className="nav-link d-flex justify-content-between"
               >
                 <span>
@@ -226,9 +221,9 @@ function Sidebar() {
                       <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
                     </svg>
                   </span>
-                  <span className="sidebar-text">Sesi Ujian</span>
+                  <span className="sidebar-text">Questions</span>
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li

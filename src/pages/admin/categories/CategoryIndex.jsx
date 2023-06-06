@@ -5,7 +5,7 @@ function CategoryIndex() {
     <>
       <div className="container-fluid mb-5 mt-5">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-">
             <div className="row">
               <div className="col-md-3 col-12 mb-2">
                 <Link
@@ -14,10 +14,11 @@ function CategoryIndex() {
                   type="button"
                 >
                   <i className="fa fa-plus-circle me-2"></i>
-                  Create Category
+                  Add
                 </Link>
               </div>
-              <div className="col-md-9 col-12 mb-2">
+              <div className="col-md-3 col-12 mb-2"></div>
+              <div className="col-md-6 col-12 mb-2">
                 <form>
                   <div className="input-group">
                     <input

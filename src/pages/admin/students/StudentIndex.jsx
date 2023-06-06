@@ -3,7 +3,7 @@ function StudentIndex() {
     <>
       <div className="container-fluid mb-5 mt-5">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-12">
             <div className="row">
               <div className="col-md-5 col-12 mb-2">
                 <div className="row">
@@ -15,16 +15,6 @@ function StudentIndex() {
                     >
                       <i className="fa fa-plus-circle me-2"></i>
                       Add
-                    </a>
-                  </div>
-                  <div className="col-md-6 col-12 mb-2">
-                    <a
-                      href="/admin/students/import"
-                      className="btn btn-md btn-success border-0 shadow w-100 text-white"
-                      type="button"
-                    >
-                      <i className="fa fa-file-excel  me-2"></i>
-                      Import
                     </a>
                   </div>
                 </div>

@@ -1,29 +1,30 @@
-import { createBrowserRouter } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import { createBrowserRouter, redirect } from "react-router-dom";
 import AdminLayout from "../layouts/AdminLayout";
 import StudentLayout from "../layouts/StudentLayout";
 import LandingPage from "../pages/LandingPage";
 import Dashboard from "../pages/admin/Dashboard";
-import StudentCreate from "../pages/admin/students/StudentCreate";
-import StudentIndex from "../pages/admin/students/StudentIndex";
-import LoginPage from "../pages/auth/LoginPage";
-import StudentDashboard from "../pages/students/Dashboard";
-import ExamComfirmation from "../pages/students/exams/Comfirmation";
-import Session from "../pages/students/exams/Session";
-import RegisterPage from "../pages/auth/RegisterPage";
-import ConfirmPage from "../pages/auth/ConfirmPage";
-import { redirect } from "react-router-dom";
-import ExamIndex from "../pages/admin/exams/ExamIndex";
+import CategoryCreate from "../pages/admin/categories/CategoryCreate";
+import CategoryIndex from "../pages/admin/categories/CategoryIndex";
 import ExamCreate from "../pages/admin/exams/ExamCreate";
 import ExamEdit from "../pages/admin/exams/ExamEdit";
-import CategoryIndex from "../pages/admin/categories/CategoryIndex";
-import CategoryCreate from "../pages/admin/categories/CategoryCreate";
-import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
+import ExamIndex from "../pages/admin/exams/ExamIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
+import OrganizationEdit from "../pages/admin/organizations/OrganizationEdit";
+import OrganizationIndex from "../pages/admin/organizations/OrganizationIndex";
+import QuestionCreate from "../pages/admin/questions/QuestionCreate";
+import QuestionIndex from "../pages/admin/questions/QuestionIndex";
+import StudentCreate from "../pages/admin/students/StudentCreate";
+import StudentIndex from "../pages/admin/students/StudentIndex";
+import ConfirmPage from "../pages/auth/ConfirmPage";
+import LoginPage from "../pages/auth/LoginPage";
+import RegisterPage from "../pages/auth/RegisterPage";
+import StudentDashboard from "../pages/students/Dashboard";
 import CertificateDetails from "../pages/students/certificate/CertificateDetails";
 import CertificateIndex from "../pages/students/certificate/CertificateIndex";
+import ExamComfirmation from "../pages/students/exams/Comfirmation";
+import Session from "../pages/students/exams/Session";
 import ProfileEdit from "../pages/students/profiles/ProfileEdit";
-import OrganizationForm from "../components/OrganizationForm";
-import OrganizationEdit from "../pages/admin/organizations/OrganizationEdit";
 
 const router = createBrowserRouter([
   {
@@ -124,6 +125,23 @@ const router = createBrowserRouter([
           {
             path: "create",
             element: <OrganizationCreate />,
+          },
+          {
+            path: "edit/:id",
+            element: <OrganizationEdit />,
+          },
+        ],
+      },
+      {
+        path: "questions",
+        children: [
+          {
+            path: "",
+            element: <QuestionIndex />,
+          },
+          {
+            path: "create",
+            element: <QuestionCreate />,
           },
           {
             path: "edit/:id",

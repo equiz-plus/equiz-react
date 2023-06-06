@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { readOrganizationMiddleware } from "../../../actions/creators/readOrganizationsCreator";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   actionDeleteOrganization,
   actionReadOrganizations,
 } from "../../../actions/actionCreators";
-import { toast } from "react-toastify";
+import { readOrganizationMiddleware } from "../../../actions/creators/readOrganizationsCreator";
 
 const OrganizationIndex = () => {
   const { organizations, errorMsg: error } = useSelector(
@@ -45,7 +45,7 @@ const OrganizationIndex = () => {
       <>
         <div className="container-fluid mb-5 mt-5">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-12">
               <div className="row">
                 <div className="col-md-5 col-12 mb-2">
                   <div className="row">
@@ -58,16 +58,6 @@ const OrganizationIndex = () => {
                         Add
                       </Link>
                     </div>
-                    <div className="col-md-6 col-12 mb-2">
-                      <a
-                        href="/admin/students/import"
-                        className="btn btn-md btn-success border-0 shadow w-100 text-white"
-                        type="button"
-                      >
-                        <i className="fa fa-file-excel  me-2"></i>
-                        Import
-                      </a>
-                    </div>
                   </div>
                 </div>
                 <div className="col-md-7 col-12 mb-2">
@@ -76,7 +66,7 @@ const OrganizationIndex = () => {
                       <input
                         type="text"
                         className="form-control border-0 shadow"
-                        placeholder="Insert student's name..."
+                        placeholder="Search company by name..."
                       />
                       <span className="input-group-text border-0 shadow">
                         <i className="fa fa-search"></i>
