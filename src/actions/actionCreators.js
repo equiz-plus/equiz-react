@@ -30,6 +30,11 @@ import { editOrganizationMiddleware } from "./creators/editOrganizationCreator";
 import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
 import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
 import { editUserDetailMiddleware } from "./creators/editUserDetailCreator";
+import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
+import {
+  clearDeleteQuestionsMiddleware,
+  deleteQuestionMiddleware,
+} from "./creators/deleteQuestionCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -58,5 +63,9 @@ export const actionReadOrgById = readOrgIdMiddleware;
 
 export const actionReadUserDetail = readUserDetailMiddleware;
 export const actionEditUserDetail = editUserDetailMiddleware;
+
+export const actionReadQuestions = readQuestionsMiddleware;
+export const actionDeleteQuestions = deleteQuestionMiddleware;
+export const actionClearDeleteQuestions = clearDeleteQuestionsMiddleware;
 
 export const actionReadCategories = readCategoriesMiddleware;
