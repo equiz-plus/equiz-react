@@ -35,7 +35,7 @@ function LandingPage() {
     <>
       <main>
         {/* <!-- Hero --> */}
-        <section className="section-header pt-7 pt-lg-8 pb-2 mb-2 pb-lg-8 bg-dark text-dark">
+        <section className="section-header pt-7 pt-lg-8 pb-2 mb-2 pb-lg-8 bg-dark">
           <div className="container">
             <div className="row">
               <div className="col-12 text-center">
@@ -46,13 +46,14 @@ function LandingPage() {
                   alt="Logo light"
                 />
                 <div className="mb-5">
-                  <h2 className="display-1">
+                  <h1 className="text-muted" style={{ fontSize: 50 }}>
                     Unlock Your{" "}
-                    <span className="text-primary" style={{ color: "blue" }}>
-                      Potential
-                    </span>{" "}
-                    with Seamless Online Testing!
-                  </h2>
+                    <span className="text-secondary fw-800">Potential</span>{" "}
+                  </h1>
+                  <h1 className="text-muted" style={{ fontSize: 50 }}>
+                    with <span className="text-secondary fw-800">Seamless</span>{" "}
+                    Online Testing!
+                  </h1>
                 </div>
                 <div className="d-flex justify-content-center align-items-end flex-wrap mb-0">
                   <Link to={"/students"}>
