@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { actionReadSchedules } from "../../../actions/actionCreators";
+import {
+  actionClearDeleteSchedule,
+  actionDeleteSchedule,
+  actionReadSchedules,
+} from "../../../actions/actionCreators";
+import { toast } from "react-toastify";
 
 function ExamSchedule() {
   const dispatch = useDispatch();
@@ -11,6 +16,28 @@ function ExamSchedule() {
   }, []);
 
   const { schedules } = useSelector((state) => state.readSchedules);
+
+  // === DELETE EXAM ===
+  const deleteHandler = (id) => {
+    dispatch(actionDeleteSchedule(id));
+  };
+
+  const {
+    isSuccess: successDelete,
+    isError: errorDelete,
+    errorMessage: errorDeleteMessage,
+  } = useSelector((state) => state.deleteSchedule);
+
+  useEffect(() => {
+    if (successDelete) {
+      dispatch(actionReadSchedules());
+      toast.success("Schedule Removed");
+      dispatch(actionClearDeleteSchedule());
+    } else if (errorDelete) {
+      toast.error(errorDeleteMessage);
+      dispatch(actionClearDeleteSchedule());
+    }
+  }, [successDelete, errorDelete]);
 
   return (
     <>
@@ -99,7 +126,10 @@ function ExamSchedule() {
                             >
                               <i className="fa fa-pencil-alt"></i>
                             </Link>
-                            <button className="btn btn-sm btn-danger border-0">
+                            <button
+                              className="btn btn-sm btn-danger border-0"
+                              onClick={() => deleteHandler(schedule.id)}
+                            >
                               <i className="fa fa-trash"></i>
                             </button>
                           </td>

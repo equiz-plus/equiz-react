@@ -151,6 +151,11 @@ export const READ_SCHEDULES_SUCCESS = "exams/readSchedulesSuccess";
 export const READ_SCHEDULES_LOADING = "exams/readSchedulesLoading";
 export const READ_SCHEDULES_ERROR = "exams/readSchedulesError";
 
+export const DELETE_SCHEDULE_SUCCESS = "exams/deleteScheduleSuccess";
+export const DELETE_SCHEDULE_LOADING = "exams/deleteScheduleLoading";
+export const DELETE_SCHEDULE_ERROR = "exams/deleteScheduleError";
+export const CLEAR_DELETE_SCHEDULE = "exams/clearDeleteSchedule";
+
 // USER GRADES
 export const READ_GRADES_USER_SUCCESS = "grades/userReadSucces";
 export const READ_GRADES_USER_FAILED = "grades/userReadFailed";
@@ -164,7 +169,6 @@ export const READ_GRADE_DETAILS_LOADING = "grades/readDetailsLoading";
 export const GET_STATISTICS_SUCCESS = "statistics/getStatisticsSuccess";
 export const GET_STATISTICS_FAILED = "statistics/getStatisticsFailed";
 export const GET_STATISTICS_LOADING = "statistics/getStatisticsLoading";
-
 
 // SCROLL DOWN WHEN CLICK GET PREMIUM
 export const SCROLL_DOWN = "scrollDown/scrollDown";

@@ -12,11 +12,10 @@ const StudentGradesDetails = () => {
     dispatch(actionReadGradeDetail(id));
   }, []);
 
-  console.log(answers);
   return (
     <>
-      {answers?.map((ans) => (
-        <div className=" mb-4">
+      {answers?.map((ans, index) => (
+        <div className=" mb-4" key={index}>
           <div className="card border-0 shadow">
             <div className="card-body">
               <h5>{ans?.Question?.question}</h5>
