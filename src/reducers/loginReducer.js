@@ -15,6 +15,7 @@ const initialState = {
   errorMessage: undefined,
   avatar: undefined,
   name: undefined,
+  isPremium: undefined,
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -35,6 +36,7 @@ const loginReducer = (state = initialState, action) => {
         id: action.payload.id,
         name: action.payload.name,
         avatar: action.payload.avatar,
+        isPremium: action.payload.isPremium,
       };
     case LOGIN_FAILED:
       return {

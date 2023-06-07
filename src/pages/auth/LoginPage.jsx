@@ -38,6 +38,7 @@ function LoginPage() {
     id,
     avatar,
     name,
+    isPremium,
   } = useSelector((state) => state.login);
 
   const notify = (msg) => toast.error(msg);
@@ -52,6 +53,7 @@ function LoginPage() {
       localStorage.setItem("id", id);
       localStorage.setItem("avatar", avatar);
       localStorage.setItem("name", name);
+      localStorage.setItem("premStatus", isPremium);
 
       if (role === "admin") navigate("/admin");
       else if (role === "user") navigate("/students");
