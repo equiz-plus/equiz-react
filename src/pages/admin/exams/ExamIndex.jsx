@@ -99,6 +99,8 @@ function ExamIndex() {
     }
   }, [successDelete, errorDelete]);
 
+  console.log(exams);
+
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
@@ -169,9 +171,11 @@ function ExamIndex() {
                         <th className="border-0">Exam</th>
                         <th className="border-0">Organization</th>
                         <th className="border-0">Category</th>
-                        <th className="border-0">Time (minutes)</th>
-                        <th className="border-0">Total Questions</th>
-                        <th className="border-0">Status</th>
+                        <th className="border-0">Time</th>
+                        <th className="border-0">Questions</th>
+                        <th className="border-0" style={{ width: 15 + "%" }}>
+                          Status
+                        </th>
                         <th
                           className="border-0 rounded-end"
                           style={{ width: 5 + "%" }}
@@ -188,7 +192,7 @@ function ExamIndex() {
                         <tr key={exam.id}>
                           <td className="fw-bold text-center">{index + 1}</td>
                           <td>{exam.title}</td>
-                          <td>Hacktiv8</td>
+                          <td>{exam.Organization?.name}</td>
                           <td>{exam.Category.name}</td>
                           <td className="text-center">{exam.duration}</td>
                           <td className="text-center">{exam.totalQuestions}</td>
@@ -203,6 +207,14 @@ function ExamIndex() {
                               <option value="true">Open</option>
                               <option value="false">Closed</option>
                             </select>
+                            {/* <div class="form-check form-switch">
+                              <input
+                                className="form-check-input"
+                                type="checkbox"
+                                role="switch"
+                                id="flexSwitchCheckChecked"
+                              />
+                            </div> */}
                           </td>
                           <td className="text-center">
                             {/* <a

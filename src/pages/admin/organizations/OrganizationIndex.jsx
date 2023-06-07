@@ -105,7 +105,7 @@ const OrganizationIndex = () => {
                             <td>{org.name}</td>
                             <td className="text-center">{org.address}</td>
                             <td>
-                              <img src={org.logo} alt="asdfgh" width={"50px"} />
+                              <img src={org.logo} alt="images" width={"50px"} />
                             </td>
 
                             <td className="text-center">

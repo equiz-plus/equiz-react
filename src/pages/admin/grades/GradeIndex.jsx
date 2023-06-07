@@ -1,6 +1,28 @@
-import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import Pagination from "../../../components/Pagination";
+import { actionReadCertificates } from "../../../actions/actionCreators";
 const GradeIndex = () => {
+  const dispatch = useDispatch();
+  const { certificates, totalPages } = useSelector(
+    (state) => state.readCertificates
+  );
+
+  useEffect(() => {
+    dispatch(actionReadCertificates());
+  }, []);
+
+  // === FILTERS ===
+  const [filters, setFilters] = useState({
+    page: null,
+  });
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  console.log(certificates.certificates);
+
   return (
     <>
       <>
@@ -18,14 +40,6 @@ const GradeIndex = () => {
                         <i className="fa fa-plus-circle me-2"></i>
                         Add
                       </Link>
-                    </div>
-                    <div className="col-md-6 col-12 mb-2 d-flex">
-                      <select className="form-select" name="category">
-                        <option value={null}>All</option>
-                        <option value="">Exam Title</option>
-                        <option value="">Exam Title</option>
-                        <option value="">Exam Title</option>
-                      </select>
                     </div>
                   </div>
                 </div>
@@ -62,7 +76,6 @@ const GradeIndex = () => {
                           </th>
                           <th className="border-0">Student Name</th>
                           <th className="border-0">Exam Title</th>
-                          <th className="border-0">Grade</th>
                           <th className="border-0">Certificate Number</th>
                           <th
                             className="border-0 rounded-end"
@@ -74,27 +87,25 @@ const GradeIndex = () => {
                       </thead>
                       <div className="mt-2"></div>
                       <tbody>
-                        <tr>
-                          <td className="fw-bold text-center">1</td>
-                          <td>Mickel Cris Nurils</td>
-                          <td className="text-center">Ujiann bahasa korea</td>
-                          <td className="text-center">40/100</td>
-                          <td className="text-center">
-                            CERT-00001/HCK/IIX/2023
-                          </td>
-                          <td className="text-center">
-                            <Link
-                              to={`/admin/questions/edit/`}
-                              className="btn btn-sm btn-info border-0 shadow me-2"
-                              type="button"
-                            >
-                              <i className="fa fa-pencil-alt"></i>
-                            </Link>
-                            <button className="btn btn-sm btn-danger border-0">
-                              <i className="fa fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
+                        {certificates?.certificates?.map((cert, index) => (
+                          <tr>
+                            <td className="fw-bold text-center">{index + 1}</td>
+                            <td>{cert?.User?.name}</td>
+                            <td className="text-center">{cert?.Exam?.title}</td>
+                            <td className="text-center">
+                              {cert.certificateNo}
+                            </td>
+                            <td className="text-center">
+                              <Link
+                                to={`/certificates/${cert.slug}`}
+                                className="btn btn-sm btn-info border-0 shadow me-2"
+                                type="button"
+                              >
+                                <i className="fa fa-info-circle"></i>
+                              </Link>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>

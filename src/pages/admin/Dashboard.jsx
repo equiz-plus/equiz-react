@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionGetStatistic } from "../../actions/actionCreators";
+
 function Dashboard() {
+  const { statistic } = useSelector((state) => state.getStatistic);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionGetStatistic());
+  }, []);
+
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
@@ -20,13 +32,17 @@ function Dashboard() {
                     </div>
                     <div className="d-sm-none">
                       <h2 className="h5">Exams</h2>
-                      <h3 className="fw-extrabold mb-1">15</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalExam}
+                      </h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
                       <h2 className="h5">Exams</h2>
-                      <h3 className="fw-extrabold mb-1">15</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalExam}
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -56,13 +72,17 @@ function Dashboard() {
                     </div>
                     <div className="d-sm-none">
                       <h2 className="h5">Students</h2>
-                      <h3 className="fw-extrabold mb-1">8</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalStudent}
+                      </h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
                       <h2 className="h5">Students</h2>
-                      <h3 className="fw-extrabold mb-1">8</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalStudent}
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -91,13 +111,17 @@ function Dashboard() {
                     </div>
                     <div className="d-sm-none">
                       <h2 className="h5">Questions</h2>
-                      <h3 className="fw-extrabold mb-1">50</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalQuestion}
+                      </h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
                       <h2 className="h5">Questions</h2>
-                      <h3 className="fw-extrabold mb-1">50</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalQuestion}
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -123,13 +147,17 @@ function Dashboard() {
                     </div>
                     <div className="d-sm-none">
                       <h2 className="h5">Certificates</h2>
-                      <h3 className="fw-extrabold mb-1">0</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalCertificate}
+                      </h3>
                     </div>
                   </div>
                   <div className="col-12 col-xl-7 px-xl-0">
                     <div className="d-none d-sm-block">
                       <h2 className="h5">Certificates</h2>
-                      <h3 className="fw-extrabold mb-1">0</h3>
+                      <h3 className="fw-extrabold mb-1">
+                        {statistic?.totalCertificate}
+                      </h3>
                     </div>
                   </div>
                 </div>

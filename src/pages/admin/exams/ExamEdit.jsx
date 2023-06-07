@@ -5,6 +5,7 @@ import {
   actionDetailExam,
   actionEditExam,
   actionReadCategories,
+  actionReadOrganizations,
 } from "../../../actions/actionCreators";
 import { toast } from "react-toastify";
 import { CLEAR_STATE } from "../../../actions/actionTypes";
@@ -19,10 +20,12 @@ function ExamEdit() {
   useEffect(() => {
     dispatch(actionReadCategories());
     dispatch(actionDetailExam(id));
+    dispatch(actionReadOrganizations());
   }, []);
 
   const { categories } = useSelector((state) => state.readCategories);
   const { examDetail } = useSelector((state) => state.detailExam);
+  const { organizations } = useSelector((state) => state.readOrganizations);
 
   const [examInput, setExamInput] = useState({
     title: null,
@@ -78,6 +81,7 @@ function ExamEdit() {
         isLoading={isLoading}
         categories={categories}
         examData={examInput}
+        organizations={organizations}
       />
     </>
   );

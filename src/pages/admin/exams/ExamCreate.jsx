@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   actionCreateExam,
   actionReadCategories,
+  actionReadOrganizations,
 } from "../../../actions/actionCreators";
 import { toast } from "react-toastify";
 import { CLEAR_STATE } from "../../../actions/actionTypes";
@@ -13,12 +14,14 @@ function ExamCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { categories } = useSelector((state) => state.readCategories);
+  const { organizations } = useSelector((state) => state.readOrganizations);
+
   // GET CATEGORIES
   useEffect(() => {
     dispatch(actionReadCategories());
+    dispatch(actionReadOrganizations());
   }, []);
-
-  const { categories } = useSelector((state) => state.readCategories);
 
   // CREATE
   const [examInput, setExamInput] = useState({
@@ -70,6 +73,7 @@ function ExamCreate() {
         submitForm={submitForm}
         isLoading={isLoading}
         categories={categories}
+        organizations={organizations}
       />
       {/* <div className="container-fluid mb-5 mt-5">
         <div className="row">

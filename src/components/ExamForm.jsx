@@ -6,6 +6,7 @@ export default function ExamForm({
   submitForm,
   isLoading,
   categories,
+  organizations,
   examData,
 }) {
   const { id } = useParams();
@@ -84,7 +85,12 @@ export default function ExamForm({
                           onChange={formHandler}
                           defaultValue={examData?.OrganizationId}
                         >
-                          <option>Hacktiv8</option>
+                          <option value="null">No Organization</option>
+                          {organizations?.map((org) => (
+                            <option value={org.id} key={org.id}>
+                              {org.name}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>

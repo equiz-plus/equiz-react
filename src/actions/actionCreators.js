@@ -39,6 +39,14 @@ import { readOrgIdMiddleware } from "./creators/organizationDetailCreator";
 import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator";
 import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import { readStudentsMiddleware } from "./creators/readStudentsCreator";
+
+import { addCategoryMiddleware } from "./creators/addCategoryCreator";
+import { addQuestionMiddleware } from "./creators/addQuestionCreator";
+import { readCertificatesMiddleware } from "./creators/readCertificatesCreator";
+
+import { getStatisticsMiddleware } from "./creators/getStatisticCreator";
+import { readCertificateIdMiddleware } from "./creators/readCertificatesIdCreator";
+import { userReadGradesMiddleware } from "./creators/readGradesCreator";
 import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
 import { createExamScheduleMiddleware } from "./creators/addScheduleCreator";
 import { editScheduleMiddleware } from "./creators/editScheduleCreator";
@@ -79,6 +87,10 @@ export const actionReadStudents = readStudentsMiddleware;
 export const actionReadQuestions = readQuestionsMiddleware;
 export const actionDeleteQuestions = deleteQuestionMiddleware;
 export const actionClearDeleteQuestions = clearDeleteQuestionsMiddleware;
+export const actionCreateQuestions = addQuestionMiddleware;
+
+export const actionReadCertificates = readCertificatesMiddleware;
+export const actionReadCertificateId = readCertificateIdMiddleware;
 
 export const actionMidtransPayment = generateTokenMidtrans;
 
@@ -88,3 +100,8 @@ export const actionCreateExamSchedule = createExamScheduleMiddleware;
 export const actionGetScheduleDetail = getScheduleDetailMiddleware;
 export const actionEditExamSchedule = editScheduleMiddleware;
 export const actionReadSchedules = readSchedulessMiddleware;
+export const actionCreateCategory = addCategoryMiddleware;
+
+export const actionUserReadGrades = userReadGradesMiddleware;
+
+export const actionGetStatistic = getStatisticsMiddleware;
