@@ -40,8 +40,6 @@ function StudentLayout() {
     navigate("/auth/login");
   };
 
-  console.log(userData.isPremium);
-
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-transparent navbar-dark navbar-theme-primary mb-4 shadow">

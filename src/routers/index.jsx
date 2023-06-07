@@ -31,6 +31,7 @@ import Session from "../pages/students/exams/Session";
 import ProfileEdit from "../pages/students/profiles/ProfileEdit";
 import AdminProfileEdit from "../pages/admin/profile/AdminProfileEdit";
 import StudentGradesIndex from "../pages/students/grades/StudentGradesIndex";
+import StudentGradesDetails from "../pages/students/grades/StudentGradesDetails";
 
 const router = createBrowserRouter([
   {
@@ -226,6 +227,10 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <StudentGradesIndex />,
+          },
+          {
+            path: "details/:id",
+            element: <StudentGradesDetails />,
           },
         ],
       },

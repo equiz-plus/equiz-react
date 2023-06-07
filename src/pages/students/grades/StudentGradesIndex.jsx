@@ -53,11 +53,19 @@ function StudentGradesIndex() {
                                 className="btn btn-sm btn-info border-0 shadow me-2"
                                 type="button"
                               >
-                                Details
+                                Print Certificate
                               </Link>
                             ) : (
                               ""
                             )}
+
+                            <Link
+                              to={`/students/grades/details/${grade?.id}`}
+                              className="btn btn-sm btn-info border-0 shadow me-2"
+                              type="button"
+                            >
+                              Review
+                            </Link>
 
                             {/* <button
                               className="btn btn-gray-800 mt-2 animate-up-2"
