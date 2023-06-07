@@ -224,7 +224,7 @@ function ExamQuestion() {
             <Question
               question={session?.QuestionGroups[no - 1]}
               answerHandler={answerHandler}
-              answers={userAnswers}
+              userAnswers={userAnswers}
             />
 
             <div className="card-footer">

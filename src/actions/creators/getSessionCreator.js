@@ -35,6 +35,7 @@ export const getSessionMiddleware = () => async (dispatch) => {
         access_token: localStorage.getItem("access_token"),
       },
     });
+    console.log(res.data, "GET SESSION CREATOR");
 
     dispatch(getSessionAction(res.data));
   } catch (error) {

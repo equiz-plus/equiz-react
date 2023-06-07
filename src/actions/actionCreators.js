@@ -40,6 +40,10 @@ import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator"
 import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import { readStudentsMiddleware } from "./creators/readStudentsCreator";
 import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
+import { createExamScheduleMiddleware } from "./creators/addScheduleCreator";
+import { editScheduleMiddleware } from "./creators/editScheduleCreator";
+import { getScheduleDetailMiddleware } from "./creators/getScheduleDetailCreator";
+import { readSchedulessMiddleware } from "./creators/readSchedulesCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -79,3 +83,8 @@ export const actionClearDeleteQuestions = clearDeleteQuestionsMiddleware;
 export const actionMidtransPayment = generateTokenMidtrans;
 
 export const actionReadCategories = readCategoriesMiddleware;
+
+export const actionCreateExamSchedule = createExamScheduleMiddleware;
+export const actionGetScheduleDetail = getScheduleDetailMiddleware;
+export const actionEditExamSchedule = editScheduleMiddleware;
+export const actionReadSchedules = readSchedulessMiddleware;

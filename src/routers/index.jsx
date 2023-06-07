@@ -11,6 +11,7 @@ import ExamEdit from "../pages/admin/exams/ExamEdit";
 import ExamIndex from "../pages/admin/exams/ExamIndex";
 import ExamSchedule from "../pages/admin/exams/ExamSchedule";
 import ExamScheduleCreate from "../pages/admin/exams/ExamScheduleCreate";
+import ExamScheduleEdit from "../pages/admin/exams/ExamScheduleEdit";
 import GradeIndex from "../pages/admin/grades/GradeIndex";
 import OrganizationCreate from "../pages/admin/organizations/OrganizationCreate";
 import OrganizationEdit from "../pages/admin/organizations/OrganizationEdit";
@@ -28,6 +29,7 @@ import CertificateIndex from "../pages/students/certificate/CertificateIndex";
 import ExamComfirmation from "../pages/students/exams/Comfirmation";
 import Session from "../pages/students/exams/Session";
 import ProfileEdit from "../pages/students/profiles/ProfileEdit";
+import AdminProfileEdit from "../pages/admin/profile/AdminProfileEdit";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +113,10 @@ const router = createBrowserRouter([
             path: "create-schedule",
             element: <ExamScheduleCreate />,
           },
+          {
+            path: "edit-schedule/:id",
+            element: <ExamScheduleEdit />,
+          },
         ],
       },
       {
@@ -168,6 +174,10 @@ const router = createBrowserRouter([
             element: <QuestionCreate />,
           },
         ],
+      },
+      {
+        path: "profile",
+        element: <AdminProfileEdit />,
       },
     ],
   },

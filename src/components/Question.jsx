@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 /* eslint-disable react/prop-types */
-export default function Question({ question, answerHandler, answers }) {
+export default function Question({ question, answerHandler, userAnswers }) {
   const [isPaused, setIsPaused] = useState(false);
   const [utteranceQuestion, setUtteranceQuestion] = useState(null);
   const [utteranceAnswers, setUtteranceAnswers] = useState(null);
@@ -26,14 +26,14 @@ export default function Question({ question, answerHandler, answers }) {
     const v = textAnswers?.map((answer) => {
       const utterance = new SpeechSynthesisUtterance(answer);
       // Modify voice and speed for each answer utterance
-      const answerVoice = getVoice("Microsoft Zira - English (United States)");
+      const answerVoice = getVoice("Microsoft Mark - English (United States)");
       utterance.voice = answerVoice;
       utterance.rate = 0.8; // default is 1.0
       return utterance;
     });
 
     // Modify voice and speed for the question utterance
-    const questionVoice = getVoice("Microsoft Zira - English (United States)");
+    const questionVoice = getVoice("Microsoft Mark - English (United States)");
     u.voice = questionVoice;
     u.rate = 0.8; // default is 1.0
 
@@ -124,28 +124,30 @@ export default function Question({ question, answerHandler, answers }) {
 
           <form action="">
             <div className="form-check">
-              {question?.Question.Answers.map((answer, index) => (
-                <div key={index}>
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="answer"
-                    id={answer.id}
-                    value={answer.id}
-                    onChange={() =>
-                      answerHandler(
-                        question?.questionNumber,
-                        question?.Question.id,
-                        answer.id
-                      )
-                    }
-                    checked={answers?.includes(answer.id)}
-                  />
-                  <label className="form-check-label" htmlFor={answer.id}>
-                    {answer.answer}
-                  </label>
-                </div>
-              ))}
+              {question?.Question.Answers.sort((a, b) => a.id - b.id).map(
+                (answer, index) => (
+                  <div key={index}>
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="answer"
+                      id={answer.id}
+                      value={answer.id}
+                      onChange={() =>
+                        answerHandler(
+                          question?.questionNumber,
+                          question?.Question.id,
+                          answer.id
+                        )
+                      }
+                      checked={userAnswers?.includes(answer.id)}
+                    />
+                    <label className="form-check-label" htmlFor={answer.id}>
+                      {answer.answer}
+                    </label>
+                  </div>
+                )
+              )}
             </div>
           </form>
         </div>

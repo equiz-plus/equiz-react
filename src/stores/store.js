@@ -32,6 +32,10 @@ import midtransPaymentReducer from "../reducers/midtransPaymentReducer";
 import readOrgByIdReducer from "../reducers/organizationDetailReducer";
 import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
 import readQuestionReducer from "../reducers/readQuestionReducer";
+import createExamScheduleReducer from "../reducers/addScheduleReducer";
+import editExamScheduleReducer from "../reducers/editScheduleReducer";
+import scheduleDetailReducer from "../reducers/scheduleDetailReducer";
+import readSchedulesReducer from "../reducers/readSchedulesReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -67,6 +71,11 @@ const appReducer = combineReducers({
   midtransPayment: midtransPaymentReducer,
 
   readStudents: readStudentsReducer,
+
+  createSchedule: createExamScheduleReducer,
+  scheduleDetail: scheduleDetailReducer,
+  editSchedule: editExamScheduleReducer,
+  readSchedules: readSchedulesReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -6,7 +6,7 @@ const getVoice = (voiceName) => {
 
 const speechFeedback = (text) => {
   const synth = window.speechSynthesis;
-  const answerVoice = getVoice("Microsoft Zira - English (United States)");
+  const answerVoice = getVoice("Microsoft Mark - English (United States)");
 
   const u = new SpeechSynthesisUtterance(text);
   u.voice = answerVoice;
