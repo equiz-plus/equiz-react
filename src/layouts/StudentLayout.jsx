@@ -30,6 +30,7 @@ function StudentLayout() {
       ...userData,
       avatar: localStorage.getItem("avatar"),
       name: localStorage.getItem("name"),
+      isPremium: localStorage.getItem("premStatus"),
     });
   }, []);
 
@@ -38,6 +39,8 @@ function StudentLayout() {
     localStorage.clear();
     navigate("/auth/login");
   };
+
+  console.log(userData.isPremium);
 
   return (
     <>
@@ -94,7 +97,7 @@ function StudentLayout() {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    My Profile
+                    Profile
                   </Link>
                   <Link
                     className="dropdown-item d-flex align-items-center"
@@ -117,6 +120,48 @@ function StudentLayout() {
                     </svg>
                     Grades
                   </Link>
+                  <div className="dropdown-item d-flex align-items-center">
+                    {userData?.isPremium === "true" ? (
+                      <>
+                        <svg
+                          className="dropdown-icon text-gray-400 me-2"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                          ></path>
+                        </svg>
+                        Premium User
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          className="dropdown-icon text-gray-400 me-2"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3m5.457 5.457l7.086 7.086m0 0L21 21"
+                          ></path>
+                        </svg>
+                        Free User
+                      </>
+                    )}
+                  </div>
+
                   <div role="separator" className="dropdown-divider my-1"></div>
                   <a
                     className="dropdown-item d-flex align-items-center button"
