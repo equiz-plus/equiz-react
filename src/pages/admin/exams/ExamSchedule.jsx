@@ -1,6 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { actionReadSchedules } from "../../../actions/actionCreators";
 
 function ExamSchedule() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionReadSchedules());
+  }, []);
+
+  const { schedules } = useSelector((state) => state.readSchedules);
+
   return (
     <>
       <div className="container-fluid mb-5 mt-5">
@@ -10,17 +21,17 @@ function ExamSchedule() {
               <div className="d-flex col-md-8">
                 <div className="col-md-3 col-12 mb-2">
                   <Link
-                    to="/admin/exams/create"
+                    to="/admin/exams/create-schedule"
                     className="btn btn-md btn-primary border-0 shadow w-100"
                     type="button"
                   >
                     <i className="fa fa-plus-circle me-2"></i>
-                    Add
+                    Add Schedule
                   </Link>
                 </div>
 
                 <div className="col-md-8 col-12 mb-2 mx-2">
-                  <form>
+                  {/* <form>
                     <div className="input-group">
                       <input
                         type="text"
@@ -32,15 +43,15 @@ function ExamSchedule() {
                         <i className="fa fa-search"></i>
                       </span>
                     </div>
-                  </form>
+                  </form> */}
                 </div>
               </div>
 
               <div className="col-md-2 col-12 mb-2 d-flex">
-                <select className="form-select" name="category">
+                {/* <select className="form-select" name="category">
                   <option value="">All</option>
                   <option value="">nama kategory</option>
-                </select>
+                </select> */}
               </div>
             </div>
           </div>
@@ -74,24 +85,26 @@ function ExamSchedule() {
                     <div className="mt-2"></div>
 
                     <tbody>
-                      <tr>
-                        <td className="fw-bold text-center">1</td>
-                        <td>Judul Ujian</td>
-                        <td>12/05/2023</td>
-                        <td>12/06/2023</td>
-                        <td className="text-center">
-                          <Link
-                            to={`/admin/exams/edit/`}
-                            className="btn btn-sm btn-info border-0 shadow me-2"
-                            type="button"
-                          >
-                            <i className="fa fa-pencil-alt"></i>
-                          </Link>
-                          <button className="btn btn-sm btn-danger border-0">
-                            <i className="fa fa-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      {schedules?.map((schedule, index) => (
+                        <tr key={index}>
+                          <td className="fw-bold text-center">{index + 1}</td>
+                          <td>{schedule.Exam.title}</td>
+                          <td>{schedule.startingDate.slice(0, 10)}</td>
+                          <td>{schedule.endDate.slice(0, 10)}</td>
+                          <td className="text-center">
+                            <Link
+                              to={`/admin/exams/edit-schedule/${schedule.id}`}
+                              className="btn btn-sm btn-info border-0 shadow me-2"
+                              type="button"
+                            >
+                              <i className="fa fa-pencil-alt"></i>
+                            </Link>
+                            <button className="btn btn-sm btn-danger border-0">
+                              <i className="fa fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
