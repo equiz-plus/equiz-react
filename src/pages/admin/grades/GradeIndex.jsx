@@ -21,6 +21,7 @@ const GradeIndex = () => {
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  console.log(certificates.certificates);
 
   return (
     <>
@@ -96,7 +97,7 @@ const GradeIndex = () => {
                             </td>
                             <td className="text-center">
                               <Link
-                                to={`/admin/grades/details/${cert.id}`}
+                                to={`/certificates/${cert.slug}`}
                                 className="btn btn-sm btn-info border-0 shadow me-2"
                                 type="button"
                               >
