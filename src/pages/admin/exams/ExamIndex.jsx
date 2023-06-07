@@ -99,8 +99,6 @@ function ExamIndex() {
     }
   }, [successDelete, errorDelete]);
 
-  console.log(exams);
-
   return (
     <>
       <div className="container-fluid mb-5 mt-5">

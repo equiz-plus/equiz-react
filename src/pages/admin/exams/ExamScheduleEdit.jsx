@@ -34,7 +34,6 @@ const ExamScheduleCreate = () => {
     } else {
       toast.error(errorMessage);
     }
-    console.log(scheduleDetail, "<<<<<");
   }, [isSuccess, isError]);
 
   // INPUT

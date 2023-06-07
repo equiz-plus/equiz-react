@@ -39,7 +39,6 @@ export const answerExamMiddleware =
           },
         }
       );
-      console.log(res.data);
 
       dispatch(answerExamAction(res.data));
     } catch (error) {

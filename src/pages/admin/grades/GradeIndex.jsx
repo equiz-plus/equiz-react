@@ -21,7 +21,6 @@ const GradeIndex = () => {
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  console.log(certificates.certificates);
 
   return (
     <>

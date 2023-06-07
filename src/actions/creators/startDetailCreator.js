@@ -29,7 +29,6 @@ export const startDetailMiddleware = (id) => async (dispatch) => {
         access_token: localStorage.getItem("access_token"),
       },
     });
-    console.log(res.data, "ini res data");
 
     dispatch(startDetailAction(res.data));
   } catch (error) {

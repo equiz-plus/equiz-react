@@ -61,6 +61,7 @@ function ProfileEdit() {
     if (isError) {
       toast.error(errorMessage);
     } else if (isSuccess) {
+      localStorage.setItem("name", userData.name);
       toast.success(`Profile updated`);
       navigate("/students");
     }

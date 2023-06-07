@@ -32,6 +32,14 @@ function StudentLayout() {
       ...userData,
       avatar: localStorage.getItem("avatar"),
       name: localStorage.getItem("name"),
+    });
+  }, [location]);
+
+  useEffect(() => {
+    setUserData({
+      ...userData,
+      avatar: localStorage.getItem("avatar"),
+      name: localStorage.getItem("name"),
       isPremium: localStorage.getItem("premStatus"),
     });
   }, []);
@@ -126,7 +134,7 @@ function StudentLayout() {
                     Grades
                   </Link>
                   <div className="dropdown-item d-flex align-items-center">
-                    {userData?.isPremium ? (
+                    {localStorage.getItem("premStatus") === "true" ? (
                       <>
                         <svg
                           className="dropdown-icon text-gray-400 me-2"
@@ -166,7 +174,7 @@ function StudentLayout() {
                       </>
                     )}
                   </div>
-                  {userData?.isPremium ? null : (
+                  {localStorage.getItem("premStatus") === "true" ? null : (
                     <Link
                       className="dropdown-item d-flex align-items-center"
                       onClick={getPremium}

@@ -21,7 +21,6 @@ export const loginMiddleware = (data) => async (dispatch) => {
     dispatch(loginActionLoading());
 
     const res = await axios.post(`${baseUrl}/login`, data);
-    console.log(res.data);
     dispatch(loginAction(res.data));
   } catch (error) {
     dispatch(loginActionError(error.response.data.message));
