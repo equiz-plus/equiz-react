@@ -29,16 +29,17 @@ import editOrganizationReducer from "../reducers/editOrganizationReducer";
 import editUserDetailReducer from "../reducers/editUserDetailReducer";
 import readStudentsReducer from "../reducers/getStudentsReducer";
 
+import addCategoryReducer from "../reducers/addCategoryReducer";
 import addQuestionReducer from "../reducers/addQuestionReducer";
 import readCertificatesReducer from "../reducers/readCertificatesReducer";
-import addCategoryReducer from "../reducers/addCategoryReducer";
 
+import getStatisticReducer from "../reducers/getStatisticReducer";
 import midtransPaymentReducer from "../reducers/midtransPaymentReducer";
 import readOrgByIdReducer from "../reducers/organizationDetailReducer";
+import readCertificateIdReducer from "../reducers/readCertificateIdReducer";
+import readGradesReducer from "../reducers/readGradesReducer";
 import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
 import readQuestionReducer from "../reducers/readQuestionReducer";
-import readGradesReducer from "../reducers/readGradesReducer";
-import readCertificateIdReducer from "../reducers/readCertificateIdReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -80,6 +81,7 @@ const appReducer = combineReducers({
 
   readStudents: readStudentsReducer,
   readGrades: readGradesReducer,
+  getStatistic: getStatisticReducer,
 });
 
 const rootReducer = (state, action) => {

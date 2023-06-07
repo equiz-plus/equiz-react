@@ -139,4 +139,9 @@ export const READ_GRADES_USER_SUCCESS = "grades/userReadSucces";
 export const READ_GRADES_USER_FAILED = "grades/userReadFailed";
 export const READ_GRADES_USER_LOADING = "grades/userReadLoading";
 
+// GET STATISTICS
+export const GET_STATISTICS_SUCCESS = "statistics/getStatisticsSuccess";
+export const GET_STATISTICS_FAILED = "statistics/getStatisticsFailed";
+export const GET_STATISTICS_LOADING = "statistics/getStatisticsLoading";
+
 export const CLEAR_STATE = "state/clearState";

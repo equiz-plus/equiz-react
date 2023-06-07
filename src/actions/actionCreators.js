@@ -40,13 +40,14 @@ import { readOrganizationMiddleware } from "./creators/readOrganizationsCreator"
 import { readQuestionsMiddleware } from "./creators/readQuestionsCreator";
 import { readStudentsMiddleware } from "./creators/readStudentsCreator";
 
+import { addCategoryMiddleware } from "./creators/addCategoryCreator";
 import { addQuestionMiddleware } from "./creators/addQuestionCreator";
 import { readCertificatesMiddleware } from "./creators/readCertificatesCreator";
-import { addCategoryMiddleware } from "./creators/addCategoryCreator";
 
-import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
-import { userReadGradesMiddleware } from "./creators/readGradesCreator";
+import { getStatisticsMiddleware } from "./creators/getStatisticCreator";
 import { readCertificateIdMiddleware } from "./creators/readCertificatesIdCreator";
+import { userReadGradesMiddleware } from "./creators/readGradesCreator";
+import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -93,3 +94,5 @@ export const actionReadCategories = readCategoriesMiddleware;
 export const actionCreateCategory = addCategoryMiddleware;
 
 export const actionUserReadGrades = userReadGradesMiddleware;
+
+export const actionGetStatistic = getStatisticsMiddleware;
