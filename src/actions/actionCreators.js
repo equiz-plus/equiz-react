@@ -52,6 +52,7 @@ import { createExamScheduleMiddleware } from "./creators/addScheduleCreator";
 import { editScheduleMiddleware } from "./creators/editScheduleCreator";
 import { getScheduleDetailMiddleware } from "./creators/getScheduleDetailCreator";
 import { readSchedulessMiddleware } from "./creators/readSchedulesCreator";
+import { scrollDownMiddleware } from "./creators/scrollDownCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -105,3 +106,5 @@ export const actionCreateCategory = addCategoryMiddleware;
 export const actionUserReadGrades = userReadGradesMiddleware;
 
 export const actionGetStatistic = getStatisticsMiddleware;
+
+export const actionScrollDown = scrollDownMiddleware;

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { actionReadUserDetail } from "../actions/actionCreators";
+import { scrollDownAction } from "../actions/creators/scrollDownCreator";
 
 function StudentLayout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const { userDetails } = useSelector((state) => state.readUserDetail);
 
@@ -40,7 +42,11 @@ function StudentLayout() {
     navigate("/auth/login");
   };
 
-  console.log(userData.isPremium);
+  const getPremium = (e) => {
+    e.preventDefault();
+    navigate("/");
+    dispatch(scrollDownAction());
+  };
 
   return (
     <>
@@ -120,7 +126,7 @@ function StudentLayout() {
                     Grades
                   </Link>
                   <div className="dropdown-item d-flex align-items-center">
-                    {userData?.isPremium === "true" ? (
+                    {userData?.isPremium ? (
                       <>
                         <svg
                           className="dropdown-icon text-gray-400 me-2"
@@ -160,6 +166,29 @@ function StudentLayout() {
                       </>
                     )}
                   </div>
+                  {userData?.isPremium ? null : (
+                    <Link
+                      className="dropdown-item d-flex align-items-center"
+                      onClick={getPremium}
+                    >
+                      <svg
+                        className="dropdown-icon text-gray-400 me-2"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                        ></path>
+                      </svg>
+                      Get Premium
+                    </Link>
+                  )}
 
                   <div role="separator" className="dropdown-divider my-1"></div>
                   <a

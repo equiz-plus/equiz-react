@@ -44,6 +44,7 @@ import createExamScheduleReducer from "../reducers/addScheduleReducer";
 import editExamScheduleReducer from "../reducers/editScheduleReducer";
 import scheduleDetailReducer from "../reducers/scheduleDetailReducer";
 import readSchedulesReducer from "../reducers/readSchedulesReducer";
+import scrollDownReducer from "../reducers/scrollDownReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -92,6 +93,8 @@ const appReducer = combineReducers({
 
   readGrades: readGradesReducer,
   getStatistic: getStatisticReducer,
+
+  scrollDown: scrollDownReducer,
 });
 
 const rootReducer = (state, action) => {
