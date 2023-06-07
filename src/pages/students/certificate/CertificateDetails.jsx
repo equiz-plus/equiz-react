@@ -1,8 +1,6 @@
-import React, { useRef } from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 import { actionReadCertificateId } from "../../../actions/actionCreators";
 
 const CertificateDetails = () => {
@@ -26,8 +24,6 @@ const CertificateDetails = () => {
     margin: "15px",
   };
 
-  console.log(certificateById);
-
   return (
     <>
       <div style={cardStyle}>
@@ -37,7 +33,7 @@ const CertificateDetails = () => {
             id="header"
           >
             <img
-              src={"/public/assets/images/equizlogo.png"}
+              src={"/assets/images/equizlogo.png"}
               alt=""
               style={{ margin: "45px", width: "70pt", height: "70pt" }}
             />
@@ -53,7 +49,7 @@ const CertificateDetails = () => {
               </h1>
             </div>
             <img
-              src={"/public/assets/images/sample-logo.png"}
+              src={"/assets/images/sample-logo.png"}
               alt=""
               style={{ margin: "45px", width: "70pt", height: "70pt" }}
             />
@@ -93,7 +89,7 @@ const CertificateDetails = () => {
               }}
             >
               <img
-                src="/public/assets/images/TandaTanganLiu.png"
+                src="/assets/images/TandaTanganLiu.png"
                 alt=""
                 style={{ width: "466px", height: "198px", marginLeft: "-75px" }}
               />

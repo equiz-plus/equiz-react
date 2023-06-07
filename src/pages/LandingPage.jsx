@@ -35,24 +35,26 @@ function LandingPage() {
     <>
       <main>
         {/* <!-- Hero --> */}
-        <section className="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
+        <section className="section-header pt-7 pt-lg-8 pb-2 mb-2 pb-lg-8 bg-dark text-dark">
           <div className="container">
             <div className="row">
               <div className="col-12 text-center">
                 <img
                   className="navbar-brand-dark mb-4"
-                  src="../public/assets/images/equizlogo.png"
+                  src="../assets/images/equizlogo.png"
                   height="120"
                   alt="Logo light"
                 />
-                <h1 className="display-1">EQUIZ+</h1>
                 <div className="mb-5">
-                  <h2 className="h3 text-muted mr-3">
-                    Unlock Your Potential with Seamless Online Testing!
+                  <h2 className="display-1">
+                    Unlock Your{" "}
+                    <span className="text-primary" style={{ color: "blue" }}>
+                      Potential
+                    </span>{" "}
+                    with Seamless Online Testing!
                   </h2>
                 </div>
-
-                <div className="d-flex justify-content-center align-items-end flex-wrap mb-6">
+                <div className="d-flex justify-content-center align-items-end flex-wrap mb-0">
                   <Link to={"/students"}>
                     <div className="btn btn-secondary text-dark mr-4 mb-3 mb-lg-0">
                       Go to dashboard
@@ -60,7 +62,7 @@ function LandingPage() {
                   </Link>
 
                   <Link to={"auth/login"}>
-                    <div className="btn btn-outlineWhite mr-4 mb-3 mx-2 mb-lg-0">
+                    <div className="btn btn-outline-primary mr-4 mb-3 mx-2 mb-lg-0">
                       Login to your account
                     </div>
                   </Link>
@@ -68,35 +70,14 @@ function LandingPage() {
               </div>
             </div>
           </div>
-          <figure className="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
-            <svg
-              className="home-pattern"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 3000 185.4"
-            >
-              <path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
-            </svg>
-          </figure>
         </section>
-        <div className="section pt-0">
-          <div className="container mt-n10 mt-lg-n12 z-2">
-            <div className="row justify-content-center">
-              <div className="col-12">
-                <img
-                  src="https://www.sampoernaacademy.sch.id/wp-content/uploads/2020/11/SA-Image-Online-Exam.png"
-                  alt="Online Exam Plus"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <section className="section section-lg bg-soft pt-0">
+        <section className="section section-lg bg-white mt-4 pb-5 pt-5">
           <div className="container">
-            <div className="row justify-content-center mb-5 mb-lg-6">
+            <div className="row justify-content-center mb-5 mt-5 mb-lg-6">
               <div className="col-6 col-md-3 text-center mb-4">
                 <div className="icon icon-shape bg-white shadow-lg rounded mb-4">
                   <svg
-                    className="icon icon-md text-secondary"
+                    className="icon icon-md text-primary"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
@@ -117,7 +98,7 @@ function LandingPage() {
               <div className="col-6 col-md-3 text-center mb-4">
                 <div className="icon icon-shape bg-white shadow-lg rounded mb-4">
                   <svg
-                    className="icon icon-md text-secondary"
+                    className="icon icon-md text-primary"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
@@ -138,7 +119,7 @@ function LandingPage() {
               <div className="col-6 col-md-3 text-center">
                 <div className="icon icon-shape bg-white shadow-lg rounded mb-4">
                   <svg
-                    className="icon icon-md text-secondary"
+                    className="icon icon-md text-primary"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
@@ -159,7 +140,7 @@ function LandingPage() {
               <div className="col-6 col-md-3 text-center">
                 <div className="icon icon-shape bg-white shadow-lg rounded mb-4">
                   <svg
-                    className="icon icon-md text-secondary"
+                    className="icon icon-md text-primary"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
@@ -263,7 +244,7 @@ function LandingPage() {
               </div>
               <div className="col-lg-6 order-lg-1">
                 <img
-                  src="../../public/assets/images/ecertificate.png"
+                  src="../../assets/images/ecertificate.png"
                   alt="E Certificate"
                 />
               </div>
@@ -308,7 +289,7 @@ function LandingPage() {
             </div>
           </div>
         </section>
-        <section className="section section-sm pt-0">
+        <section className="section section-sm pt-8">
           <div className="container">
             <div className="row justify-content-center mb-5 mb-lg-6">
               <div className="col-12 text-center">
@@ -801,10 +782,10 @@ function LandingPage() {
                     <div className="d-flex mb-3">
                       {" "}
                       <span className="h5 text-gray-600 me-2 mb-0">
-                        Rp
+                        IDR
                       </span>{" "}
                       <span className="display-2 mb-0 fw-extrabold text-primary">
-                        300. k
+                        300K
                       </span>{" "}
                     </div>
                     <h3 className="h4 mb-3">Monthly</h3>
@@ -902,7 +883,7 @@ function LandingPage() {
                         IDR
                       </span>{" "}
                       <span className="display-2 mb-0 fw-extrabold text-primary">
-                        1200k
+                        1.200K
                       </span>{" "}
                     </div>
                     <h3 className="h4 mb-3">Half-yearly</h3>
@@ -1001,7 +982,7 @@ function LandingPage() {
                         IDR
                       </span>{" "}
                       <span className="display-2 mb-0 fw-extrabold text-primary">
-                        2000k
+                        2.000K
                       </span>{" "}
                     </div>
                     <h3 className="h4 mb-3">Yearly</h3>
@@ -1209,7 +1190,7 @@ function LandingPage() {
               <img
                 className="navbar-brand-dark mb-4"
                 height="50"
-                src="../public/assets/images/logo-white.png"
+                src="../assets/images/logo-white.png"
                 alt="Logo light"
               />
               <p className="text-gray-300">
@@ -1365,7 +1346,7 @@ function LandingPage() {
             <div className="col mb-md-0">
               <a href="" className="d-flex justify-content-center">
                 <img
-                  src="./public/assets/images/logo-white.png"
+                  src="./assets/images/logo-white.png"
                   height="50"
                   className="mb-4"
                   alt="Equiz+ Logo"

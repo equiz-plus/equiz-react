@@ -169,9 +169,11 @@ function ExamIndex() {
                         <th className="border-0">Exam</th>
                         <th className="border-0">Organization</th>
                         <th className="border-0">Category</th>
-                        <th className="border-0">Time (minutes)</th>
-                        <th className="border-0">Total Questions</th>
-                        <th className="border-0">Status</th>
+                        <th className="border-0">Time</th>
+                        <th className="border-0">Questions</th>
+                        <th className="border-0" style={{ width: 15 + "%" }}>
+                          Status
+                        </th>
                         <th
                           className="border-0 rounded-end"
                           style={{ width: 5 + "%" }}

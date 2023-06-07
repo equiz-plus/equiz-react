@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { actionUserReadGrades } from "../../../actions/actionCreators";
 function StudentGradesIndex() {
   const dispatch = useDispatch();
@@ -48,14 +47,19 @@ function StudentGradesIndex() {
                           <td>{grade?.Exam?.CategoryId}</td>
                           <td>{grade?.grade}</td>
                           <td className="text-center">
-                            <Link
-                              to={`/certificates/${grade?.Certificates[0]?.slug}`}
-                              className="btn btn-sm btn-info border-0 shadow me-2"
-                              type="button"
-                            >
-                              Details
-                            </Link>
-                            <button
+                            {grade.Certificates[0]?.slug !== undefined ? (
+                              <Link
+                                to={`/certificates/${grade?.Certificates[0]?.slug}`}
+                                className="btn btn-sm btn-info border-0 shadow me-2"
+                                type="button"
+                              >
+                                Details
+                              </Link>
+                            ) : (
+                              ""
+                            )}
+
+                            {/* <button
                               className="btn btn-gray-800 mt-2 animate-up-2"
                               type="submit"
                               onClick={() => {
@@ -66,7 +70,7 @@ function StudentGradesIndex() {
                               }}
                             >
                               Save all
-                            </button>
+                            </button> */}
                           </td>
                         </tr>
                       ))}
