@@ -45,6 +45,8 @@ import { readCertificatesMiddleware } from "./creators/readCertificatesCreator";
 import { addCategoryMiddleware } from "./creators/addCategoryCreator";
 
 import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
+import { userReadGradesMiddleware } from "./creators/readGradesCreator";
+import { readCertificateIdMiddleware } from "./creators/readCertificatesIdCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -83,8 +85,11 @@ export const actionClearDeleteQuestions = clearDeleteQuestionsMiddleware;
 export const actionCreateQuestions = addQuestionMiddleware;
 
 export const actionReadCertificates = readCertificatesMiddleware;
+export const actionReadCertificateId = readCertificateIdMiddleware;
 
 export const actionMidtransPayment = generateTokenMidtrans;
 
 export const actionReadCategories = readCategoriesMiddleware;
 export const actionCreateCategory = addCategoryMiddleware;
+
+export const actionUserReadGrades = userReadGradesMiddleware;

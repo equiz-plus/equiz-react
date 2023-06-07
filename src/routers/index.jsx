@@ -28,6 +28,7 @@ import CertificateIndex from "../pages/students/certificate/CertificateIndex";
 import ExamComfirmation from "../pages/students/exams/Comfirmation";
 import Session from "../pages/students/exams/Session";
 import ProfileEdit from "../pages/students/profiles/ProfileEdit";
+import StudentGradesIndex from "../pages/students/grades/StudentGradesIndex";
 
 const router = createBrowserRouter([
   {
@@ -205,7 +206,16 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <CertificateIndex />,
+            element: <StudentGradesIndex />,
+          },
+        ],
+      },
+      {
+        path: "grades",
+        children: [
+          {
+            path: "",
+            element: <StudentGradesIndex />,
           },
         ],
       },
@@ -225,7 +235,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/certificates/details",
+    path: "/certificates/:slug",
     element: <CertificateDetails />,
   },
 ]);

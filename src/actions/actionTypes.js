@@ -115,11 +115,14 @@ export const READ_STUDENTS_SUCCESS = "students/readStudents";
 export const READ_STUDENTS_FAILED = "students/readStudentsError";
 export const READ_STUDENTS_LOADING = "students/readStudentsLoading";
 
-
 // CERTIFICATES
 export const READ_CERTIFICATES_SUCCESS = "certificates/readSuccess";
 export const READ_CERTIFICATES_FAILED = "certificates/readFailed";
 export const READ_CERTIFICATES_LOADING = "certificates/readLoading";
+
+export const READ_CERTIFICATE_ID_SUCCESS = "certificates/idSuccess";
+export const READ_CERTIFICATE_ID_FAILED = "certificates/idFailed";
+export const READ_CERTIFICATE_ID_LOADING = "certificates/idLoading";
 
 // CATEGORIES
 export const CREATE_CATEGORY_SUCCESS = "categories/addSuccess";
@@ -131,5 +134,9 @@ export const GENERATE_TOKEN_MIDTRANS_SUCCESS = "midtrans/generateTokenSuccess";
 export const GENERATE_TOKEN_MIDTRANS_FAILED = "midtrans/generateTokenFailed";
 export const GENERATE_TOKEN_MIDTRANS_LOADING = "midtrans/generateTokenLoading";
 
+// USER GRADES
+export const READ_GRADES_USER_SUCCESS = "grades/userReadSucces";
+export const READ_GRADES_USER_FAILED = "grades/userReadFailed";
+export const READ_GRADES_USER_LOADING = "grades/userReadLoading";
 
 export const CLEAR_STATE = "state/clearState";
