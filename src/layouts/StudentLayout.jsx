@@ -62,7 +62,6 @@ function StudentLayout() {
               <li className="nav-item dropdown ms-lg-3">
                 <a
                   className="nav-link dropdown-toggle pt-1 px-0"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"

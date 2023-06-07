@@ -1,9 +1,7 @@
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { actionReadUserDetail } from "../actions/actionCreators";
-
 
 function Navbar() {
   const navigate = useNavigate();
@@ -48,7 +46,6 @@ function Navbar() {
               <li className="nav-item dropdown ms-lg-3">
                 <a
                   className="nav-link dropdown-toggle pt-1 px-0"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -57,7 +54,6 @@ function Navbar() {
                     <img
                       className="avatar rounded-circle"
                       alt="Image placeholder"
-
                       src={localStorage.getItem("avatar")}
                     />
                     <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
