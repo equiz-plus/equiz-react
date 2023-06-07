@@ -160,7 +160,7 @@ function ExamIndex() {
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered table-centered table-nowrap mb-0 rounded">
-                    <thead className="thead-dark">
+                    <thead className="thead-dark text-center">
                       <tr className="border-0">
                         <th
                           className="border-0 rounded-start"
@@ -169,10 +169,10 @@ function ExamIndex() {
                           No.
                         </th>
                         <th className="border-0">Exam</th>
-                        <th className="border-0">Organization</th>
+                        <th className="border-0" style={{ width: 10 + "%" }}>
+                          Organization
+                        </th>
                         <th className="border-0">Category</th>
-                        <th className="border-0">Time</th>
-                        <th className="border-0">Questions</th>
                         <th className="border-0" style={{ width: 15 + "%" }}>
                           Status
                         </th>
@@ -194,10 +194,28 @@ function ExamIndex() {
                           <td>{exam.title}</td>
                           <td>{exam.Organization?.name}</td>
                           <td>{exam.Category.name}</td>
-                          <td className="text-center">{exam.duration}</td>
-                          <td className="text-center">{exam.totalQuestions}</td>
                           <td className="text-center">
-                            <select
+                            <div
+                              className="form-check form-switch"
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <input
+                                className="form-check-input"
+                                type="checkbox"
+                                name="isOpen"
+                                onChange={() => statusHandler(exam.id)}
+                                checked={exam.isOpen}
+                                style={{
+                                  height: 25 + "px",
+                                  width: 50 + "px",
+                                }}
+                              />
+                              <label className="form-check-label"></label>
+                            </div>
+                            {/* <select
                               name="isOpen"
                               id=""
                               className="form-select"
@@ -206,7 +224,7 @@ function ExamIndex() {
                             >
                               <option value="true">Open</option>
                               <option value="false">Closed</option>
-                            </select>
+                            </select> */}
                             {/* <div class="form-check form-switch">
                               <input
                                 className="form-check-input"
