@@ -89,7 +89,6 @@ function ProfileEdit() {
                       id="email"
                       type="text"
                       placeholder="Enter your email"
-                      required
                       name="email"
                       defaultValue={userData?.email}
                       onChange={formHandler}
@@ -104,7 +103,6 @@ function ProfileEdit() {
                       id="username"
                       type="text"
                       placeholder="Your username"
-                      required
                       name="username"
                       defaultValue={userData?.username}
                       onChange={formHandler}
@@ -121,7 +119,6 @@ function ProfileEdit() {
                       id="old-password"
                       type="password"
                       placeholder="Enter your old password"
-                      required
                       name="oldPassword"
                       onChange={formHandler}
                     />
@@ -135,7 +132,6 @@ function ProfileEdit() {
                       id="new-password"
                       type="password"
                       placeholder="Enter your new password"
-                      required
                       name="password"
                       onChange={formHandler}
                     />
@@ -151,7 +147,6 @@ function ProfileEdit() {
                       id="name"
                       type="text"
                       placeholder="Your full name"
-                      required
                       defaultValue={userData?.name}
                       name="name"
                       onChange={formHandler}
@@ -187,7 +182,6 @@ function ProfileEdit() {
                       id="phone"
                       type="text"
                       placeholder="Your phone number"
-                      required
                       defaultValue={userData?.phone}
                       onChange={formHandler}
                       name="phone"
@@ -202,7 +196,6 @@ function ProfileEdit() {
                       id="avatar"
                       type="text"
                       placeholder="Enter an image URL"
-                      required
                       onChange={formHandler}
                       name="avatar"
                     />
