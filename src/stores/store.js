@@ -40,6 +40,10 @@ import readCertificateIdReducer from "../reducers/readCertificateIdReducer";
 import readGradesReducer from "../reducers/readGradesReducer";
 import readOrganzationsReducer from "../reducers/readOrganizationsReducer";
 import readQuestionReducer from "../reducers/readQuestionReducer";
+import createExamScheduleReducer from "../reducers/addScheduleReducer";
+import editExamScheduleReducer from "../reducers/editScheduleReducer";
+import scheduleDetailReducer from "../reducers/scheduleDetailReducer";
+import readSchedulesReducer from "../reducers/readSchedulesReducer";
 
 // combine reducers
 const appReducer = combineReducers({
@@ -80,6 +84,12 @@ const appReducer = combineReducers({
   midtransPayment: midtransPaymentReducer,
 
   readStudents: readStudentsReducer,
+
+  createSchedule: createExamScheduleReducer,
+  scheduleDetail: scheduleDetailReducer,
+  editSchedule: editExamScheduleReducer,
+  readSchedules: readSchedulesReducer,
+
   readGrades: readGradesReducer,
   getStatistic: getStatisticReducer,
 });

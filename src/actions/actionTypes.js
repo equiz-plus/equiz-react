@@ -134,6 +134,23 @@ export const GENERATE_TOKEN_MIDTRANS_SUCCESS = "midtrans/generateTokenSuccess";
 export const GENERATE_TOKEN_MIDTRANS_FAILED = "midtrans/generateTokenFailed";
 export const GENERATE_TOKEN_MIDTRANS_LOADING = "midtrans/generateTokenLoading";
 
+// EXAM SCHEDULE
+export const CREATE_EXAM_SCHEDULE_SUCCESS = "exams/createScheduleSuccess";
+export const CREATE_EXAM_SCHEDULE_LOADING = "exams/createScheduleLoading";
+export const CREATE_EXAM_SCHEDULE_ERROR = "exams/createScheduleError";
+
+export const GET_SCHEDULE_DETAIL_SUCCESS = "exams/getScheduleDetailSuccess";
+export const GET_SCHEDULE_DETAIL_LOADING = "exams/getScheduleDetailLoading";
+export const GET_SCHEDULE_DETAIL_ERROR = "exams/getScheduleDetailError";
+
+export const EDIT_EXAM_SCHEDULE_SUCCESS = "exams/editScheduleSuccess";
+export const EDIT_EXAM_SCHEDULE_LOADING = "exams/editScheduleLoading";
+export const EDIT_EXAM_SCHEDULE_ERROR = "exams/editScheduleError";
+
+export const READ_SCHEDULES_SUCCESS = "exams/readSchedulesSuccess";
+export const READ_SCHEDULES_LOADING = "exams/readSchedulesLoading";
+export const READ_SCHEDULES_ERROR = "exams/readSchedulesError";
+
 // USER GRADES
 export const READ_GRADES_USER_SUCCESS = "grades/userReadSucces";
 export const READ_GRADES_USER_FAILED = "grades/userReadFailed";
@@ -143,5 +160,6 @@ export const READ_GRADES_USER_LOADING = "grades/userReadLoading";
 export const GET_STATISTICS_SUCCESS = "statistics/getStatisticsSuccess";
 export const GET_STATISTICS_FAILED = "statistics/getStatisticsFailed";
 export const GET_STATISTICS_LOADING = "statistics/getStatisticsLoading";
+
 
 export const CLEAR_STATE = "state/clearState";

@@ -48,6 +48,10 @@ import { getStatisticsMiddleware } from "./creators/getStatisticCreator";
 import { readCertificateIdMiddleware } from "./creators/readCertificatesIdCreator";
 import { userReadGradesMiddleware } from "./creators/readGradesCreator";
 import { readUserDetailMiddleware } from "./creators/readUserDetailsCreator";
+import { createExamScheduleMiddleware } from "./creators/addScheduleCreator";
+import { editScheduleMiddleware } from "./creators/editScheduleCreator";
+import { getScheduleDetailMiddleware } from "./creators/getScheduleDetailCreator";
+import { readSchedulessMiddleware } from "./creators/readSchedulesCreator";
 
 export const actionLogin = loginMiddleware;
 export const actionRegister = registerMiddleware;
@@ -91,6 +95,11 @@ export const actionReadCertificateId = readCertificateIdMiddleware;
 export const actionMidtransPayment = generateTokenMidtrans;
 
 export const actionReadCategories = readCategoriesMiddleware;
+
+export const actionCreateExamSchedule = createExamScheduleMiddleware;
+export const actionGetScheduleDetail = getScheduleDetailMiddleware;
+export const actionEditExamSchedule = editScheduleMiddleware;
+export const actionReadSchedules = readSchedulessMiddleware;
 export const actionCreateCategory = addCategoryMiddleware;
 
 export const actionUserReadGrades = userReadGradesMiddleware;
