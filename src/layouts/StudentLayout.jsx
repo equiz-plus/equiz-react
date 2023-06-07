@@ -50,12 +50,12 @@ function StudentLayout() {
     navigate("/auth/login");
   };
 
+
   const getPremium = (e) => {
     e.preventDefault();
     navigate("/");
     dispatch(scrollDownAction());
   };
-
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-transparent navbar-dark navbar-theme-primary mb-4 shadow">

@@ -12,7 +12,7 @@ const CertificateDetails = () => {
     dispatch(actionReadCertificateId(slug));
     setTimeout(() => {
       window.print();
-    }, 1000);
+    }, 1500);
   }, []);
 
   const cardStyle = {
@@ -102,12 +102,20 @@ const CertificateDetails = () => {
             </div>
 
             <div>
+              <img
+                src={certificateById?.Exam?.Organization?.sign}
+                alt=""
+                style={{
+                  height: "198px",
+                  marginRight: "-75px",
+                }}
+              />
               <u>
                 <h5
                   style={{
                     justifyContent: "center",
                     fontSize: "25px",
-                    marginLeft: "270px",
+                    marginLeft: "150px",
                   }}
                 >
                   {certificateById?.Exam?.Organization?.pic}

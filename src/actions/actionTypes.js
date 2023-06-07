@@ -156,13 +156,17 @@ export const READ_GRADES_USER_SUCCESS = "grades/userReadSucces";
 export const READ_GRADES_USER_FAILED = "grades/userReadFailed";
 export const READ_GRADES_USER_LOADING = "grades/userReadLoading";
 
+export const READ_GRADE_DETAILS_SUCCESS = "grades/readDetailsSuccess";
+export const READ_GRADE_DETAILS_FAILED = "grades/readDetailsFailed";
+export const READ_GRADE_DETAILS_LOADING = "grades/readDetailsLoading";
+
 // GET STATISTICS
 export const GET_STATISTICS_SUCCESS = "statistics/getStatisticsSuccess";
 export const GET_STATISTICS_FAILED = "statistics/getStatisticsFailed";
 export const GET_STATISTICS_LOADING = "statistics/getStatisticsLoading";
 
+
 // SCROLL DOWN WHEN CLICK GET PREMIUM
 export const SCROLL_DOWN = "scrollDown/scrollDown";
 export const CLEAR_SCROLL_DOWN = "scrollDown/clearScrollDown";
-
 export const CLEAR_STATE = "state/clearState";
