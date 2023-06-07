@@ -44,7 +44,7 @@ function Navbar() {
             <div className="d-flex align-items-center"></div>
             <ul className="navbar-nav align-items-center">
               <li className="nav-item dropdown ms-lg-3">
-                <a
+                <div
                   className="nav-link dropdown-toggle pt-1 px-0"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -62,7 +62,7 @@ function Navbar() {
                       </span>
                     </div>
                   </div>
-                </a>
+                </div>
                 <div className="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1 border-0 shadow">
                   <Link
                     className="dropdown-item d-flex align-items-center button"
