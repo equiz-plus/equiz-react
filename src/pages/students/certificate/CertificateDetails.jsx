@@ -24,6 +24,8 @@ const CertificateDetails = () => {
     margin: "15px",
   };
 
+  console.log(certificateById);
+
   return (
     <>
       <div style={cardStyle}>
@@ -49,9 +51,9 @@ const CertificateDetails = () => {
               </h1>
             </div>
             <img
-              src={"/assets/images/sample-logo.png"}
+              src={certificateById?.Exam?.Organization?.logo}
               alt=""
-              style={{ margin: "45px", width: "70pt", height: "70pt" }}
+              style={{ margin: "45px", height: "70pt" }}
             />
           </div>
 
@@ -70,7 +72,7 @@ const CertificateDetails = () => {
             {certificateById?.Exam?.title}
           </h4>
           <h6 className="text-center" style={{ fontSize: "20pt" }}>
-            on {certificateById?.publishedDate}
+            on {new Date(certificateById?.publishedDate).toLocaleDateString()}
           </h6>
 
           <div
@@ -110,7 +112,7 @@ const CertificateDetails = () => {
                     marginLeft: "270px",
                   }}
                 >
-                  pleb
+                  {certificateById?.Exam?.Organization?.pic}
                 </h5>
               </u>
             </div>
