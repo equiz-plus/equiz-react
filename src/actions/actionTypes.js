@@ -165,4 +165,8 @@ export const GET_STATISTICS_SUCCESS = "statistics/getStatisticsSuccess";
 export const GET_STATISTICS_FAILED = "statistics/getStatisticsFailed";
 export const GET_STATISTICS_LOADING = "statistics/getStatisticsLoading";
 
+
+// SCROLL DOWN WHEN CLICK GET PREMIUM
+export const SCROLL_DOWN = "scrollDown/scrollDown";
+export const CLEAR_SCROLL_DOWN = "scrollDown/clearScrollDown";
 export const CLEAR_STATE = "state/clearState";

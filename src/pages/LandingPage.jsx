@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { actionMidtransPayment } from "../actions/actionCreators";
+import { clearScrollDownAction } from "../actions/creators/scrollDownCreator";
 
 function LandingPage() {
   const notify = (msg) => toast.error(msg);
@@ -12,14 +13,14 @@ function LandingPage() {
   const { isSuccess, isLoading, isError, errorMessage, paymentData } =
     useSelector((state) => state.midtransPayment);
 
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const doPayment = (event, lenght) => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth/login");
     } else {
-      dispacth(actionMidtransPayment(lenght));
+      dispatch(actionMidtransPayment(lenght));
     }
   };
 
@@ -28,8 +29,19 @@ function LandingPage() {
       notify(errorMessage);
     } else if (isSuccess && paymentData) {
       window.location.href = paymentData.paymentUrl;
+      localStorage.setItem("premStatus", true);
     }
   }, [isError, isLoading, isSuccess, paymentData]);
+
+  // SCROLL WHEN NAVIGATED
+  const { scrollDown } = useSelector((state) => state.scrollDown);
+
+  useEffect(() => {
+    if (scrollDown) {
+      window.scrollTo(0, 5100);
+      dispatch(clearScrollDownAction());
+    }
+  }, [scrollDown]);
 
   return (
     <>
@@ -577,21 +589,21 @@ function LandingPage() {
                   <div className="card-body">
                     <ul className="list-group list-group-flush priceList">
                       <li className="list-group-item border-0 ps-0">
-                        <strong>10</strong> Exams / month
+                        <strong>10</strong> Exams
                       </li>
                       <li className="list-group-item border-0 ps-0">
                         <strong>10</strong> Certificate
                       </li>
                       <li className="list-group-item d-flex align-items-center border-0 ps-0">
                         <svg
-                          className="icon icon-xs text-danger me-2"
+                          className="icon icon-xs text-success me-2"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clipRule="evenodd"
                           ></path>
                         </svg>{" "}
@@ -599,14 +611,14 @@ function LandingPage() {
                       </li>
                       <li className="list-group-item d-flex align-items-center border-0 ps-0">
                         <svg
-                          className="icon icon-xs text-danger me-2"
+                          className="icon icon-xs text-success me-2"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clipRule="evenodd"
                           ></path>
                         </svg>{" "}
@@ -614,14 +626,14 @@ function LandingPage() {
                       </li>
                       <li className="list-group-item d-flex align-items-center border-0 ps-0">
                         <svg
-                          className="icon icon-xs text-danger me-2"
+                          className="icon icon-xs text-success me-2"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clipRule="evenodd"
                           ></path>
                         </svg>{" "}
@@ -629,14 +641,14 @@ function LandingPage() {
                       </li>
                       <li className="list-group-item d-flex align-items-center border-0 ps-0">
                         <svg
-                          className="icon icon-xs text-danger me-2"
+                          className="icon icon-xs text-success me-2"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                             clipRule="evenodd"
                           ></path>
                         </svg>{" "}
@@ -809,7 +821,7 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        Text-to-Speech : <strong> 30 days</strong>
+                        Max Exams: Unlimited
                       </li>
                       <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
                         <svg
@@ -824,9 +836,9 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        Speech-to-Text: <strong>30 days</strong>
+                        E-Certificate: Unlimited
                       </li>
-                      <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
+                      {/* <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
                         <svg
                           className="icon icon-xxs text-success me-2"
                           fill="currentColor"
@@ -839,8 +851,8 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        E-Certificate : <strong>Unlimited</strong>
-                      </li>
+                        Accessibility
+                      </li> */}
                     </ul>
                   </div>
                   <div className="card-footer d-grid bg-white border-0 pt-0 px-4 pb-4">
@@ -886,6 +898,9 @@ function LandingPage() {
                       <span className="display-2 mb-0 fw-extrabold text-primary">
                         1.200K
                       </span>{" "}
+                      <span className="h5 text-gray-600 mx-2 mb-0">
+                        <s>1.8m</s>
+                      </span>{" "}
                     </div>
                     <h3 className="h4 mb-3">Half-yearly</h3>
                     <p className="fw-normal font-small mb-0">
@@ -908,7 +923,7 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        Text-to-Speech : <strong> 6 months</strong>
+                        Exams: Unlimited
                       </li>
                       <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
                         <svg
@@ -923,9 +938,9 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        Speech-to-Text: <strong>6 months</strong>
+                        E-Certificate: Unlimited
                       </li>
-                      <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
+                      {/* <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
                         <svg
                           className="icon icon-xxs text-success me-2"
                           fill="currentColor"
@@ -939,7 +954,7 @@ function LandingPage() {
                           ></path>
                         </svg>
                         E-Certificate : <strong>Unlimited</strong>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                   <div className="card-footer d-grid bg-white border-0 pt-0 px-4 pb-4">
@@ -985,6 +1000,9 @@ function LandingPage() {
                       <span className="display-2 mb-0 fw-extrabold text-primary">
                         2.000K
                       </span>{" "}
+                      <span className="h5 text-gray-600 mx-2 mb-0">
+                        <s>3.6m</s>
+                      </span>{" "}
                     </div>
                     <h3 className="h4 mb-3">Yearly</h3>
                     <p className="fw-normal font-small mb-0">
@@ -1007,7 +1025,7 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        Text-to-Speech : <strong> 12 months</strong>
+                        Exams: Unlimited
                       </li>
                       <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
                         <svg
@@ -1022,9 +1040,9 @@ function LandingPage() {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                        Speech-to-Text: <strong>12 months</strong>
+                        E-Certificate: Unlimited
                       </li>
-                      <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
+                      {/* <li className="list-group-item fw-normal d-inline-flex align-items-center border-0">
                         <svg
                           className="icon icon-xxs text-success me-2"
                           fill="currentColor"
@@ -1038,7 +1056,7 @@ function LandingPage() {
                           ></path>
                         </svg>
                         E-Certificate : <strong>Unlimited</strong>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                   <div className="card-footer d-grid bg-white border-0 pt-0 px-4 pb-4">

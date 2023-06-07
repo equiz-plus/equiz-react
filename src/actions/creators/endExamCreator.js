@@ -28,7 +28,6 @@ export const endExamMiddleware = () => async (dispatch) => {
         access_token: localStorage.getItem("access_token"),
       },
     });
-    console.log(res.data);
 
     dispatch(endExamAction(res.data));
   } catch (error) {

@@ -32,7 +32,6 @@ export const readStudentsMiddleware = () => async (dispatch) => {
         },
       }
     );
-    console.log(res.data.users);
 
     dispatch(readStudentsAction(res.data));
   } catch (error) {

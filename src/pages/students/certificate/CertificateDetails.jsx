@@ -24,8 +24,6 @@ const CertificateDetails = () => {
     margin: "15px",
   };
 
-  console.log(certificateById);
-
   return (
     <>
       <div style={cardStyle}>

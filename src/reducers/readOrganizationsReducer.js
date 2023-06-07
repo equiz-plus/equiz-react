@@ -20,7 +20,6 @@ const readOrganzationsReducer = (state = initialState, action) => {
       };
 
     case READ_ORGANIZATION_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         isLoading: false,

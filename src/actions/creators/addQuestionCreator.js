@@ -53,7 +53,7 @@ export const addQuestionMiddleware = (data) => async (dispatch) => {
         },
       ],
     };
-    console.log(questionAnswer);
+
     const res = await axios.post(`${baseUrl}/questions`, questionAnswer, {
       headers: {
         access_token: localStorage.getItem("access_token"),
